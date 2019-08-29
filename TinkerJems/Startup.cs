@@ -35,7 +35,14 @@ namespace TinkerJems
             });
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddRazorPagesOptions(options =>
+                {
+
+                });
+                //.WithRazorPagesRoot("/Pages");
+                //.WithRazorPagesAtContentRoot();
         }
 
         public IConfiguration Configuration { get; }

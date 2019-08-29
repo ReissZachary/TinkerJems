@@ -16,6 +16,7 @@ namespace TinkerJems.Pages
         public IndexModel(TinkerJems.Models.DataContext context)
         {
             _context = context;
+            JewelryItem = new List<JewelryItem>();
         }
 
         public IList<JewelryItem> JewelryItem { get;set; }
