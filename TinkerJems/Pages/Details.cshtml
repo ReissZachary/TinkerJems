@@ -1,0 +1,37 @@
+﻿@page
+@model TinkerJems.Pages.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>JewelryItem</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.JewelryItem.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.JewelryItem.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.JewelryItem.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.JewelryItem.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.JewelryItem.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.JewelryItem.Description)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.JewelryItem.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
