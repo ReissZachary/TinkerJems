@@ -2,6 +2,8 @@ param(
 	[string]$dbName="TinkerJems"
 )
 
+install-module sqlserver -Scope CurrentUser
+
 
 $mdffilename=(get-item ".\$dbName.mdf").FullName;
 $ldffilename=(get-item ".\$dbName.ldf").FullName;

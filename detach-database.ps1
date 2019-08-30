@@ -2,6 +2,8 @@ param(
 	[string]$dbName="TinkerJems"
 )
 
+install-module sqlserver -Scope CurrentUser
+
 $sqlCmd = @"
 USE [master]
 GO
