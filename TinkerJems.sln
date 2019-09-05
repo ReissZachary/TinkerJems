@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinkerJems", "TinkerJems\Ti
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{137D7575-3D42-4F86-BD9E-97728F1EF82F}"
 	ProjectSection(SolutionItems) = preProject
+		attach-database.ps1 = attach-database.ps1
+		detach-database.ps1 = detach-database.ps1
 		heroku.yml = heroku.yml
 	EndProjectSection
 EndProject
