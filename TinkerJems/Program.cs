@@ -30,7 +30,7 @@ namespace TinkerJems
             var port = Environment.GetEnvironmentVariable("PORT");
             if (string.IsNullOrEmpty(port))
                 return builder;
-            return builder.UseUrls($"http//+:{port}");
+            return builder.UseUrls($"http//*:{port}");
         }
     }
 }
