@@ -15,7 +15,8 @@ namespace TinkerJems.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     Price = table.Column<decimal>(nullable: false),
-                    Description = table.Column<string>(nullable: true)
+                    Description = table.Column<string>(nullable: true),
+                    //LongDescription = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

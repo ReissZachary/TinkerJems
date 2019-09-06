@@ -63,7 +63,7 @@ namespace TinkerJems.Pages
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Items");
         }
 
         private bool JewelryItemExists(int id)

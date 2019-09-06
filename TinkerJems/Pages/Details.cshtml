@@ -5,33 +5,45 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+@*<h2>Details</h2>*@
+    <h1 class="text-center">@Html.DisplayFor(model => model.JewelryItem.Name)</h1>
 
-<div>
-    <h4>JewelryItem</h4>
+<div class="align-">
+    @*<h4>JewelryItem</h4>*@
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.JewelryItem.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.JewelryItem.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.JewelryItem.Price)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.JewelryItem.Price)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.JewelryItem.Description)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.JewelryItem.Description)
-        </dd>
-    </dl>
+    <img src="./Images/sampleShot.png" alt="image of item" style="width:300px; height:auto; margin:1em" />
+    <div style="display:inline-block; margin-top:2em; margin-left:2em">
+        <dl class="dl-horizontal text-left" style="display:inline-block" >
+            <dt>
+                @Html.DisplayNameFor(model => model.JewelryItem.Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.JewelryItem.Name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.JewelryItem.Price)
+            </dt>
+            <dd>
+                $@Html.DisplayFor(model => model.JewelryItem.Price)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.JewelryItem.Description)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.JewelryItem.Description)
+            </dd>
+            @*<dt>
+                @Html.DisplayNameFor(model => model.JewelryItem.LongDescription)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.JewelryItem.LongDescription)
+            </dd>*@
+        </dl>
+    </div>
 </div>
-<div>
+<hr />
+<div class="text-center">
     <a asp-page="./Edit" asp-route-id="@Model.JewelryItem.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Items">Back to List</a> |
+    <a asp-page="./Delete" asp-route-id="@Model.JewelryItem.Id">Delete Item</a>
 </div>

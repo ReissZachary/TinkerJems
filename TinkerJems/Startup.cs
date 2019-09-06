@@ -39,7 +39,7 @@ namespace TinkerJems
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddRazorPagesOptions(options =>
                 {
-
+                    //options.Conventions.AddPageRoute("/HomePage", "");
                 });
                 //.WithRazorPagesRoot("/Pages");
                 //.WithRazorPagesAtContentRoot();

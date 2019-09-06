@@ -52,7 +52,7 @@ namespace TinkerJems.Pages
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Items");
         }
     }
 }

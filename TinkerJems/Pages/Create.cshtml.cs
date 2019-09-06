@@ -36,7 +36,7 @@ namespace TinkerJems.Pages
             _context.JewelryItem.Add(JewelryItem);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Items");
         }
     }
 }
