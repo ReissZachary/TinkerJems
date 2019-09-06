@@ -24,13 +24,17 @@ namespace TinkerJems.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Description");
+
+                    b.Property<string>("ImageThumbnailUrl");
+
+                    b.Property<string>("ImageUrl");
+
                     b.Property<string>("LongDescription");
 
                     b.Property<string>("Name");
 
                     b.Property<decimal>("Price");
-
-                    b.Property<string>("ShortDescription");
 
                     b.HasKey("Id");
 
