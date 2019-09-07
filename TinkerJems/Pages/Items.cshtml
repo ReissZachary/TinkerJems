@@ -12,8 +12,8 @@
 @foreach (var item in Model.JewelryItem)
 {
     <a  asp-page="./Details" asp-route-id="@item.Id" style="text-decoration:none">
-        <div class="media" style="border:solid; margin:1em; background-color:#feebff; display:inline-block;">
-            <img asp-route-id="@item.Id" class="mr-3" style="width:150px; height:150px; margin-bottom:1em; margin-left:.5em; margin-right:0em" src="@Html.DisplayFor(modelItem => item.ImageThumbnailUrl)" alt="Generic placeholder image">
+        <div class="media" style="border:solid; margin:1em; background-color:#fffcff; display:inline-block;">
+            <img asp-route-id="@item.Id" class="mr-3" style="width:150px; height:150px; margin-bottom:1em; margin-left:.5em; margin-right:0em" src="/Images/@Html.DisplayFor(modelItem => item.ImageThumbnailUrl)" alt="Generic placeholder image">
             <div class="media-body" style="display:inline-block; margin:.5em">
                 <a asp-page="./Details" asp-route-id="@item.Id" style="text-decoration:none; color:black"><h5 class="mt-0">@Html.DisplayFor(modelItem => item.Name)</h5></a>
                 <p asp-route-id="@item.Id">$@Html.DisplayFor(modelItem => item.Price)</p>
@@ -27,7 +27,8 @@
 <hr />
 <a asp-page="./Create">
     <button type="button" class="btn btn-outline-info">Add Item</button>
-</a> 
+</a>
+<p>FOR TESTING: Add a new item with the thumbailUrl and imageUrl name as 'customeBracelet.jpg'</p> 
 
 
 @*<p>
