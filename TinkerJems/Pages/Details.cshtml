@@ -11,7 +11,7 @@
 <div class="align-">
     @*<h4>JewelryItem</h4>*@
     <hr />
-    <img src="./Images/sampleShot.png" alt="image of item" style="width:300px; height:auto; margin:1em" />
+    <img src="@Html.DisplayFor(model => model.JewelryItem.ImageUrl)" alt="image of item" style="width:300px; height:auto; margin:1em" />
     <div style="display:inline-block; margin-top:2em; margin-left:2em">
         <dl class="dl-horizontal text-left" style="display:inline-block" >
             <dt>
@@ -26,18 +26,18 @@
             <dd>
                 $@Html.DisplayFor(model => model.JewelryItem.Price)
             </dd>
-            <dt>
+            @*<dt>
                 @Html.DisplayNameFor(model => model.JewelryItem.Description)
             </dt>
             <dd>
                 @Html.DisplayFor(model => model.JewelryItem.Description)
-            </dd>
-            @*<dt>
+            </dd>*@
+            <dt>
                 @Html.DisplayNameFor(model => model.JewelryItem.LongDescription)
             </dt>
             <dd>
                 @Html.DisplayFor(model => model.JewelryItem.LongDescription)
-            </dd>*@
+            </dd>
         </dl>
     </div>
 </div>
