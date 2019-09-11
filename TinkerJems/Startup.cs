@@ -8,8 +8,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using TinkerJems.Models;
+using TinkerJems.Core.Models;
 using Microsoft.AspNetCore.Mvc;
+using TinkerJems.Core.Data;
 
 namespace TinkerJems
 {

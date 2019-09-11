@@ -5,18 +5,20 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using TinkerJems.Models;
+using TinkerJems.Core;
+using TinkerJems.Core.Models;
 
 namespace TinkerJems.Pages
 {
     public class DetailsModel : PageModel
     {
-        private readonly TinkerJems.Models.DataContext _context;
+        private readonly TinkerJems.Core.Data.DataContext _context;
 
-        public DetailsModel(TinkerJems.Models.DataContext context)
+        public DetailsModel(TinkerJems.Core.Data.DataContext context)
         {
             _context = context;
         }
+
 
         public JewelryItem JewelryItem { get; set; }
 

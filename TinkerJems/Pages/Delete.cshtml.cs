@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using TinkerJems.Models;
+using TinkerJems.Core.Models;
 
 namespace TinkerJems.Pages
 {
     public class DeleteModel : PageModel
     {
-        private readonly TinkerJems.Models.DataContext _context;
+        private readonly TinkerJems.Core.Data.DataContext _context;
 
-        public DeleteModel(TinkerJems.Models.DataContext context)
+        public DeleteModel(TinkerJems.Core.Data.DataContext context)
         {
             _context = context;
         }

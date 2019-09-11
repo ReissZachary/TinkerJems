@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using TinkerJems.Models;
+using TinkerJems.Core.Models;
 
 namespace TinkerJems.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly TinkerJems.Models.DataContext _context;
+        private readonly TinkerJems.Core.Data.DataContext _context;
 
-        public IndexModel(TinkerJems.Models.DataContext context)
+        public IndexModel(TinkerJems.Core.Data.DataContext context)
         {
             _context = context;
             JewelryItem = new List<JewelryItem>();

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinkerJems", "TinkerJems\TinkerJems.csproj", "{620CD1E8-B4B7-425B-9B2B-30C7E54D4608}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinkerJems.Web", "TinkerJems\TinkerJems.Web.csproj", "{620CD1E8-B4B7-425B-9B2B-30C7E54D4608}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{137D7575-3D42-4F86-BD9E-97728F1EF82F}"
 	ProjectSection(SolutionItems) = preProject
@@ -11,6 +11,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		detach-database.ps1 = detach-database.ps1
 		heroku.yml = heroku.yml
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinkerJems.Core", "TinkerJems.Core\TinkerJems.Core.csproj", "{577BC2A0-2002-4F4B-BE1B-79F94F006F6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinkerJems.Wpf", "TinkerJems.Wpf\TinkerJems.Wpf.csproj", "{0D94C45A-11AB-4164-A457-7A522A1282AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TInkerJems.Tests", "TInkerJems.Tests\TInkerJems.Tests.csproj", "{E27DC0E2-5C3D-48F0-AB78-63D893778B82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.csproj", "{22BA55CA-65B5-4D71-AD0F-5198FF11DA4E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,6 +30,22 @@ Global
 		{620CD1E8-B4B7-425B-9B2B-30C7E54D4608}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{620CD1E8-B4B7-425B-9B2B-30C7E54D4608}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{620CD1E8-B4B7-425B-9B2B-30C7E54D4608}.Release|Any CPU.Build.0 = Release|Any CPU
+		{577BC2A0-2002-4F4B-BE1B-79F94F006F6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{577BC2A0-2002-4F4B-BE1B-79F94F006F6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{577BC2A0-2002-4F4B-BE1B-79F94F006F6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{577BC2A0-2002-4F4B-BE1B-79F94F006F6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D94C45A-11AB-4164-A457-7A522A1282AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D94C45A-11AB-4164-A457-7A522A1282AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D94C45A-11AB-4164-A457-7A522A1282AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D94C45A-11AB-4164-A457-7A522A1282AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E27DC0E2-5C3D-48F0-AB78-63D893778B82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E27DC0E2-5C3D-48F0-AB78-63D893778B82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E27DC0E2-5C3D-48F0-AB78-63D893778B82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E27DC0E2-5C3D-48F0-AB78-63D893778B82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22BA55CA-65B5-4D71-AD0F-5198FF11DA4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22BA55CA-65B5-4D71-AD0F-5198FF11DA4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22BA55CA-65B5-4D71-AD0F-5198FF11DA4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22BA55CA-65B5-4D71-AD0F-5198FF11DA4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

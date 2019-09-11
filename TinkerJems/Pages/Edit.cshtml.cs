@@ -6,15 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using TinkerJems.Models;
+using TinkerJems.Core.Models;
 
 namespace TinkerJems.Pages
 {
     public class EditModel : PageModel
     {
-        private readonly TinkerJems.Models.DataContext _context;
+        private readonly TinkerJems.Core.Data.DataContext _context;
 
-        public EditModel(TinkerJems.Models.DataContext context)
+        public EditModel(TinkerJems.Core.Data.DataContext context)
         {
             _context = context;
         }

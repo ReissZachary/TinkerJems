@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using TinkerJems.Models;
+using TinkerJems.Core.Models;
 
 namespace TinkerJems.Pages
 {
     public class CreateModel : PageModel
     {
-        private readonly TinkerJems.Models.DataContext _context;
+        private readonly TinkerJems.Core.Data.DataContext _context;
 
-        public CreateModel(TinkerJems.Models.DataContext context)
+        public CreateModel(TinkerJems.Core.Data.DataContext context)
         {
             _context = context;
         }
