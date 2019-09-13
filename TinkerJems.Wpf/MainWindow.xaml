@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TinkerJems.Wpf"
         mc:Ignorable="d"
-        Title="Manage TinkerJems" Height="600" Width="1000"
+        Title="Manage TinkerJems" Height="800" Width="1300"
        >
     <Grid>
         <Grid.RowDefinitions>
@@ -35,13 +35,13 @@
                         Background="#e8e8e8">
                 
                 <Button HorizontalAlignment="Center" 
-                        Command=""
+                        Command="{Binding ViewRings}"
                         Grid.Column="0"
                         Grid.Row="0"
                         Margin="10">
                     <Button.Content>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="View Items"
+                            <TextBlock Text="Rings"
                                        Margin="3"/>
                         </StackPanel>
                     </Button.Content>
@@ -52,7 +52,29 @@
                         Margin="10">
                     <Button.Content>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Edit Items"
+                            <TextBlock Text="Earrings"
+                                       Margin="3"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button HorizontalAlignment="Center" 
+                        Command=""
+                        Grid.Row="1"
+                        Margin="10">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Bracelets/Anklets"
+                                       Margin="3"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button HorizontalAlignment="Center" 
+                        Command=""
+                        Grid.Row="1"
+                        Margin="10">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Necklaces"
                                        Margin="3"/>
                         </StackPanel>
                     </Button.Content>
