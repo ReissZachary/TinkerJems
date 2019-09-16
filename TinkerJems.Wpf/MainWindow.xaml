@@ -36,6 +36,7 @@
             <StackPanel VerticalAlignment="Stretch"
                         Background="#e8e8e8">
                 
+                <!--RINGS-->
                 <Button HorizontalAlignment="Center" 
                         Command="{Binding ViewRings}"
                         Grid.Column="0"
@@ -48,6 +49,8 @@
                         </StackPanel>
                     </Button.Content>
                 </Button>
+                
+                <!--EARRINGS-->
                 <Button HorizontalAlignment="Center" 
                         Command=""
                         Grid.Row="1"
@@ -59,6 +62,8 @@
                         </StackPanel>
                     </Button.Content>
                 </Button>
+                
+                <!--BRACELETS-->
                 <Button HorizontalAlignment="Center" 
                         Command=""
                         Grid.Row="1"
@@ -70,6 +75,8 @@
                         </StackPanel>
                     </Button.Content>
                 </Button>
+                
+                <!--NECKLACES-->
                 <Button HorizontalAlignment="Center" 
                         Command=""
                         Grid.Row="1"
@@ -81,6 +88,8 @@
                         </StackPanel>
                     </Button.Content>
                 </Button>
+                
+                <!--ADD ITEM-->
                 <Button HorizontalAlignment="Center" 
                         Command=""
                         Grid.Row="1"
@@ -94,6 +103,8 @@
                         </StackPanel>
                     </Button.Content>
                 </Button>
+                
+                <!--EDIT ITEM-->
                 <Button HorizontalAlignment="Center" 
                         Command=""
                         Grid.Row="1"
@@ -107,6 +118,8 @@
                         </StackPanel>
                     </Button.Content>
                 </Button>
+                
+                <!--CLOSEAPP-->
                 <Button VerticalAlignment="Bottom"
                         Command=""
                         Tag="exit"
