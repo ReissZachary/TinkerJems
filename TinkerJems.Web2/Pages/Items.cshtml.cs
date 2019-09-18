@@ -16,14 +16,19 @@ namespace TinkerJems.Web2.Pages
         public IndexModel(TinkerJems.Web2.Data.ApplicationDbContext context)
         {
             _context = context;
-            JewelryItem = new List<JewelryItem>();
+            JewelryItems = new List<JewelryItem>();
         }
 
-        public IList<JewelryItem> JewelryItem { get;set; }
+        public IList<JewelryItem> JewelryItems { get;set; }
 
         public async Task OnGetAsync()
         {
-            JewelryItem = await _context.JewelryItem.ToListAsync();
+            JewelryItems = await _context.JewelryItem.ToListAsync();
+        }
+
+        public async Task<JsonResult> OnGetAllAsync()
+        {
+            return new JsonResult(await _context.JewelryItem.ToListAsync());
         }
     }
 }
