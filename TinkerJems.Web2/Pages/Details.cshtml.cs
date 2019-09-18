@@ -12,9 +12,9 @@ namespace TinkerJems.Web2.Pages
 {
     public class DetailsModel : PageModel
     {
-        private readonly TinkerJems.Core.Data.DataContext _context;
+        private readonly TinkerJems.Web2.Data.ApplicationDbContext _context;
 
-        public DetailsModel(TinkerJems.Core.Data.DataContext context)
+        public DetailsModel(TinkerJems.Web2.Data.ApplicationDbContext context)
         {
             _context = context;
         }

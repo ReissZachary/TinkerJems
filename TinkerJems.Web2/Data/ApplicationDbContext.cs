@@ -12,5 +12,6 @@ namespace TinkerJems.Web2.Data
             : base(options)
         {
         }
+        public DbSet<TinkerJems.Core.Models.JewelryItem> JewelryItem { get; set; }
     }
 }

@@ -11,9 +11,9 @@ namespace TinkerJems.Web2.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly TinkerJems.Core.Data.DataContext _context;
+        private readonly TinkerJems.Web2.Data.ApplicationDbContext _context;
 
-        public IndexModel(TinkerJems.Core.Data.DataContext context)
+        public IndexModel(TinkerJems.Web2.Data.ApplicationDbContext context)
         {
             _context = context;
             JewelryItem = new List<JewelryItem>();

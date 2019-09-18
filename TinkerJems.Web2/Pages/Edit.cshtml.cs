@@ -12,9 +12,9 @@ namespace TinkerJems.Web2.Pages
 {
     public class EditModel : PageModel
     {
-        private readonly TinkerJems.Core.Data.DataContext _context;
+        private readonly TinkerJems.Web2.Data.ApplicationDbContext _context;
 
-        public EditModel(TinkerJems.Core.Data.DataContext context)
+        public EditModel(TinkerJems.Web2.Data.ApplicationDbContext context)
         {
             _context = context;
         }

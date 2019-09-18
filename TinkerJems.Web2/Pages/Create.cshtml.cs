@@ -11,9 +11,9 @@ namespace TinkerJems.Web2.Pages
 {
     public class CreateModel : PageModel
     {
-        private readonly TinkerJems.Core.Data.DataContext _context;
+        private readonly TinkerJems.Web2.Data.ApplicationDbContext _context;
 
-        public CreateModel(TinkerJems.Core.Data.DataContext context)
+        public CreateModel(TinkerJems.Web2.Data.ApplicationDbContext context)
         {
             _context = context;
         }

@@ -11,9 +11,9 @@ namespace TinkerJems.Web2.Pages
 {
     public class DeleteModel : PageModel
     {
-        private readonly TinkerJems.Core.Data.DataContext _context;
+        private readonly TinkerJems.Web2.Data.ApplicationDbContext _context;
 
-        public DeleteModel(TinkerJems.Core.Data.DataContext context)
+        public DeleteModel(TinkerJems.Web2.Data.ApplicationDbContext context)
         {
             _context = context;
         }
