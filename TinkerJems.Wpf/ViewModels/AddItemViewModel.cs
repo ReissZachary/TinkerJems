@@ -9,5 +9,16 @@ namespace TinkerJems.Wpf.ViewModels
 {
     public class AddItemViewModel : BindableBase
     {
+        private decimal price;
+        public decimal Price
+        {
+            get { return price; }
+            set { SetProperty(ref price, value); }
+        }
+
+        public AddItemViewModel()
+        {
+            Price = 15M;
+        }
     }
 }
