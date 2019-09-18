@@ -38,16 +38,25 @@ namespace TinkerJems.Web2
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddDefaultTokenProviders()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy(SeedData.SecurityPolicy_Add, p => p.RequireRole(SeedData.AdminRoleName));
+                options.AddPolicy(SeedData.SecurityPolicy_Edit, p => p.RequireRole(SeedData.AdminRoleName));
+                options.AddPolicy(SeedData.SecurityPolicy_Delete, p => p.RequireRole(SeedData.AdminRoleName));
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env,
+            UserManager<IdentityUser> userManager,
+            RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -66,6 +75,7 @@ namespace TinkerJems.Web2
             app.UseCookiePolicy();
 
             app.UseAuthentication();
+            SeedData.EnsureInitialized(userManager, roleManager);
 
             app.UseMvc();
         }

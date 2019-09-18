@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,6 +11,7 @@ using TinkerJems.Core.Models;
 
 namespace TinkerJems.Web2.Pages
 {
+    [Authorize(Policy = SeedData.SecurityPolicy_Edit)]
     public class EditModel : PageModel
     {
         private readonly TinkerJems.Web2.Data.ApplicationDbContext _context;
