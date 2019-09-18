@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TinkerJems.Wpf"
         mc:Ignorable="d"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
         Title="Manage TinkerJems" Height="800" Width="1300"
        >
     <Grid>
@@ -91,11 +93,10 @@
                 
                 <!--ADD ITEM-->
                 <Button HorizontalAlignment="Center" 
-                        Command=""
+                        Command="{Binding AddItemCommand}"
                         Grid.Row="1"
                         Margin="10"
-                        Click="AddNewJewelryItem_Click"
-                        Tag="TinkerJems.Wpf.UserControls.AddItemControl">
+                        CommandParameter="AddItemView">
                     <Button.Content>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Add Item"                                       
@@ -137,14 +138,15 @@
             </StackPanel>
 
             <!--List of items-->
-            <StackPanel Grid.Column="1"                      
-                    Name="contentArea">
-                <StackPanel.Background>
+            <ContentControl Grid.Column="1"                      
+                    Name="contentArea"
+                    prism:RegionManager.RegionName="ContentRegion">
+                <ContentControl.Background>
                     <ImageBrush ImageSource="Images/tinkerLogo.png"
                                 Stretch="UniformToFill"
                                 Opacity=".05"/>
-                </StackPanel.Background>
-            </StackPanel>
+                </ContentControl.Background>
+            </ContentControl>
 
             
             <StackPanel Background="#e8e8e8"

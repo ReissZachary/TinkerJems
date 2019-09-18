@@ -27,7 +27,6 @@ namespace TinkerJems.Wpf
                 command = btn.Tag.ToString();
                 if (command.Contains("."))
                 {
-                    LoadUserControl(command);
                 }
                 else
                 {
@@ -47,52 +46,15 @@ namespace TinkerJems.Wpf
                 command = btn.Tag.ToString();
                 if (command.Contains("."))
                 {
-                    LoadUserControl(command);
                 }
                 else
                 {
                     ProcessButtonsCommand(command);
                 }
             }
-        }
+        }    
 
-        public void CloseUserControl()
-        {
-            contentArea.Children.Clear();
-        }
-
-        public void DisplayUserControl(UserControl userControl)
-        {
-            //close current control
-            CloseUserControl();
-
-            //adds new control to screen
-            contentArea.Children.Add(userControl);
-
-        }
-
-        public void LoadUserControl(string controlName)
-        {
-            Type  usercontrolType = null;
-            UserControl userControl = null;
-
-            //create type from control type parameter
-            usercontrolType = Type.GetType(controlName);
-            if (usercontrolType == null)
-            {
-                MessageBox.Show(controlName + "doesn't exist!");
-            }
-            else
-            {
-                //create new instance of control
-                userControl = (UserControl)Activator.CreateInstance(usercontrolType);
-                if (userControl != null)
-                {
-                    //display wanted user control
-                    DisplayUserControl(userControl);
-                }
-            }
-        }
+       
 
         public void ProcessButtonsCommand(string command)
         {

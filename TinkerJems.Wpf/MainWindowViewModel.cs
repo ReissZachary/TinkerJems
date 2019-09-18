@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Prism.Commands;
 using Prism.Mvvm;
+using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,7 +17,7 @@ namespace TinkerJems.Wpf
 {
     public class MainWindowViewModel : BindableBase
     {
-        public MainWindowViewModel()
+        public MainWindowViewModel(IRegionManager regionManager)
         {
 
             ViewRings = new DelegateCommand(
@@ -32,9 +33,19 @@ namespace TinkerJems.Wpf
                     return false;
                 }
                 );
+            this.regionManager = regionManager;
         }
         public DelegateCommand ViewRings { get; }
+        private DelegateCommand<string> _addItemCommand;
+        private readonly IRegionManager regionManager;
 
+        public DelegateCommand<string> AddItemCommand =>
+            _addItemCommand ?? (_addItemCommand = new DelegateCommand<string>(ExecuteAddItemCommand));
+
+        void ExecuteAddItemCommand(string parameter)
+        {
+            regionManager.RequestNavigate("ContentRegion", parameter);
+        }
 
     }
 }
