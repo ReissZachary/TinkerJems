@@ -38,7 +38,7 @@
             <StackPanel VerticalAlignment="Stretch"
                         Background="#e8e8e8">
                 
-                <!--RINGS-->
+                <!--RINGS--><!--
                 <Button HorizontalAlignment="Center" 
                         Command="{Binding ViewRings}"
                         Grid.Column="0"
@@ -52,7 +52,7 @@
                     </Button.Content>
                 </Button>
                 
-                <!--EARRINGS-->
+                --><!--EARRINGS--><!--
                 <Button HorizontalAlignment="Center" 
                         Command=""
                         Grid.Row="1"
@@ -65,7 +65,7 @@
                     </Button.Content>
                 </Button>
                 
-                <!--BRACELETS-->
+                --><!--BRACELETS--><!--
                 <Button HorizontalAlignment="Center" 
                         Command=""
                         Grid.Row="1"
@@ -78,7 +78,7 @@
                     </Button.Content>
                 </Button>
                 
-                <!--NECKLACES-->
+                --><!--NECKLACES--><!--
                 <Button HorizontalAlignment="Center" 
                         Command=""
                         Grid.Row="1"
@@ -89,7 +89,7 @@
                                        Margin="3"/>
                         </StackPanel>
                     </Button.Content>
-                </Button>
+                </Button>-->
                 
                 <!--ADD ITEM-->
                 <Button HorizontalAlignment="Center" 

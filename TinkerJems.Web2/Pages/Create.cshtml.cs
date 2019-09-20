@@ -33,7 +33,7 @@ namespace TinkerJems.Web2.Pages
                 return Page();
             }
 
-            _context.JewelryItem.Add(JewelryItem);
+            _context.JewelryItems.Add(JewelryItem);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Items");

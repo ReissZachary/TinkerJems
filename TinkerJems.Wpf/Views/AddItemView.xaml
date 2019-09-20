@@ -8,6 +8,10 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -36,39 +40,52 @@
 
         <Label Grid.Row="1"
                Content="Name:"
-               FontSize="15"/>
-        <TextBlock Grid.Row="2"
-                   Text=""/>
+               FontSize="15"/>        
+        <TextBox Grid.Row="2"
+                 Width="300"                 
+                 HorizontalAlignment="Left"
+                 Text="{Binding Name}"/>
 
         <Label Grid.Row="3"
                Content="Price:"
                FontSize="15"/>
-        <TextBlock Grid.Row="4"
+        <TextBox Grid.Row="4"
+                 Width="300"
+                 HorizontalAlignment="Left"
                    Text="{Binding Price, StringFormat=c}"/>
 
         <Label Grid.Row="5"
                Content="ThumbnailURL:"
                FontSize="15"/>
-        <TextBlock Grid.Row="6"
-                   Text="{Binding}"/>
+        <TextBox Grid.Row="6"
+                 Width="300"
+                 HorizontalAlignment="Left"
+                   Text="{Binding Thumbnail}"/>
 
         <Label Grid.Row="7"
                Content="MainURL:"
                FontSize="15"/>
-        <TextBlock Grid.Row="8"
-                   Text="{Binding}"/>
+        <TextBox Grid.Row="8"
+                 Width="300"
+                 HorizontalAlignment="Left"
+                 Text="{Binding MainURL}"/>
 
         <Label Grid.Row="9"
                Content="Description(short):"
                FontSize="15"/>
-        <TextBlock Grid.Row="10"
-                   Text="{Binding}"/>
+        <TextBox Grid.Row="10"
+                 Width="300"
+                 HorizontalAlignment="Left"
+                   Text="{Binding Description}"/>
 
         <Label Grid.Row="11"
                Content="Description(long):"
                FontSize="15"/>
-        <TextBlock Grid.Row="12"
-                   Text="{Binding}"/>
+        <TextBox Grid.Row="12"
+                 Width="300"
+                 Height="100"
+                 HorizontalAlignment="Left"
+                   Text="{Binding LongDescription}"/>
 
 
         <Grid Grid.Row="13">

@@ -13,6 +13,11 @@ using Microsoft.EntityFrameworkCore;
 using TinkerJems.Web2.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using GraphQL;
+using TinkerJems.Web2.graphQL;
+using GraphQL.Server;
+using GraphQL.Server.Ui.Playground;
+using TinkerJems.Core.Models;
 
 namespace TinkerJems.Web2
 {
@@ -51,6 +56,12 @@ namespace TinkerJems.Web2
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddScoped<IJewelryRepository, ApplicationDbContext>();
+            services.AddScoped<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
+            services.AddScoped<TinkerJemsSchema>();
+            services.AddGraphQL(o => { o.ExposeExceptions = true; })
+                .AddGraphTypes(ServiceLifetime.Scoped);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,6 +80,9 @@ namespace TinkerJems.Web2
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseGraphQL<TinkerJemsSchema>();
+            app.UseGraphQLPlayground(new GraphQLPlaygroundOptions());
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

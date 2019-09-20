@@ -31,7 +31,7 @@ namespace TinkerJems.Web2.Pages
                 return NotFound();
             }
 
-            JewelryItem = await _context.JewelryItem.FirstOrDefaultAsync(m => m.Id == id);
+            JewelryItem = await _context.JewelryItems.FirstOrDefaultAsync(m => m.Id == id);
 
             if (JewelryItem == null)
             {
@@ -70,7 +70,7 @@ namespace TinkerJems.Web2.Pages
 
         private bool JewelryItemExists(int id)
         {
-            return _context.JewelryItem.Any(e => e.Id == id);
+            return _context.JewelryItems.Any(e => e.Id == id);
         }
     }
 }

@@ -23,12 +23,12 @@ namespace TinkerJems.Web2.Pages
 
         public async Task OnGetAsync()
         {
-            JewelryItems = await _context.JewelryItem.ToListAsync();
+            JewelryItems = await _context.JewelryItems.ToListAsync();
         }
 
         public async Task<JsonResult> OnGetAllAsync()
         {
-            return new JsonResult(await _context.JewelryItem.ToListAsync());
+            return new JsonResult(await _context.JewelryItems.ToListAsync());
         }
     }
 }

@@ -28,7 +28,7 @@ namespace TinkerJems.Web2.Pages
                 return NotFound();
             }
 
-            JewelryItem = await _context.JewelryItem.FirstOrDefaultAsync(m => m.Id == id);
+            JewelryItem = await _context.JewelryItems.FirstOrDefaultAsync(m => m.Id == id);
 
             if (JewelryItem == null)
             {
@@ -44,11 +44,11 @@ namespace TinkerJems.Web2.Pages
                 return NotFound();
             }
 
-            JewelryItem = await _context.JewelryItem.FindAsync(id);
+            JewelryItem = await _context.JewelryItems.FindAsync(id);
 
             if (JewelryItem != null)
             {
-                _context.JewelryItem.Remove(JewelryItem);
+                _context.JewelryItems.Remove(JewelryItem);
                 await _context.SaveChangesAsync();
             }
 
