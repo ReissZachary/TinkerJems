@@ -9,9 +9,44 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-        
+        <Style TargetType="{x:Type FrameworkElement}"
+               x:Key="ValidationTemplate">
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <DockPanel LastChildFill="True">
+                            <TextBlock DockPanel.Dock="Right"
+                                       Foreground="Red"
+                                       FontSize="12"><Run Text="*" /></TextBlock>
+                            <Border BorderBrush="Red"
+                                    BorderThickness="2"
+                                    CornerRadius="3">
+                                <AdornedElementPlaceholder />
+                            </Border>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError"
+                         Value="true">
+                    <Setter Property="ToolTip"
+                            Value="{Binding (Validation.Errors)[0].ErrorContent, RelativeSource={RelativeSource Self}}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="TextBox"
+               BasedOn="{StaticResource ValidationTemplate}">
+            <Setter Property="Margin"
+                    Value="5" />
+        </Style>
+        <Style TargetType="TextBlock"
+               BasedOn="{StaticResource ValidationTemplate}">
+            <Setter Property="Margin"
+                    Value="5" />
+        </Style>
     </UserControl.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -29,63 +64,113 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-             
-            <TextBlock Text="ADD ITEM"
+
+        <TextBlock Text="ADD ITEM"
                        Grid.Row="0"
                        Grid.ColumnSpan="2"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
-                       FontSize="25">                
-            </TextBlock>
+                       FontSize="25">
+        </TextBlock>
 
         <Label Grid.Row="1"
                Content="Name:"
-               FontSize="15"/>        
-        <TextBox Grid.Row="2"
-                 Width="300"                 
-                 HorizontalAlignment="Left"
+               FontSize="15"/>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBox HorizontalAlignment="Stretch"
                  Text="{Binding Name}"/>
+            <TextBlock Text="{Binding NameError, ValidatesOnDataErrors=True}"
+                       Grid.Column="1"
+                       HorizontalAlignment="Left"
+                       Visibility="{Binding NameErrorVisibility}" />
+        </Grid>
+
 
         <Label Grid.Row="3"
                Content="Price:"
                FontSize="15"/>
-        <TextBox Grid.Row="4"
-                 Width="300"
-                 HorizontalAlignment="Left"
-                   Text="{Binding Price, StringFormat=c}"/>
+        <Grid  Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBox HorizontalAlignment="Stretch"
+                     Text="{Binding Price, ValidatesOnDataErrors=True, StringFormat=c}"/>
+            <TextBlock Text="{Binding PriceError}"
+                       Grid.Column="1"
+                       HorizontalAlignment="Left"
+                       Visibility="{Binding PriceErrorVisibility}" />
+        </Grid>
+
 
         <Label Grid.Row="5"
                Content="ThumbnailURL:"
                FontSize="15"/>
-        <TextBox Grid.Row="6"
-                 Width="300"
-                 HorizontalAlignment="Left"
-                   Text="{Binding Thumbnail}"/>
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBox HorizontalAlignment="Stretch"
+                     Text="{Binding Thumbnail}"/>
+            <TextBlock Text="{Binding ThumbnailError, ValidatesOnDataErrors=True}"
+                       Grid.Column="1"
+                       HorizontalAlignment="Left"
+                       Visibility="{Binding ThumbnailErrorVisibility}" />
+        </Grid>
 
         <Label Grid.Row="7"
                Content="MainURL:"
                FontSize="15"/>
-        <TextBox Grid.Row="8"
-                 Width="300"
-                 HorizontalAlignment="Left"
+        <Grid Grid.Row="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+        <TextBox HorizontalAlignment="Stretch"
                  Text="{Binding MainURL}"/>
+            <TextBlock Text="{Binding MainURLError, ValidatesOnDataErrors=True}"
+                       Grid.Column="1"
+                       HorizontalAlignment="Left"
+                       Visibility="{Binding MainURLErrorVisibility}" />
+        </Grid>
 
         <Label Grid.Row="9"
                Content="Description(short):"
                FontSize="15"/>
-        <TextBox Grid.Row="10"
-                 Width="300"
-                 HorizontalAlignment="Left"
-                   Text="{Binding Description}"/>
+        <Grid Grid.Row="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+        <TextBox HorizontalAlignment="Stretch"
+                 Text="{Binding Description}"/>
+            <TextBlock Text="{Binding DescriptionError, ValidatesOnDataErrors=True}"
+                       Grid.Column="1"
+                       HorizontalAlignment="Left"
+                       Visibility="{Binding DescriptionErrorVisibility}" />
+        </Grid>
 
         <Label Grid.Row="11"
                Content="Description(long):"
                FontSize="15"/>
-        <TextBox Grid.Row="12"
-                 Width="300"
-                 Height="100"
-                 HorizontalAlignment="Left"
+        <Grid Grid.Row="12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+        <TextBox Height="100"
+                 HorizontalAlignment="Stretch"
                    Text="{Binding LongDescription}"/>
+            <TextBlock Text="{Binding LongDescriptionError, ValidatesOnDataErrors=True}"
+                       Grid.Column="1"
+                       HorizontalAlignment="Left"
+                       Visibility="{Binding LongDescriptionErrorVisibility}" />
+        </Grid>
 
 
         <Grid Grid.Row="13">
@@ -93,29 +178,31 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            
-        <Button HorizontalAlignment="Right"
+
+            <Button HorizontalAlignment="Right"
                 Grid.Column="0"
                 Margin="10"
-                Background="#ffeaf9">
-            <Button.Content>
-                <StackPanel>
-                    <TextBlock Text="ADD ITEM"/>
-                </StackPanel>
-            </Button.Content>
-        </Button>
+                Background="#ffeaf9"
+                Command="{Binding AddItem}">
+                <Button.Content>
+                    <StackPanel>
+                        <TextBlock Text="ADD ITEM"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
 
-        <Button HorizontalAlignment="Left"
-                Grid.Column="1"
-                Margin="10">
-            <Button.Content>
-                <StackPanel>
-                    <TextBlock Text="CLEAR"/>
-                </StackPanel>
-            </Button.Content>
-            
-        </Button>
-            
+            <Button HorizontalAlignment="Left"
+                    Grid.Column="1"
+                    Margin="10"
+                    Command="{Binding ClearForm}">
+                <Button.Content>
+                    <StackPanel>
+                        <TextBlock Text="CLEAR"/>
+                    </StackPanel>
+                </Button.Content>
+
+            </Button>
+
         </Grid>
 
     </Grid>

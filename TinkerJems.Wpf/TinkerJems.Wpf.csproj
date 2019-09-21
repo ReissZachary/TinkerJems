@@ -188,6 +188,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BindableDataErrorInfoBase.cs" />
     <Compile Include="ViewModels\AddItemViewModel.cs" />
     <Compile Include="ViewModels\EditItemViewModel.cs" />
     <Compile Include="Views\AddItemView.cs" />
