@@ -4,6 +4,7 @@ using Prism.Mvvm;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,15 +13,12 @@ using System.Windows;
 
 namespace TinkerJems.Wpf.ViewModels
 {
-    public class AddItemViewModel : BindableDataErrorInfoBase
+    public class AddItemViewModel : BindableDataErrorInfoBase, INotifyPropertyChanged
     {
 
         public AddItemViewModel()
         {          
-
             Price = .01M;
-            Thumbnail = "example.png";
-            MainURL = "mainExample.png";
         }
 
         private string name;
@@ -29,9 +27,9 @@ namespace TinkerJems.Wpf.ViewModels
             get { return name; }
             set
             {
-                if (value == "")
+                if (value == null || value == "")
                 {
-                    NameError = "Item must have a name";
+                    NameError = "* Item must have a name";
                 }
                 else
                 {
@@ -48,7 +46,7 @@ namespace TinkerJems.Wpf.ViewModels
             {
                 SetProperty(ref nameError, value);
                 ErrorDictionary[nameof(NameError)] = value;
-                PriceErrorVisibility = value.IsNullOrWhiteSpace() ? Visibility.Collapsed : Visibility.Visible;
+                NameErrorVisibility = value.IsNullOrWhiteSpace() ? Visibility.Collapsed : Visibility.Visible;
             }
         }
 
@@ -68,7 +66,7 @@ namespace TinkerJems.Wpf.ViewModels
             {
                 if(value <= 0)
                 {
-                    PriceError = "Price cannot be <= 0";
+                    PriceError = "* Price cannot be <= 0";
                 }
                 else
                 {
@@ -102,9 +100,9 @@ namespace TinkerJems.Wpf.ViewModels
             get { return thumbnail; }
             set
             {
-                if (value == null)
+                if (value == null || value == "")
                 {
-                    ThumbnailError = "Item must have a thumbnail";
+                    ThumbnailError = "* Item must have a thumbnail";
                 }
                 else
                 {
@@ -123,7 +121,7 @@ namespace TinkerJems.Wpf.ViewModels
                 SetProperty(ref thumbnailError, value);
 
                 ErrorDictionary[nameof(ThumbnailError)] = value;
-                PriceErrorVisibility = value.IsNullOrWhiteSpace() ? Visibility.Collapsed : Visibility.Visible;
+                ThumbnailErrorVisibility = value.IsNullOrWhiteSpace() ? Visibility.Collapsed : Visibility.Visible;
             }
         }
         private Visibility thumbnailErrorVisibility;
@@ -139,9 +137,9 @@ namespace TinkerJems.Wpf.ViewModels
             get { return mainURL; }
             set
             {
-                if (value == null)
+                if (value == null || value == "")
                 {
-                    MainURLError = "Item must have a main URL";
+                    MainURLError = "* Item must have a main URL";
                 }
                 else
                 {
@@ -160,7 +158,7 @@ namespace TinkerJems.Wpf.ViewModels
                 SetProperty(ref mainURLError, value);
 
                 ErrorDictionary[nameof(MainURLError)] = value;
-                PriceErrorVisibility = value.IsNullOrWhiteSpace() ? Visibility.Collapsed : Visibility.Visible;
+                MainURLErrorVisibility = value.IsNullOrWhiteSpace() ? Visibility.Collapsed : Visibility.Visible;
             }
         }
 
@@ -177,9 +175,9 @@ namespace TinkerJems.Wpf.ViewModels
             get { return description; }
             set
             {
-                if (value == null)
+                if (value == null || value == "")
                 {
-                    DescriptionError = "Item must have a description";
+                    DescriptionError = "* Item must have a description";
                 }
                 else
                 {
@@ -198,7 +196,7 @@ namespace TinkerJems.Wpf.ViewModels
                 SetProperty(ref descriptionError, value);
 
                 ErrorDictionary[nameof(DescriptionError)] = value;
-                PriceErrorVisibility = value.IsNullOrWhiteSpace() ? Visibility.Collapsed : Visibility.Visible;
+                DescriptionErrorVisibility = value.IsNullOrWhiteSpace() ? Visibility.Collapsed : Visibility.Visible;
             }
         }
 
@@ -215,9 +213,9 @@ namespace TinkerJems.Wpf.ViewModels
             get { return longDescription; }
             set
             {
-                if (value == null)
+                if (value == null || value == "")
                 {
-                    LongDescriptionError = "Item must have a long description";
+                    LongDescriptionError = "* Item must have a long description";
                 }
                 else
                 {
@@ -236,12 +234,12 @@ namespace TinkerJems.Wpf.ViewModels
             {
                 SetProperty(ref longDescriptionError, value);
                 ErrorDictionary[nameof(LongDescriptionError)] = value;
-                PriceErrorVisibility = value.IsNullOrWhiteSpace() ? Visibility.Collapsed : Visibility.Visible;
+                LongDescriptionErrorVisibility = value.IsNullOrWhiteSpace() ? Visibility.Collapsed : Visibility.Visible;
             }
         }
 
         private Visibility longDescriptionErrorVisibility;
-        public Visibility LongDescriptionVisibility
+        public Visibility LongDescriptionErrorVisibility
         {
             get { return longDescriptionErrorVisibility; }
             set { SetProperty(ref longDescriptionErrorVisibility, value); }
@@ -260,9 +258,11 @@ namespace TinkerJems.Wpf.ViewModels
             .ObservesProperty(() => LongDescription));
 
         void ExecuteAddItem()
-        {            
-            string message = "Item Added!! You Win!";
-            MessageBox.Show(message);
+        {
+            Name = null;
+            Price = .01M;
+            Description = null;
+            LongDescription = null;
         }
 
         private DelegateCommand clearForm;
@@ -271,12 +271,10 @@ namespace TinkerJems.Wpf.ViewModels
 
         void ExecuteClearForm()
         {
-            Name = null;
+            Name = "";
             Price = 0;
-            Thumbnail = "example.png";
-            MainURL = "mainExample.png";
-            Description = null;
-            LongDescription = null;
+            Description = "";
+            LongDescription = "";
         }
 
         //public AddItemViewModel()

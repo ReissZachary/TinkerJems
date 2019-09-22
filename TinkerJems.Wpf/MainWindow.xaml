@@ -107,11 +107,10 @@
                 
                 <!--EDIT ITEM-->
                 <Button HorizontalAlignment="Center" 
-                        Command=""
+                        Command="{Binding EditItemCommand}"
                         Grid.Row="1"
                         Margin="10"
-                        Click="EditJewelryItem_Click"
-                        Tag="TinkerJems.Wpf.UserControls.EditItemControl">
+                        CommandParameter="EditItemView">
                     <Button.Content>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Edit Item"

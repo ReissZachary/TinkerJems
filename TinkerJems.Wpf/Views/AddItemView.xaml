@@ -7,45 +7,7 @@
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.Resources>
-        <Style TargetType="{x:Type FrameworkElement}"
-               x:Key="ValidationTemplate">
-            <Setter Property="Validation.ErrorTemplate">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <DockPanel LastChildFill="True">
-                            <TextBlock DockPanel.Dock="Right"
-                                       Foreground="Red"
-                                       FontSize="12"><Run Text="*" /></TextBlock>
-                            <Border BorderBrush="Red"
-                                    BorderThickness="2"
-                                    CornerRadius="3">
-                                <AdornedElementPlaceholder />
-                            </Border>
-                        </DockPanel>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="Validation.HasError"
-                         Value="true">
-                    <Setter Property="ToolTip"
-                            Value="{Binding (Validation.Errors)[0].ErrorContent, RelativeSource={RelativeSource Self}}" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <Style TargetType="TextBox"
-               BasedOn="{StaticResource ValidationTemplate}">
-            <Setter Property="Margin"
-                    Value="5" />
-        </Style>
-        <Style TargetType="TextBlock"
-               BasedOn="{StaticResource ValidationTemplate}">
-            <Setter Property="Margin"
-                    Value="5" />
-        </Style>
-    </UserControl.Resources>
+             d:DesignHeight="450" d:DesignWidth="800">   
 
     <Grid>
         <Grid.RowDefinitions>
@@ -82,11 +44,14 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <TextBox HorizontalAlignment="Stretch"
-                 Text="{Binding Name}"/>
+                     Text="{Binding Name}"/>            
             <TextBlock Text="{Binding NameError, ValidatesOnDataErrors=True}"
-                       Grid.Column="1"
-                       HorizontalAlignment="Left"
-                       Visibility="{Binding NameErrorVisibility}" />
+                    HorizontalAlignment="Left"
+                    Grid.Column="1"
+                    Visibility="{Binding NameErrorVisibility}"
+                    Margin="10"
+                    Background="#FFD7D7"
+                    Foreground="Red"/>   
         </Grid>
 
 
@@ -103,7 +68,10 @@
             <TextBlock Text="{Binding PriceError}"
                        Grid.Column="1"
                        HorizontalAlignment="Left"
-                       Visibility="{Binding PriceErrorVisibility}" />
+                       Visibility="{Binding PriceErrorVisibility}" 
+                       Margin="10"
+                       Background="#FFD7D7"
+                       Foreground="Red"/>
         </Grid>
 
 
@@ -120,7 +88,10 @@
             <TextBlock Text="{Binding ThumbnailError, ValidatesOnDataErrors=True}"
                        Grid.Column="1"
                        HorizontalAlignment="Left"
-                       Visibility="{Binding ThumbnailErrorVisibility}" />
+                       Visibility="{Binding ThumbnailErrorVisibility}"
+                       Margin="10"
+                       Background="#FFD7D7"
+                       Foreground="Red"/>
         </Grid>
 
         <Label Grid.Row="7"
@@ -136,7 +107,10 @@
             <TextBlock Text="{Binding MainURLError, ValidatesOnDataErrors=True}"
                        Grid.Column="1"
                        HorizontalAlignment="Left"
-                       Visibility="{Binding MainURLErrorVisibility}" />
+                       Visibility="{Binding MainURLErrorVisibility}" 
+                       Margin="10"
+                       Background="#FFD7D7"
+                       Foreground="Red"/>
         </Grid>
 
         <Label Grid.Row="9"
@@ -149,10 +123,13 @@
             </Grid.ColumnDefinitions>
         <TextBox HorizontalAlignment="Stretch"
                  Text="{Binding Description}"/>
-            <TextBlock Text="{Binding DescriptionError, ValidatesOnDataErrors=True}"
+            <TextBlock Text="{Binding DescriptionError, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                        Grid.Column="1"
                        HorizontalAlignment="Left"
-                       Visibility="{Binding DescriptionErrorVisibility}" />
+                       Visibility="{Binding DescriptionErrorVisibility}" 
+                       Margin="10"
+                       Background="#FFD7D7"
+                       Foreground="Red"/>
         </Grid>
 
         <Label Grid.Row="11"
@@ -165,11 +142,15 @@
             </Grid.ColumnDefinitions>
         <TextBox Height="100"
                  HorizontalAlignment="Stretch"
-                   Text="{Binding LongDescription}"/>
-            <TextBlock Text="{Binding LongDescriptionError, ValidatesOnDataErrors=True}"
+                 Text="{Binding LongDescription}"/>
+            <TextBlock Text="{Binding LongDescriptionError, ValidatesOnDataErrors=True, StringFormat=n3}"
                        Grid.Column="1"
                        HorizontalAlignment="Left"
-                       Visibility="{Binding LongDescriptionErrorVisibility}" />
+                       Visibility="{Binding LongDescriptionErrorVisibility}"
+                       Margin="10"
+                       Height="16"
+                       Background="#FFD7D7"
+                       Foreground="Red"/>
         </Grid>
 
 
