@@ -47,5 +47,14 @@ namespace TinkerJems.Wpf
             regionManager.RequestNavigate("ContentRegion", parameter);
         }
 
+        private DelegateCommand<string> _editItemCommand;
+        public DelegateCommand<string> EditItemCommand =>
+            _editItemCommand ?? (_editItemCommand = new DelegateCommand<string>(ExecuteEditItemCommand));
+
+        void ExecuteEditItemCommand(string parameter)
+        {
+            regionManager.RequestNavigate("ContentRegion", parameter);
+        }
+
     }
 }

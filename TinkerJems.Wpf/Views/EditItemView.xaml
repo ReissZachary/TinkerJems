@@ -9,6 +9,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        
         <Border
              CornerRadius="15">
             <TextBlock Text="This will be the edit item control"
