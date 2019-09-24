@@ -92,6 +92,7 @@ namespace TinkerJems.Web2
             SeedData.EnsureInitialized(userManager, roleManager);
 
             app.UseMvc();
+            //razor and mvc compatability
         }
     }
 }
