@@ -19,6 +19,7 @@ namespace TinkerJems.Wpf.ViewModels
         public AddItemViewModel()
         {          
             Price = .01M;
+            Name = "";
         }
 
         private string name;
@@ -259,10 +260,10 @@ namespace TinkerJems.Wpf.ViewModels
 
         void ExecuteAddItem()
         {
-            Name = null;
-            Price = .01M;
-            Description = null;
-            LongDescription = null;
+            //Name = null;
+            //Price = .01M;
+            //Description = null;
+            //LongDescription = null;
         }
 
         private DelegateCommand clearForm;
