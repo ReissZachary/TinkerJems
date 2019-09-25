@@ -3,6 +3,7 @@ using Prism.Regions;
 using System;
 using TechTalk.SpecFlow;
 using TinkerJems.Wpf;
+using TinkerJems.Wpf.ViewModels;
 
 namespace TInkerJems.Tests
 {
@@ -16,6 +17,7 @@ namespace TInkerJems.Tests
             var mockRegionManager = new Mock<IRegionManager>();
             this.context = context;
             context.Add("mockRegionManager", mockRegionManager);
+            //var view = new AddItemViewModel();
 
         }
 
