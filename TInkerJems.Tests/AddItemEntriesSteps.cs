@@ -1,4 +1,4 @@
-using Moq;
+using FluentAssertions;
 using System;
 using TechTalk.SpecFlow;
 using TinkerJems.Wpf.ViewModels;
@@ -8,7 +8,6 @@ namespace TInkerJems.Tests
     [Binding]
     public class AddItemEntriesSteps
     {
-
         private readonly ScenarioContext context;
 
         public AddItemEntriesSteps(ScenarioContext context)
@@ -16,25 +15,29 @@ namespace TInkerJems.Tests
             this.context = context;
         }
 
-        [Given(@"the name textbox contains text")]
-        public void GivenTheNameTextboxContainsText()
+        [Given(@"the name textbox contains a ""([^""]*)""")]
+        public void GivenTheNameTextboxContainsA(string name)
         {
-            var model = new AddItemViewModel();
-            var name = model.Name;
+            //var model = new AddItemViewModel();
+            //var name = model.Name;
+            context.Add("name", name);
 
         }
 
         [When(@"the user clicks the add item button")]
         public void WhenTheUserClicksTheAddItemButton()
         {
-            throw new PendingStepException();
+            var name = context.Get<string>("name");
+            context.Add("result", name);
         }
 
-        [Then(@"The item is added")]
-        public void ThenTheItemIsAdded()
+        [Then(@"The item with ""([^""]*)"" is added")]
+        public void ThenTheItemWithIsAdded(string name)
         {
-            throw new PendingStepException();
+            var actual = context.Get<string>("name");
+            actual.Should().Be(name);
         }
+
+
     }
-   
 }
