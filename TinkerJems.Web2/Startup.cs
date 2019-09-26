@@ -45,7 +45,7 @@ namespace TinkerJems.Web2
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddDefaultTokenProviders()
-                .AddDefaultUI(UIFramework.Bootstrap4)
+                .AddDefaultUI()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddAuthorization(options =>
@@ -55,7 +55,8 @@ namespace TinkerJems.Web2
                 options.AddPolicy(SeedData.SecurityPolicy_Delete, p => p.RequireRole(SeedData.AdminRoleName));
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             services.AddScoped<IJewelryRepository, ApplicationDbContext>();
             services.AddScoped<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
@@ -65,14 +66,13 @@ namespace TinkerJems.Web2
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env,
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,
             UserManager<IdentityUser> userManager,
             RoleManager<IdentityRole> roleManager)
         {
-            if (env.IsDevelopment())
+            if (env.EnvironmentName == "Development")
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
             }
             else
             {
@@ -90,8 +90,14 @@ namespace TinkerJems.Web2
 
             app.UseAuthentication();
             SeedData.EnsureInitialized(userManager, roleManager);
-
-            app.UseMvc();
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapRazorPages();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
         }
     }
 }

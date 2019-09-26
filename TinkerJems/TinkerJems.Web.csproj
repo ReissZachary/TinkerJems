@@ -15,32 +15,36 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="microsoft.aspnetcore.razor.language" Version="2.2.0" />
-    <PackageReference Include="microsoft.entityframeworkcore" Version="2.2.6" />
-    <PackageReference Include="microsoft.entityframeworkcore.abstractions" Version="2.2.6" />
-    <PackageReference Include="microsoft.entityframeworkcore.analyzers" Version="2.2.6" />
-    <PackageReference Include="Microsoft.entityframeworkcore.design" Version="2.2.6" />
-    <PackageReference Include="microsoft.entityframeworkcore.relational" Version="2.2.6" />
-    <PackageReference Include="microsoft.entityframeworkcore.tools" Version="2.2.6">
+    <PackageReference Include="microsoft.aspnetcore.razor.language" Version="3.0.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Razor" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="1.0.19249.1" />
+    <PackageReference Include="microsoft.entityframeworkcore" Version="3.0.0" />
+    <PackageReference Include="microsoft.entityframeworkcore.abstractions" Version="3.0.0" />
+    <PackageReference Include="microsoft.entityframeworkcore.analyzers" Version="3.0.0" />
+    <PackageReference Include="Microsoft.entityframeworkcore.design" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="microsoft.entityframeworkcore.relational" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
+    <PackageReference Include="microsoft.entityframeworkcore.tools" Version="3.0.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="microsoft.entityframeworkcore.tools.dotnet" Version="2.0.3" />
-    <PackageReference Include="microsoft.extensions.caching.abstractions" Version="2.2.0" />
-    <PackageReference Include="microsoft.extensions.caching.memory" Version="2.2.0" />
-    <PackageReference Include="microsoft.extensions.configuration" Version="2.2.0" />
-    <PackageReference Include="microsoft.extensions.configuration.abstractions" Version="2.2.0" />
-    <PackageReference Include="microsoft.extensions.configuration.binder" Version="2.2.4" />
-    <PackageReference Include="microsoft.extensions.dependencyinjection" Version="2.2.0" />
-    <PackageReference Include="microsoft.extensions.dependencyinjection.abstractions" Version="2.2.0" />
-    <PackageReference Include="microsoft.extensions.logging" Version="2.2.0" />
-    <PackageReference Include="microsoft.extensions.logging.abstractions" Version="2.2.0" />
-    <PackageReference Include="microsoft.extensions.options" Version="2.2.0" />
-    <PackageReference Include="microsoft.extensions.primitives" Version="2.2.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.7.12" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="microsoft.extensions.caching.abstractions" Version="3.0.0" />
+    <PackageReference Include="microsoft.extensions.caching.memory" Version="3.0.0" />
+    <PackageReference Include="microsoft.extensions.configuration" Version="3.0.0" />
+    <PackageReference Include="microsoft.extensions.configuration.abstractions" Version="3.0.0" />
+    <PackageReference Include="microsoft.extensions.configuration.binder" Version="3.0.0" />
+    <PackageReference Include="microsoft.extensions.dependencyinjection" Version="3.0.0" />
+    <PackageReference Include="microsoft.extensions.dependencyinjection.abstractions" Version="3.0.0" />
+    <PackageReference Include="microsoft.extensions.logging" Version="3.0.0" />
+    <PackageReference Include="microsoft.extensions.logging.abstractions" Version="3.0.0" />
+    <PackageReference Include="microsoft.extensions.options" Version="3.0.0" />
+    <PackageReference Include="microsoft.extensions.primitives" Version="3.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
   </ItemGroup>
 
   <ItemGroup>

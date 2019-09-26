@@ -17,12 +17,12 @@ namespace TinkerJems.Wpf.ViewModels
     {
 
         public AddItemViewModel()
-        {          
+        {
             Price = .01M;
         }
 
-        private string name;
-        public string Name
+        private string? name;
+        public string? Name
         {
             get { return name; }
             set
@@ -38,8 +38,8 @@ namespace TinkerJems.Wpf.ViewModels
                 SetProperty(ref name, value);
             }
         }
-        private string nameError;
-        public string NameError
+        private string? nameError;
+        public string? NameError
         {
             get { return nameError; }
             set
@@ -225,7 +225,7 @@ namespace TinkerJems.Wpf.ViewModels
             }
         }
 
-     
+
         private string longDescriptionError;
         public string LongDescriptionError
         {
