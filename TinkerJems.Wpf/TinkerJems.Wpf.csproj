@@ -6,7 +6,6 @@
     <UseWPF>true</UseWPF>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
   <ItemGroup>
     <None Remove="Images\tinkerLogo.png" />
     <None Remove="Images\tinkerLogo1.png" />
