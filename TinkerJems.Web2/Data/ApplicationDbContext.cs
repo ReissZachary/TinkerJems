@@ -24,5 +24,10 @@ namespace TinkerJems.Web2.Data
         {
             return JewelryItems.Find(jewelryItemId);
         }
+
+        public JewelryItem GetJewelryItemByName(string jewelryItemName)
+        {
+            return JewelryItems.Find(jewelryItemName);
+        }
     }
 }

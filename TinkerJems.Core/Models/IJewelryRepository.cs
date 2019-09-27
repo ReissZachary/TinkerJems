@@ -9,5 +9,6 @@ namespace TinkerJems.Core.Models
     {
         IEnumerable<JewelryItem> GetAllJewelryItems();
         JewelryItem GetJewelryItemById(int jewelryItemId);
+        JewelryItem GetJewelryItemByName(string jewelryItemName);
     }
 }
