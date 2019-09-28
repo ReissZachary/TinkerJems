@@ -26,8 +26,8 @@ namespace TinkerJems.Wpf.ViewModels
             longDescription = "";
         }
 
-        private string? name;
-        public string? Name
+        private string name;
+        public string Name
         {
             get { return name; }
             set

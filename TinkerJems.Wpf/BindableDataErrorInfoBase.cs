@@ -19,7 +19,7 @@ namespace TinkerJems.Wpf
             get { return String.Join("; ", ErrorDictionary.Values); }
         }
 
-        public string? this[string columnName]
+        public string this[string columnName]
         {
             get
             {
