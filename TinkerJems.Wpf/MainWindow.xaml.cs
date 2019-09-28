@@ -19,7 +19,7 @@ namespace TinkerJems.Wpf
         private void AddNewJewelryItem_Click(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
-            string command = string.Empty;
+            string command;
 
             //checks to see command OR checks to see if user control
             if(btn.Tag != null)
@@ -38,7 +38,7 @@ namespace TinkerJems.Wpf
         private void EditJewelryItem_Click(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
-            string command = string.Empty;
+            string command;
 
             //checks to see command OR checks to see if user control
             if (btn.Tag != null)

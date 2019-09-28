@@ -15,30 +15,28 @@ namespace TinkerJems.Web2.Controllers
     public class TestController : ControllerBase
     {
         private IJewelryRepository _repository;
-        private IMapper _mapper;
 
-        public TestController(IJewelryRepository repository, IMapper mapper)
+        public TestController(IJewelryRepository repository)
         {
             _repository = repository;
-            _mapper = mapper;
         }
 
-        [HttpGet]
-        public Task<ActionResult<JewelryItem>> Get(string name)
+        // GET: api/Test/name
+        [HttpGet("{name}")]
+        public async Task<IActionResult> Get(string name)
         {
             try
             {
-                var items = _repository.GetJewelryItemByName(name);
-                return _mapper.Map<JewelryItem>(items);
+                var item = await _repository.GetJewelryItemByNameAsync(name);
+                return Ok(item);          
             }
-            catch
+            catch(Exception e)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Database error");
             }
         }
 
         // GET: api/detail?id=x
-        [HttpGet("{name}")]
         
         // GET: api/Test
         [HttpGet]
@@ -48,11 +46,11 @@ namespace TinkerJems.Web2.Controllers
         //}
 
         // GET: api/Test/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return $"value: {id}";
-        }
+        //[HttpGet("{id}", Name = "Get")]
+        //public string Get(int id)
+        //{
+        //    return $"value: {id}";
+        //}
 
         // POST: api/Test
         [HttpPost]

@@ -88,6 +88,52 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Successful adding of item")]
+        public virtual void SuccessfulAddingOfItem()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Successful adding of item", null, ((string[])(null)));
+#line 11
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 12
+ testRunner.Given("the user is at the Add Item page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Name",
+                        "Price",
+                        "Short_Description",
+                        "Long_Description"});
+            table1.AddRow(new string[] {
+                        "Necklace",
+                        "5.00",
+                        "Beautiful thing",
+                        "Best necklace in the west"});
+            table1.AddRow(new string[] {
+                        "Ring",
+                        "10.00",
+                        "Small but great",
+                        "Best ring in the west"});
+            table1.AddRow(new string[] {
+                        "Earring",
+                        "5.00",
+                        "Hangs low",
+                        "Best earrings in the west"});
+            table1.AddRow(new string[] {
+                        "test",
+                        "75.00",
+                        "Wow...just wow",
+                        "Best test in the west"});
+#line 13
+ testRunner.When("the user enters credentials", ((string)(null)), table1, "When ");
+#line 19
+ testRunner.And("clicks the AddItem button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 20
+ testRunner.Then("Item should be added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

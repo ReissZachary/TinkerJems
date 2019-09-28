@@ -20,6 +20,10 @@ namespace TinkerJems.Wpf.ViewModels
         {
             Price = .01M;
             Name = "";
+            thumbnail= "";
+            mainURL = "";
+            description = "";
+            longDescription = "";
         }
 
         private string? name;
@@ -28,7 +32,7 @@ namespace TinkerJems.Wpf.ViewModels
             get { return name; }
             set
             {
-                if (value == null || value == "")
+                if (value == string.Empty)
                 {
                     NameError = "* Item must have a name";
                 }
@@ -39,8 +43,99 @@ namespace TinkerJems.Wpf.ViewModels
                 SetProperty(ref name, value);
             }
         }
-        private string? nameError;
-        public string? NameError
+
+        private decimal price;
+        public decimal Price
+        {
+            get { return price; }
+            set
+            {
+                if (value <= 0)
+                {
+                    PriceError = "* Price cannot be <= 0";
+                }
+                else
+                {
+                    PriceError = null;
+                }
+                SetProperty(ref price, value);
+            }
+        }
+
+        private string thumbnail;
+        public string Thumbnail
+        {
+            get { return thumbnail; }
+            set
+            {
+                if (value == string.Empty)
+                {
+                    ThumbnailError = "* Item must have a thumbnail";
+                }
+                else
+                {
+                    ThumbnailError = null;
+                }
+                SetProperty(ref thumbnail, value);
+            }
+        }
+
+        private string mainURL;
+        public string MainURL
+        {
+            get { return mainURL; }
+            set
+            {
+                if (value == string.Empty)
+                {
+                    MainURLError = "* Item must have a main URL";
+                }
+                else
+                {
+                    MainURLError = null;
+                }
+                SetProperty(ref mainURL, value);
+            }
+        }
+
+        private string description;
+        public string Description
+        {
+            get { return description; }
+            set
+            {
+                if (value == string.Empty)
+                {
+                    DescriptionError = "* Item must have a description";
+                }
+                else
+                {
+                    DescriptionError = null;
+                }
+                SetProperty(ref description, value);
+            }
+        }
+
+        private string longDescription;
+        public string LongDescription
+        {
+            get { return longDescription; }
+            set
+            {
+                if (value == string.Empty)
+                {
+                    LongDescriptionError = "* Item must have a long description";
+                }
+                else
+                {
+                    LongDescriptionError = null;
+                }
+                SetProperty(ref longDescription, value);
+            }
+        }
+
+        private string nameError;
+        public string NameError
         {
             get { return nameError; }
             set
@@ -59,23 +154,7 @@ namespace TinkerJems.Wpf.ViewModels
         }
 
 
-        private decimal price;
-        public decimal Price
-        {
-            get { return price; }
-            set
-            {
-                if(value <= 0)
-                {
-                    PriceError = "* Price cannot be <= 0";
-                }
-                else
-                {
-                    PriceError = null;
-                }
-                SetProperty(ref price, value);
-            }
-        }
+
 
         private string priceError;
         public string PriceError
@@ -95,23 +174,6 @@ namespace TinkerJems.Wpf.ViewModels
             set { SetProperty(ref priceErrorVisibility, value); }
         }
 
-        private string thumbnail;
-        public string Thumbnail
-        {
-            get { return thumbnail; }
-            set
-            {
-                if (value == null || value == "")
-                {
-                    ThumbnailError = "* Item must have a thumbnail";
-                }
-                else
-                {
-                    ThumbnailError = null;
-                }
-                SetProperty(ref thumbnail, value);
-            }
-        }
 
         private string thumbnailError;
         public string ThumbnailError
@@ -132,23 +194,7 @@ namespace TinkerJems.Wpf.ViewModels
             set { SetProperty(ref thumbnailErrorVisibility, value); }
         }
 
-        private string mainURL;
-        public string MainURL
-        {
-            get { return mainURL; }
-            set
-            {
-                if (value == null || value == "")
-                {
-                    MainURLError = "* Item must have a main URL";
-                }
-                else
-                {
-                    MainURLError = null;
-                }
-                SetProperty(ref mainURL, value);
-            }
-        }
+
 
         private string mainURLError;
         public string MainURLError
@@ -170,23 +216,7 @@ namespace TinkerJems.Wpf.ViewModels
             set { SetProperty(ref mainURLErrorVisibility, value); }
         }
 
-        private string description;
-        public string Description
-        {
-            get { return description; }
-            set
-            {
-                if (value == null || value == "")
-                {
-                    DescriptionError = "* Item must have a description";
-                }
-                else
-                {
-                    DescriptionError = null;
-                }
-                SetProperty(ref description, value);
-            }
-        }
+
 
         private string descriptionError;
         public string DescriptionError
@@ -208,23 +238,6 @@ namespace TinkerJems.Wpf.ViewModels
             set { SetProperty(ref descriptionErrorVisibility, value); }
         }
 
-        private string longDescription;
-        public string LongDescription
-        {
-            get { return longDescription; }
-            set
-            {
-                if (value == null || value == "")
-                {
-                    LongDescriptionError = "* Item must have a long description";
-                }
-                else
-                {
-                    LongDescriptionError = null;
-                }
-                SetProperty(ref longDescription, value);
-            }
-        }
 
 
         private string longDescriptionError;
@@ -278,14 +291,6 @@ namespace TinkerJems.Wpf.ViewModels
             LongDescription = "";
         }
 
-        //public AddItemViewModel()
-        //{
-        //    Price = 15M;
-        //    Thumbnail = "anoia";
-        //    MainURL = "HELLO";
-        //    Description = "item of jewelry";
-        //    LongDescription = "This is the long descriptiong that descibes the minute details of the item.";
-        //}
     }
 
     public static class DemoExtensionMethods

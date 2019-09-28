@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using TinkerJems.Core.Models;
@@ -25,9 +27,9 @@ namespace TinkerJems.Web2.Data
             return JewelryItems.Find(jewelryItemId);
         }
 
-        public JewelryItem GetJewelryItemByName(string jewelryItemName)
+        public async Task<JewelryItem> GetJewelryItemByNameAsync(string jewelryItemName)
         {
-            return JewelryItems.Find(jewelryItemName);
+            return await JewelryItems.FirstOrDefaultAsync(j => j.Name == jewelryItemName);
         }
     }
 }
