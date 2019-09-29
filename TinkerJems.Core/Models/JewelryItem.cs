@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TechTalk.SpecFlow;
 
 namespace TinkerJems.Core.Models
 {
+    
     public class JewelryItem
     {
         public int Id { get; set; }

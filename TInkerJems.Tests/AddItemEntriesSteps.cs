@@ -50,26 +50,7 @@ namespace TInkerJems.Tests
             //modelMock.Verify();
             var actual = context.Get<string>("name");
             actual.Should().Be(name);
-        }
-
-        [Given(@"I entered the following data into boxes")]
-        public void GivenIEnteredTheFollowingDataIntoBoxes(Table table)
-        {
-            var item = table.CreateInstance<JewelryItem>();
-        }
-
-        [When(@"I click Add Item button")]
-        public void WhenIClickAddItemButton()
-        {
-            
-        }
-
-        [Then(@"Item is added")]
-        public void ThenItemIsAdded()
-        {
-            throw new PendingStepException();
-        }
-
+        }       
 
     }
 }

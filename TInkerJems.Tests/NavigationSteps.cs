@@ -33,10 +33,9 @@ namespace TInkerJems.Tests
         public void WhenTheAddItemButtonIsClicked()
         {
             var mockRegion = context.Get<Mock<IRegionManager>>("mockRegionManager");
-            mockRegion.Setup(rm => rm.RequestNavigate("ContentRegion", "AddItemView")).Verifiable();
+            var app = new MainWindowViewModel(mockRegion.Object);
 
-            var view = context.Get<MainWindowViewModel>("mainWindowViewModel");
-            view.AddItemCommand.Execute("AddItemView");
+            context.Add("mainWindowViewModel", app);
         }
 
         [Then(@"add item view can be seen")]
