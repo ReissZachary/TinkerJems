@@ -21,5 +21,15 @@ Scenario: NotNullName
 #	| Earring  | 5.00  | Hangs low         | Best earrings in the west |
 #	| test     | 75.00 | Wow...just wow    | Best test in the west     |
 
+Scenario: Test data
+	Given I entered the following data into boxes
+	| Field             | Value                 |
+	| Name              | Ring                  |
+	| Price             | 10.00                 |
+	| Short_Description | Has hearts on it      |
+	| Long_Description  | Best ring you'll find |
+	When I click Add Item button
+	Then Item is added
+
 
  

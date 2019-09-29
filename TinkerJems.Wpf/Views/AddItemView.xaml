@@ -164,7 +164,8 @@
                 Grid.Column="0"
                 Margin="10"
                 Background="#ffeaf9"
-                Command="{Binding AddItem}">
+                Command="{Binding AddItem}"
+                CommandParameter="ItemAdded">
                 <Button.Content>
                     <StackPanel>
                         <TextBlock Text="ADD ITEM"/>

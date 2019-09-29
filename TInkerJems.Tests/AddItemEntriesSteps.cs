@@ -3,6 +3,10 @@ using Moq;
 using System;
 using TechTalk.SpecFlow;
 using TinkerJems.Wpf.ViewModels;
+using TechTalk.SpecFlow.Assist;
+using TinkerJems.Core.Models;
+using Prism.Regions;
+using TinkerJems.Wpf;
 
 namespace TInkerJems.Tests
 {
@@ -13,7 +17,6 @@ namespace TInkerJems.Tests
 
         public AddItemEntriesSteps(ScenarioContext context)
         {
-            //var AddItemMock = new Mock<AddItemViewModel>();
             //context.Add("AddItemMock", AddItemMock);
             this.context = context;
         }
@@ -47,6 +50,24 @@ namespace TInkerJems.Tests
             //modelMock.Verify();
             var actual = context.Get<string>("name");
             actual.Should().Be(name);
+        }
+
+        [Given(@"I entered the following data into boxes")]
+        public void GivenIEnteredTheFollowingDataIntoBoxes(Table table)
+        {
+            var item = table.CreateInstance<JewelryItem>();
+        }
+
+        [When(@"I click Add Item button")]
+        public void WhenIClickAddItemButton()
+        {
+            
+        }
+
+        [Then(@"Item is added")]
+        public void ThenItemIsAdded()
+        {
+            throw new PendingStepException();
         }
 
 

@@ -16,7 +16,7 @@ namespace TinkerJems.Wpf.ViewModels
     public class AddItemViewModel : BindableDataErrorInfoBase, INotifyPropertyChanged
     {
 
-        public AddItemViewModel()
+        public AddItemViewModel(IRegionManager regionManager)
         {
             Price = .01M;
             Name = "";
@@ -24,6 +24,7 @@ namespace TinkerJems.Wpf.ViewModels
             mainURL = "";
             description = "";
             longDescription = "";
+            this.regionManager = regionManager;
         }
 
         private string name;
@@ -117,6 +118,8 @@ namespace TinkerJems.Wpf.ViewModels
         }
 
         private string longDescription;
+        private readonly IRegionManager regionManager;
+
         public string LongDescription
         {
             get { return longDescription; }
@@ -260,10 +263,10 @@ namespace TinkerJems.Wpf.ViewModels
         }
 
 
-        private DelegateCommand addItem;
+        private DelegateCommand<string> addItem;
 
-        public DelegateCommand AddItem =>
-            addItem ?? (addItem = new DelegateCommand(ExecuteAddItem)
+        public DelegateCommand<string> AddItem =>
+            addItem ?? (addItem = new DelegateCommand<string>(ExecuteAddItem)
             .ObservesProperty(() => Name)
             .ObservesProperty(() => Price)
             .ObservesProperty(() => Thumbnail)
@@ -271,12 +274,13 @@ namespace TinkerJems.Wpf.ViewModels
             .ObservesProperty(() => Description)
             .ObservesProperty(() => LongDescription));
 
-        void ExecuteAddItem()
+        void ExecuteAddItem(string parameter)
         {
             //Name = null;
             //Price = .01M;
             //Description = null;
             //LongDescription = null;
+            regionManager.RequestNavigate("ContentRegion", parameter);
         }
 
         private DelegateCommand clearForm;

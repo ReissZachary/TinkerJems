@@ -18,7 +18,6 @@ namespace TInkerJems.Tests
             this.context = context;
             context.Add("mockRegionManager", mockRegionManager);
             //var view = new AddItemViewModel();
-
         }
 
         [Given(@"the apps runs")]
