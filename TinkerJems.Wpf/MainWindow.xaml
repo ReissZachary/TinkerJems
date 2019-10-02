@@ -9,6 +9,7 @@
         prism:ViewModelLocator.AutoWireViewModel="True"
         Title="Manage TinkerJems" Height="800" Width="1300"
        >
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>

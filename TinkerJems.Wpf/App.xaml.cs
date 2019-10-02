@@ -8,6 +8,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using TinkerJems.Core;
 using TinkerJems.Wpf.Views;
 
 namespace TinkerJems.Wpf
@@ -26,6 +27,8 @@ namespace TinkerJems.Wpf
         {
             containerRegistry.RegisterForNavigation<AddItemView>();
             containerRegistry.RegisterForNavigation<EditItemView>();
+            containerRegistry.Register<IDataService, ProductionDataService>();
+
         }
     }
 }

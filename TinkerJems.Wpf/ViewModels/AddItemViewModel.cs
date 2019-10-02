@@ -9,14 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-
+using TinkerJems.Core;
 
 namespace TinkerJems.Wpf.ViewModels
 {
     public class AddItemViewModel : BindableDataErrorInfoBase, INotifyPropertyChanged
     {
 
-        public AddItemViewModel(IRegionManager regionManager)
+        public AddItemViewModel(IRegionManager regionManager, IDataService dataService)
         {
             Price = .01M;
             Name = "";
@@ -25,6 +25,7 @@ namespace TinkerJems.Wpf.ViewModels
             description = "";
             longDescription = "";
             this.regionManager = regionManager;
+            this.dataService = dataService;
         }
 
         private string name;
@@ -119,6 +120,7 @@ namespace TinkerJems.Wpf.ViewModels
 
         private string longDescription;
         private readonly IRegionManager regionManager;
+        private readonly IDataService dataService;
 
         public string LongDescription
         {
@@ -274,13 +276,16 @@ namespace TinkerJems.Wpf.ViewModels
             .ObservesProperty(() => Description)
             .ObservesProperty(() => LongDescription));
 
-        void ExecuteAddItem(string parameter)
+        async void ExecuteAddItem(string parameter)
         {
             //Name = null;
             //Price = .01M;
             //Description = null;
             //LongDescription = null;
-            regionManager.RequestNavigate("ContentRegion", parameter);
+            //regionManager.RequestNavigate("ContentRegion", parameter);
+
+            await dataService.AddImageAsync(MainURL);
+
         }
 
         private DelegateCommand clearForm;
