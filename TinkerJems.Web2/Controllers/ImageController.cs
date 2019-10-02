@@ -23,11 +23,23 @@ namespace TinkerJems.Web2.Controllers
         public async Task Post(IFormFile file)
         {
             var uploads = Path.Combine(_environment.WebRootPath, "uploads");
+            if(Directory.Exists(uploads) == false)
+            {
+                Directory.CreateDirectory(uploads);
+            }
             if (file.Length > 0)
             {
-                using (var fileStream = new FileStream(Path.Combine(uploads, file.FileName), FileMode.Create))
+                try
                 {
-                    await file.CopyToAsync(fileStream);
+                    string newPath = Path.Combine(uploads, file.FileName);
+                    using (var fileStream = new FileStream(newPath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(fileStream);
+                    }
+                }
+                catch(Exception e)
+                {
+
                 }
             }
         }

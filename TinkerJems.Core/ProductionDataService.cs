@@ -11,7 +11,7 @@ namespace TinkerJems.Core
 {
     public class ProductionDataService : IDataService
     {
-        const string imageUploadUrl = "http://localhost:5001/api/image";
+        const string imageUploadUrl = "https://localhost:5001/api/image";
         public async Task AddImageAsync(string filePath)
         {
             if (!File.Exists(filePath))

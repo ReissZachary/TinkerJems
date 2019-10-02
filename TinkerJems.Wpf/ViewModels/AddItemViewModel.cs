@@ -283,8 +283,15 @@ namespace TinkerJems.Wpf.ViewModels
             //Description = null;
             //LongDescription = null;
             //regionManager.RequestNavigate("ContentRegion", parameter);
+            try
+            {
 
             await dataService.AddImageAsync(MainURL);
+            }
+            catch(Exception e)
+            {
+
+            }
 
         }
 
