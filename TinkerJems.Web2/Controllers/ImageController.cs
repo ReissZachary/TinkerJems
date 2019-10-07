@@ -39,7 +39,7 @@ namespace TinkerJems.Web2.Controllers
                 }
                 catch(Exception e)
                 {
-
+                    throw;
                 }
             }
         }

@@ -17,6 +17,7 @@ namespace TinkerJems.Wpf
 {
     public class MainWindowViewModel : BindableBase
     {
+        private readonly IRegionManager regionManager;
         public MainWindowViewModel(IRegionManager regionManager)
         {
 
@@ -35,9 +36,9 @@ namespace TinkerJems.Wpf
                 );
             this.regionManager = regionManager;
         }
+
         public DelegateCommand ViewRings { get; }
         private DelegateCommand<string> _addItemCommand;
-        private readonly IRegionManager regionManager;
 
         public DelegateCommand<string> AddItemCommand =>
             _addItemCommand ?? (_addItemCommand = new DelegateCommand<string>(ExecuteAddItemCommand));
