@@ -74,19 +74,32 @@
                        Foreground="Red"/>
         </Grid>
 
-
-        <Label Grid.Row="5"
-               Content="ThumbnailURL:"
-               FontSize="15"/>
+        
         <Grid Grid.Row="6">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBox HorizontalAlignment="Stretch"
-                     Text="{Binding Thumbnail}"/>
+            <Label Grid.Column="0"
+                   VerticalAlignment="Center"
+                   Content="Thumbnail File:"
+                   FontSize="15"/>
+            <!--<TextBox HorizontalAlignment="Stretch"
+                     Text="{Binding Thumbnail}"/>-->
+            <Button HorizontalAlignment="Left"
+                    Grid.Column="1"
+                    Margin="10"
+                    Command="{Binding UploadFile}"
+                    CommandParameter="">
+                <Button.Content>
+                    <StackPanel>
+                        <TextBlock Text="Choose File"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
             <TextBlock Text="{Binding ThumbnailError, ValidatesOnDataErrors=True}"
-                       Grid.Column="1"
+                       Grid.Column="2"
                        HorizontalAlignment="Left"
                        Visibility="{Binding ThumbnailErrorVisibility}"
                        Margin="10"
@@ -94,16 +107,35 @@
                        Foreground="Red"/>
         </Grid>
 
-        <Label Grid.Row="7"
-               Content="MainURL:"
-               FontSize="15"/>
+        
         <Grid Grid.Row="8">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-        <TextBox HorizontalAlignment="Stretch"
-                 Text="{Binding MainURL}"/>
+            <Label Grid.Column="0"
+                   VerticalAlignment="Center"
+                   Content="Main Photo File:"
+                   FontSize="15"/>
+        <!--<TextBox HorizontalAlignment="Stretch"
+                 Text="{Binding MainURL}"/>-->
+            <Button HorizontalAlignment="Left"
+                    Grid.Column="1"
+                    Margin="10"
+                    Command="{Binding UploadFile }"
+                    CommandParameter="">
+                <Button.Content>
+                    <StackPanel>
+                        <TextBlock Text="Choose File"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <TextBox HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Grid.Column="2"
+                       Name="FilePath"
+                       Text="{Binding FilePath}"/>
             <TextBlock Text="{Binding MainURLError, ValidatesOnDataErrors=True}"
                        Grid.Column="1"
                        HorizontalAlignment="Left"

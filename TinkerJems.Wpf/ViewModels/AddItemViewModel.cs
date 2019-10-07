@@ -1,20 +1,25 @@
-﻿using Prism.Commands;
+﻿using Microsoft.Win32;
+using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media.Imaging;
 using TinkerJems.Core;
 
 namespace TinkerJems.Wpf.ViewModels
 {
     public class AddItemViewModel : BindableDataErrorInfoBase, INotifyPropertyChanged
     {
+        public DelegateCommand UploadFile { get; }
+
 
         public AddItemViewModel(IRegionManager regionManager, IDataService dataService)
         {
@@ -26,7 +31,35 @@ namespace TinkerJems.Wpf.ViewModels
             longDescription = "";
             this.regionManager = regionManager;
             this.dataService = dataService;
+
+            UploadFile = new DelegateCommand(() =>
+            {
+                this.uploadFile();
+
+            });
         }
+
+        public void uploadFile()
+        {
+            Microsoft.Win32.OpenFileDialog openFileDlg = new Microsoft.Win32.OpenFileDialog();
+
+            Nullable<bool> result = openFileDlg.ShowDialog();
+
+            if (result == true)
+            {
+                
+                FilePath = System.IO.File.ReadAllText(openFileDlg.FileName);
+            }
+        }
+
+        private string filePath;
+
+        public string FilePath
+        {
+            get { return filePath; }
+            set { SetProperty(ref filePath, value); }
+        }
+
 
         private string name;
         public string Name
@@ -121,6 +154,7 @@ namespace TinkerJems.Wpf.ViewModels
         private string longDescription;
         private readonly IRegionManager regionManager;
         private readonly IDataService dataService;
+
 
         public string LongDescription
         {
