@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -15,14 +17,19 @@ namespace TinkerJems.Web2.Pages
     public class EditModel : PageModel
     {
         private readonly TinkerJems.Web2.Data.ApplicationDbContext _context;
+        private readonly IWebHostEnvironment hostingEnvironment;
 
-        public EditModel(TinkerJems.Web2.Data.ApplicationDbContext context)
+        public EditModel(TinkerJems.Web2.Data.ApplicationDbContext context, IWebHostEnvironment hostingEnvironment)
         {
             _context = context;
+            this.hostingEnvironment = hostingEnvironment;
         }
 
         [BindProperty]
         public JewelryItem JewelryItem { get; set; }
+
+        [BindProperty]
+        public string[] Images { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -32,6 +39,8 @@ namespace TinkerJems.Web2.Pages
             }
 
             JewelryItem = await _context.JewelryItems.FirstOrDefaultAsync(m => m.Id == id);
+            var folder = Path.Combine(hostingEnvironment.ContentRootPath, "wwwroot", "Images");
+            Images = Directory.GetFiles(folder);
 
             if (JewelryItem == null)
             {

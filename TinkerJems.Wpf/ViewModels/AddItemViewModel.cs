@@ -48,7 +48,7 @@ namespace TinkerJems.Wpf.ViewModels
             if (result == true)
             {
                 
-                FilePath = System.IO.File.ReadAllText(openFileDlg.FileName);
+                FilePath = openFileDlg.FileName;
             }
         }
 

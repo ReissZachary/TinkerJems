@@ -23,8 +23,13 @@ namespace TinkerJems.Web2
                 roleManager.CreateAsync(role).GetAwaiter().GetResult();
             }
 
-            var adminUser = "admin@tinkerjems.com";
-            var user = userManager.FindByNameAsync(adminUser).Result;
+            AddUserToAdminRole(userManager, "admin@tinkerjems.com");
+            AddUserToAdminRole(userManager, "zachary.reiss123@gmail.com");
+        }
+
+        private static void AddUserToAdminRole(UserManager<IdentityUser> userManager, string userEmail)
+        {
+            var user = userManager.FindByNameAsync(userEmail).Result;
             if (user != null)
             {
                 userManager.AddToRoleAsync(user, AdminRoleName).GetAwaiter().GetResult();
