@@ -38,9 +38,11 @@
             <div class="form-group" style="display:inline-flex; flex-wrap:wrap">
                 @foreach (var img in Model.Images)
                 {
+                    var relativePath = System.IO.Path.GetRelativePath("wwwroot", img);
+                    var imgName = System.IO.Path.GetFileName(img);
                     <div style="display:block">
-                        <input type="radio" value="@img" src="@img" style="align-content:center">
-                        <img src="~/Images/barNecklace.jpg" style="width:150px; height:150px; padding: 1em"/>
+                        <input type="radio" value="@imgName" asp-for="JewelryItem.ImageUrl" style="align-content:center">
+                        <img src="@relativePath" style="width:150px; height:150px; padding: 1em"/>
                         <hr>
                     </div>
                 }    
