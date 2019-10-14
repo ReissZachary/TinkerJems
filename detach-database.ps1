@@ -3,6 +3,7 @@ param(
 )
 
 install-module sqlserver -Scope CurrentUser
+import-module sqlserver
 
 $sqlCmd = @"
 USE [master]

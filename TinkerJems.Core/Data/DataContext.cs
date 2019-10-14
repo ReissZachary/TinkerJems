@@ -14,5 +14,7 @@ namespace TinkerJems.Core.Data
         }
 
         public DbSet<Models.JewelryItem> JewelryItem { get; set; }
+
+        public DbSet<Models.TinkerJemsBlogPost> TinkerJemsBlogPost { get; set; }
     }
 }
