@@ -42,6 +42,7 @@ namespace TinkerJems.Web2.Pages
                 return Page();
             }
 
+            BlogPost.Posted = DateTime.Now;
             _context.TinkerJemsBlogPost.Add(BlogPost);
             await _context.SaveChangesAsync();
 
