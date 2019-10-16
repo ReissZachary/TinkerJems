@@ -15,10 +15,10 @@ namespace TinkerJems.Web2.Pages
 {
     public class CreateModel : PageModel
     {
-        private readonly TinkerJems.Web2.Data.ApplicationDbContext _context;
+        private readonly Data.ApplicationDbContext _context;
         private readonly IWebHostEnvironment hostingEnvironment;
 
-        public CreateModel(TinkerJems.Web2.Data.ApplicationDbContext context, IWebHostEnvironment hostingEnvironment)
+        public CreateModel(Data.ApplicationDbContext context, IWebHostEnvironment hostingEnvironment)
         {
             _context = context;
             this.hostingEnvironment = hostingEnvironment;
