@@ -6,6 +6,7 @@
 
 
 
+
 <h1>Create Blog Entry</h1>
 <hr />
 
@@ -13,19 +14,36 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="BlogPost.Title" class="control-label"></label>
+            <div class="form-group" style="display:block">
+                <label asp-for="BlogPost.Title" class="control-label" style="display:block"></label>
                 <input asp-for="BlogPost.Title" class="control-label" />
                 <span asp-validation-for="BlogPost.Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="BlogPost.Summary" class="control-label"></label>
-                <input asp-for="BlogPost.Summary" class="control-label" style="width: 300px" />
+                <label asp-for="BlogPost.Summary" class="control-label" style="display:block"></label>
+                <input asp-for="BlogPost.Summary" class="control-label" style="width: 300px; display:block" />
                 <span asp-validation-for="BlogPost.Summary" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="BlogPost.Author" class="control-label"></label>
-                <input asp-for="BlogPost.Author" class="control-label" />
+                <label asp-for="BlogPost.Body" class="control-label" style="display:block"></label>
+                @if (Model.BlogPosts != null)
+                {
+                    @foreach (var post in Model.BlogPosts)
+                    {
+                        var relativePath = System.IO.Path.GetRelativePath("wwwroot", post);
+                        var postName = System.IO.Path.GetFileName(post);
+                        <div style="display:block">
+                            <input type="radio" value="@postName" asp-for="BlogPost.Body" style="align-content:center">
+                            <p>@relativePath</p>
+                            @*<img src="@relativePath" style="width:150px; height:150px; padding: 1em" />*@
+                            <hr>
+                        </div>
+                    }
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="BlogPost.Author" class="control-label" style="display:block"></label>
+                <input asp-for="BlogPost.Author" class="control-label" style="display:block" />
                 <span asp-validation-for="BlogPost.Author" class="text-danger"></span>
             </div>
             <div class="form-group" style="display:inline-flex; flex-wrap:wrap">

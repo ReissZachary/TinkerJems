@@ -11,14 +11,24 @@
 }
 
 <h1 style="text-align:center">@Html.DisplayFor(model => model.BlogPost.Title)</h1>
-<div style="text-align: center;">
-    <div style="display:inline-block;">
+<div class="postDetail" style="text-align: center;">
+    <div class="authorInfo" style="display:inline-block;">
         <em>written by</em>
         <p>@Html.DisplayFor(model => model.BlogPost.Author)</p>
     </div>    
 </div>
-
-<div style="border-radius: 5px; text-align:center">
+<hr />
+<div class="TinkerLogo" style="border-radius: 5px; text-align:center">
     <img src ="~/Images/tinkerJemsLogo.png" style="height:450px; width:100%; vertical-align:top;" alt="TinkerJems Logo"/>
 </div>
+<hr />
+<div class="mainBody">
+    @if(Model.BlogPost.Image != null)
+    {
+        <img class="bodyImage" style="height:300px; width:300px; float:left; margin: 1em; margin-right: 1.5em" src="~/Images/@Html.DisplayFor(model => model.BlogPost.Image)" alt="Blog post Image"/>
+    }
+    <p>@Html.DisplayFor(model => model.BlogPost.Body)</p>
+</div>
+
+
 

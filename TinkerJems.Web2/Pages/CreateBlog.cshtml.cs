@@ -23,11 +23,14 @@ namespace TinkerJems.Web2.Pages
         }
 
         public string[] Images { get; set; }
+        public string[] BlogPosts { get; set; }
 
         public IActionResult OnGet()
         {
             var folder = Path.Combine(hostEnvironment.ContentRootPath, "wwwroot", "Images");
             Images = Directory.GetFiles(folder);
+            var postsFolder = Path.Combine(hostEnvironment.ContentRootPath, "wwwroot", "BlogPosts");
+            BlogPosts = Directory.GetFiles(postsFolder);
 
             return Page();
         }
