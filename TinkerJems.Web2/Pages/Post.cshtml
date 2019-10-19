@@ -10,4 +10,15 @@
     ViewData["Title"] = "Post";
 }
 
-<h1>@Html.DisplayFor(model => model.BlogPost.Title)</h1>
+<h1 style="text-align:center">@Html.DisplayFor(model => model.BlogPost.Title)</h1>
+<div style="text-align: center;">
+    <div style="display:inline-block;">
+        <em>written by</em>
+        <p>@Html.DisplayFor(model => model.BlogPost.Author)</p>
+    </div>    
+</div>
+
+<div style="border-radius: 5px; text-align:center">
+    <img src ="~/Images/tinkerJemsLogo.png" style="height:450px; width:100%; vertical-align:top;" alt="TinkerJems Logo"/>
+</div>
+
