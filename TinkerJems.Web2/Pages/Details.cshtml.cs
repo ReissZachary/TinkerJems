@@ -7,14 +7,15 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using TinkerJems.Core;
 using TinkerJems.Core.Models;
+using TinkerJems.Web2.Data;
 
 namespace TinkerJems.Web2.Pages
 {
     public class DetailsModel : PageModel
     {
-        private readonly TinkerJems.Web2.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public DetailsModel(TinkerJems.Web2.Data.ApplicationDbContext context)
+        public DetailsModel(ApplicationDbContext context)
         {
             _context = context;
         }

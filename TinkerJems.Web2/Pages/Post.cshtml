@@ -1,8 +1,13 @@
-﻿@page "{title}"
+﻿@page
+
 @model TinkerJems.Web2.Pages.PostModel
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService Authorization
+@{
+    var canEdit = (await Authorization.AuthorizeAsync(User, SeedData.SecurityPolicy_Edit)).Succeeded;
+}
 @{
     ViewData["Title"] = "Post";
 }
 
-<h1>@Model.Title</h1>
-
+<h1>@Html.DisplayFor(model => model.BlogPost.Title)</h1>
