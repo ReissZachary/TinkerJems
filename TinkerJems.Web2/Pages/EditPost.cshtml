@@ -1,0 +1,74 @@
+﻿@page
+@model TinkerJems.Web2.Pages.EditPostModel
+@{
+    ViewData["Title"] = "EditPost";
+}
+
+<h1>EditPost</h1>
+
+<div class="row" style="width:max-content;">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BlogPost.ID" />
+            <div class="form-group" style="display:block">
+                <label asp-for="BlogPost.Title" class="control-label" style="display:block"></label>
+                <input asp-for="BlogPost.Title" class="control-label" />
+                <span asp-validation-for="BlogPost.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BlogPost.Summary" class="control-label" style="display:block"></label>
+                <input asp-for="BlogPost.Summary" class="control-label" style="width: 300px; display:block" />
+                <span asp-validation-for="BlogPost.Summary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BlogPost.Body" class="control-label" style="display:block"></label>
+                @if (Model.BlogPosts != null)
+                {
+                    @foreach (var post in Model.BlogPosts)
+                    {
+                        var relativePath = System.IO.Path.GetRelativePath("wwwroot", post);
+                        var postName = System.IO.Path.GetFileName(post);
+                        <div style="display:block">
+                            <input type="radio" value="@postName" asp-for="BlogPost.Body" style="align-content:center">
+                            <p>@relativePath</p>
+                            @*<img src="@relativePath" style="width:150px; height:150px; padding: 1em" />*@
+                            <hr>
+                        </div>
+                    }
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="BlogPost.Author" class="control-label" style="display:block"></label>
+                <input asp-for="BlogPost.Author" class="control-label" style="display:block" />
+                <span asp-validation-for="BlogPost.Author" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display:inline-flex; flex-wrap:wrap">
+                @if (Model.Images != null)
+                {
+                    @foreach (var img in Model.Images)
+                    {
+                        var relativePath = System.IO.Path.GetRelativePath("wwwroot", img);
+                        var imgName = System.IO.Path.GetFileName(img);
+                        <div style="display:block">
+                            <input type="radio" value="@imgName" asp-for="BlogPost.Image" style="align-content:center">
+                            <img src="@relativePath" style="width:150px; height:150px; padding: 1em" />
+                            <hr>
+                        </div>
+                    }
+                }
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Blogs">Back to Blogs</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -23,21 +23,16 @@
                     {
                          <img asp-route-id="@blog.ID" class="mr-3" style="width:200px; height:200px; margin:.5em; vertical-align:middle" src="/Images/@Html.DisplayFor(modelblog => blog.Image)" alt="Post Image">
                     }
-                    <div class="media-body" style="display:inline-block; margin:.5em; position:relative; vertical-align:middle;">
-                        <h2 class="mt-0"><a asp-page="./Post" asp-route-id="@blog.ID" style="text-decoration:none; color:black">@Html.DisplayFor(modelItem => blog.Title)</a></h2>
-                        <p asp-route-id="@blog.ID">@blog.Summary</p>
-                        <p asp-route-id="@blog.ID">
-                            By: @Html.DisplayFor(modelblog => blog.Author)
-                        </p>
-                        <p asp-route-id="@blog.ID">
-                            @Html.DisplayFor(modelblog => blog.Posted)
-                        </p>
-                        @if (canEdit)
-                        {
-                            <button asp-page="" type="button" class="btn-link glyphicon glyphicon-pencil">Edit</button>
-                            <button asp-page="" type="button" class="btn-link glyphicon glyphicon-remove">Delete</button>
-                        }
-                    </div>
+                <div class="media-body" style="display:inline-block; margin:.5em; position:relative; vertical-align:middle;">
+                    <h2 class="mt-0"><a asp-page="./Post" asp-route-id="@blog.ID" style="text-decoration:none; color:black">@Html.DisplayFor(modelItem => blog.Title)</a></h2>
+                    <p asp-route-id="@blog.ID">@blog.Summary</p>
+                    <p asp-route-id="@blog.ID">
+                        By: @Html.DisplayFor(modelblog => blog.Author)
+                    </p>
+                    <p asp-route-id="@blog.ID">
+                        @Html.DisplayFor(modelblog => blog.Posted)
+                    </p>
+                </div>
                 </article>
             </div>
         </a>

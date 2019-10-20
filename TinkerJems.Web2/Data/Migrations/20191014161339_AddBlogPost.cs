@@ -11,8 +11,8 @@ namespace TinkerJems.Web2.Data.Migrations
                 name: "TinkerJemsBlogPost",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ID = table.Column<int>(nullable: false),
+                        //.Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(nullable: true),
                     Body = table.Column<string>(nullable: true),
                     Image = table.Column<string>(nullable: true),
@@ -22,7 +22,7 @@ namespace TinkerJems.Web2.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TinkerJemsBlogPost", x => x.ID);
-                });
+                }); ;
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -57,6 +57,7 @@ namespace TinkerJems.Web2.Pages
             }
 
             JewelryItem.ImageThumbnailUrl = JewelryItem.ImageUrl;
+            var id = JewelryItem.Id;
             _context.Attach(JewelryItem).State = EntityState.Modified;
 
             try

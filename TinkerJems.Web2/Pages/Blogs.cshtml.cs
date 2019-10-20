@@ -16,6 +16,8 @@ namespace TinkerJems.Web2.Pages
 
         public IList<TinkerJemsBlogPost> BlogPosts { get; set; }
 
+        public TinkerJemsBlogPost BlogPost { get; set; }
+
         public BlogsModel(ApplicationDbContext context)
         {
             _context = context;
