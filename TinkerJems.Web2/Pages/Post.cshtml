@@ -10,7 +10,7 @@
     ViewData["Title"] = "Post";
 }
 
-<h1 style="text-align:center">@Html.DisplayFor(model => model.BlogPost.Title)</h1>
+<h1 style="text-align:center; text-wrap:normal">@Html.DisplayFor(model => model.BlogPost.Title)</h1>
 <div class="postDetail" style="text-align: center;">
     <div class="authorInfo" style="display:inline-block;">
         <em>written by</em>
@@ -22,25 +22,26 @@
     <img src ="~/Images/tinkerJemsLogo.png" style="height:450px; width:100%; vertical-align:top;" alt="TinkerJems Logo"/>
 </div>
 <hr />
-<div class="mainBody">
+<div class="mainBody" style="overflow:auto">
     @if(Model.BlogPost.Image != null)
     {
         <img class="bodyImage" style="height:300px; width:300px; float:left; margin: 1em; margin-right: 1.5em" src="~/Images/@Html.DisplayFor(model => model.BlogPost.Image)" alt="Blog post Image"/>
     }
     <p>@Html.DisplayFor(model => model.BlogPost.Body)</p>
-</div>
-<div class="editDelete" style="text-align:center">
-    @if (canEdit)
-    {
-        <a asp-page="./EditPost" asp-route-id="@Model.BlogPost.ID" style="text-decoration:none">
-            <button asp-page="" type="button" class="btn-link glyphicon glyphicon-remove">Edit</button>
-        </a>
-        <a asp-page="./DeletePost" asp-route-id="@Model.BlogPost.ID" style="text-decoration:none">
-            <button asp-page="" type="button" class="btn-link glyphicon glyphicon-remove">Delete</button>
-        </a>
+    <div class="editDelete" style="text-align:center">
+        @if (canEdit)
+        {
+            <a asp-page="./EditPost" asp-route-id="@Model.BlogPost.ID" style="text-decoration:none;">
+                <button asp-page="" type="button" class="btn-link glyphicon glyphicon-remove" style="color:black;">Edit</button>
+            </a>
+            <a asp-page="./DeletePost" asp-route-id="@Model.BlogPost.ID" style="text-decoration:none;">
+                <button asp-page="" type="button" class="btn-link glyphicon glyphicon-remove" style="color:black;">Delete</button>
+            </a>
 
-    }
+        }
+    </div>
 </div>
+<br>
 
 
 

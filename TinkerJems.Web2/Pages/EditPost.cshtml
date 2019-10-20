@@ -4,7 +4,7 @@
     ViewData["Title"] = "EditPost";
 }
 
-<h1>EditPost</h1>
+<h1>Edit Post</h1>
 
 <div class="row" style="width:max-content;">
     <div class="col-md-4">
@@ -58,16 +58,19 @@
                     }
                 }
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <div style="text-align:center">
+                <div class="form-group" style="display:inline-block">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+                <div style="display:inline-block">
+                    <a asp-page="./Blogs" style=" text-decoration:none; color:black;">Back to Blogs</a>
+                </div>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-page="./Blogs">Back to Blogs</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
