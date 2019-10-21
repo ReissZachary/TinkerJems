@@ -56,12 +56,13 @@ namespace TinkerJems.Web2
             });
 
             services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                .AddRazorRuntimeCompilation();
 
             services.AddScoped<IJewelryRepository, ApplicationDbContext>();
             services.AddScoped<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
             services.AddScoped<TinkerJemsSchema>();
-            services.AddGraphQL(o => { o.ExposeExceptions = true; })
+            services.AddGraphQL(o => {o.ExposeExceptions = true; })
                 .AddGraphTypes(ServiceLifetime.Scoped);
         }
 

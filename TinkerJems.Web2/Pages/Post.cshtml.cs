@@ -36,9 +36,9 @@ namespace TinkerJems.Web2.Pages
             
             BlogPost = await _context.TinkerJemsBlogPost.FindAsync(id);
 
-            ComponentInfo.SetLicense("FREE-LIMITED-KEY");
-            var doc = DocumentModel.Load("/Users/Zachary Reiss/source/repos/TinkerJems/TinkerJems.Web2/wwwroot/BlogPosts/" + BlogPost.Body);
-            BlogPost.Body = doc.Content.ToString();
+            //ComponentInfo.SetLicense("FREE-LIMITED-KEY");
+            //var doc = DocumentModel.Load("/Users/Zachary Reiss/source/repos/TinkerJems/TinkerJems.Web2/wwwroot/BlogPosts/" + BlogPost.Body);
+            //BlogPost.Body = doc.Content.ToString();
 
             if(BlogPost == null)
             {

@@ -23,20 +23,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="BlogPost.Body" class="control-label" style="display:block"></label>
-                @if (Model.BlogPosts != null)
-                {
-                    @foreach (var post in Model.BlogPosts)
-                    {
-                        var relativePath = System.IO.Path.GetRelativePath("wwwroot", post);
-                        var postName = System.IO.Path.GetFileName(post);
-                        <div style="display:block">
-                            <input type="radio" value="@postName" asp-for="BlogPost.Body" style="align-content:center">
-                            <p>@relativePath</p>
-                            @*<img src="@relativePath" style="width:150px; height:150px; padding: 1em" />*@
-                            <hr>
-                        </div>
-                    }
-                }
+                <textarea rows=" 10" cols="150" asp-for="BlogPost.Body"></textarea>
             </div>
             <div class="form-group">
                 <label asp-for="BlogPost.Author" class="control-label" style="display:block"></label>
