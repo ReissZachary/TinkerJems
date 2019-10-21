@@ -27,7 +27,8 @@
     {
         <img class="bodyImage" style="height:300px; width:300px; float:left; margin: 1em; margin-right: 1.5em" src="~/Images/@Html.DisplayFor(model => model.BlogPost.Image)" alt="Blog post Image"/>
     }
-    <p style="white-space:pre-line;">@Model.BlogPost.Body</p>
+    
+    @Html.Raw(Model.BlogPost.Body)
     <div class="editDelete" style="text-align:center">
         @if (canEdit)
         {

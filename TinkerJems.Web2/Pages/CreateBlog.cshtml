@@ -26,20 +26,21 @@
             </div>
             <div class="form-group">
                 <label asp-for="BlogPost.Body" class="control-label" style="display:block"></label>
-                <textarea rows=" 10" cols="100" asp-for="BlogPost.Body"></textarea>
+                <textarea rows=" 10" cols="100" asp-for="BlogPost.Body" id="blogBody"></textarea>
+
                 @*@if (Model.BlogPosts != null)
-                {
-                    @foreach (var post in Model.BlogPosts)
                     {
-                        var relativePath = System.IO.Path.GetRelativePath("wwwroot", post);
-                        var postName = System.IO.Path.GetFileName(post);
-                        <div style="display:block">
-                            <input type="radio" value="@postName" asp-for="BlogPost.Body" style="align-content:center">
-                            <p>@relativePath</p>
-                            <hr>
-                        </div>
-                    }
-                }*@
+                        @foreach (var post in Model.BlogPosts)
+                        {
+                            var relativePath = System.IO.Path.GetRelativePath("wwwroot", post);
+                            var postName = System.IO.Path.GetFileName(post);
+                            <div style="display:block">
+                                <input type="radio" value="@postName" asp-for="BlogPost.Body" style="align-content:center">
+                                <p>@relativePath</p>
+                                <hr>
+                            </div>
+                        }
+                    }*@
             </div>
             <div class="form-group">
                 <label asp-for="BlogPost.Author" class="control-label" style="display:block"></label>
@@ -72,6 +73,12 @@
     <a asp-page="Blogs">Back to Blogs</a>
 </div>
 
+@section Scripts{
+    <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('blogBody');
+    </script>
+}
 
 
 
