@@ -7,8 +7,8 @@
 <h1>Delete</h1>
 <hr />
 <div class="media" style="border:solid; border-width: .5px; border-radius: 5px; margin:1em; display:block;">
-    <div style="vertical-align:middle;">
-        <img src="@Html.DisplayFor(model => model.BlogPost.Image)" />    
+    <div style="vertical-align:middle; overflow:auto">
+        <img src="./Images/@Html.DisplayFor(model => model.BlogPost.Image)" style="width:300px; height:300px; padding: 1em; float:left" />         
         <h2 class="control-label" style="display:block">@Html.DisplayFor(model => model.BlogPost.Title)</h2>
         <p class="summary" style="font-size: 15px;">@Html.DisplayFor(model => model.BlogPost.Summary)</p>
     </div>

@@ -23,7 +23,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="BlogPost.Body" class="control-label" style="display:block"></label>
-                <textarea rows=" 10" cols="150" asp-for="BlogPost.Body"></textarea>
+                <textarea rows=" 10" cols="150" asp-for="BlogPost.Body" id="blogBody"></textarea>
             </div>
             <div class="form-group">
                 <label asp-for="BlogPost.Author" class="control-label" style="display:block"></label>
@@ -61,4 +61,8 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('blogBody');
+    </script>
 }
