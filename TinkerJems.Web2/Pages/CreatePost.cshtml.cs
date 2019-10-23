@@ -49,7 +49,7 @@ namespace TinkerJems.Web2.Pages
             _context.TinkerJemsBlogPost.Add(BlogPost);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Blogs");
+            return RedirectToPage("./Blog");
         }
     }
 }

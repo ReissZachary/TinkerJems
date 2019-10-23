@@ -75,7 +75,7 @@ namespace TinkerJems.Web2.Pages
                 }
             }
 
-            return RedirectToPage("./Blogs");
+            return RedirectToPage("./Blog");
         }
 
         private bool BlogPostExists(int id)
