@@ -10,11 +10,11 @@
     ViewData["Title"] = "Posts";
 }
 
-<h1>Blogs</h1>
+<h1>Posts</h1>
 <hr/>
 
-<div>
-    @foreach (var blog in Model.BlogPosts)
+<div>    
+    @foreach (var blog in Model.sortedPosts)
     {
         <a asp-page="./Post" asp-route-id="@blog.ID" style="text-decoration:none">
             <div class="media" style="border:solid; border-width: .5px; border-radius: 5px; margin:1em; background-color:#fffcff; display:block;">

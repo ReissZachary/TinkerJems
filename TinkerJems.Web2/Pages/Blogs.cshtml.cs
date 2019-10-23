@@ -15,17 +15,19 @@ namespace TinkerJems.Web2.Pages
         private readonly ApplicationDbContext _context;
 
         public IList<TinkerJemsBlogPost> BlogPosts { get; set; }
-
+        public IList<TinkerJemsBlogPost> sortedPosts { get; set; }
         public TinkerJemsBlogPost BlogPost { get; set; }
 
         public BlogsModel(ApplicationDbContext context)
         {
             _context = context;
             BlogPosts = new List<TinkerJemsBlogPost>();
+            sortedPosts = new List<TinkerJemsBlogPost>();
         }
         public async Task OnGetAsync()
         {
             BlogPosts = await _context.TinkerJemsBlogPost.ToListAsync();
+            sortedPosts = BlogPosts.OrderByDescending(o => o.Posted).ToList();
         }
     }
 }
