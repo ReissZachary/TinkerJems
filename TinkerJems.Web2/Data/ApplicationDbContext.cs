@@ -15,6 +15,14 @@ namespace TinkerJems.Web2.Data
             : base(options)
         {
         }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<TinkerJemsBlogPost>()
+                .HasAlternateKey(p => p.Slug)
+                .HasName("Unique_Slug");                
+        }
         public DbSet<JewelryItem> JewelryItems { get; set; }
 
         public DbSet<TinkerJemsBlogPost> TinkerJemsBlogPost { get; set; }

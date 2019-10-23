@@ -19,5 +19,7 @@ namespace TinkerJems.Core.Models
         public DateTime Posted { get; set; }
 
         public string Author { get; set; }
+
+        public string Slug { get; set; }
     }
 }

@@ -264,6 +264,10 @@ namespace TinkerJems.Web2.Data.Migrations
                     b.Property<DateTime>("Posted")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("Summary")
                         .HasColumnType("nvarchar(max)");
 
@@ -271,6 +275,9 @@ namespace TinkerJems.Web2.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
+
+                    b.HasAlternateKey("Slug")
+                        .HasName("Unique_Slug");
 
                     b.ToTable("TinkerJemsBlogPost");
                 });
