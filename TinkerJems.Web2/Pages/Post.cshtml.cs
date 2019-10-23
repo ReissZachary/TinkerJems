@@ -8,6 +8,7 @@ using GemBox.Document;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using System.Reflection;
+using System.Linq;
 
 namespace TinkerJems.Web2.Pages
 {
@@ -25,20 +26,14 @@ namespace TinkerJems.Web2.Pages
         //public string Title { get; set; }
         public TinkerJemsBlogPost BlogPost { get; set; }        
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public IActionResult OnGet(string slug)
         {
-           if(id == null)
+           if(slug == null)
             {
                 return NotFound();
             }
 
-            
-            
-            BlogPost = await _context.TinkerJemsBlogPost.FindAsync(id);
-
-            //ComponentInfo.SetLicense("FREE-LIMITED-KEY");
-            //var doc = DocumentModel.Load("/Users/Zachary Reiss/source/repos/TinkerJems/TinkerJems.Web2/wwwroot/BlogPosts/" + BlogPost.Body);
-            //BlogPost.Body = doc.Content.ToString();
+            BlogPost = _context.TinkerJemsBlogPost.FirstOrDefault(p => p.Slug == slug);
 
             if(BlogPost == null)
             {
