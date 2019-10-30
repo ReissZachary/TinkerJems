@@ -22,5 +22,9 @@ namespace TinkerJems.Core.Models
 
         public string Description { get; set; }
 
+        public string Material { get; set; }
+
+        public string Category { get; set; }
+
     }
 }

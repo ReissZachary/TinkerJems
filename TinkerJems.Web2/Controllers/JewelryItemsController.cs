@@ -42,6 +42,12 @@ namespace TinkerJems.Web2.Controllers
 
             return jewelryItem;
         }
+        //GET:api/JewelryItems/getJewelryByMaterial
+        [HttpGet("[action]")]
+        public async Task<ActionResult<IEnumerable<JewelryItem>>> GetJewelryByMaterial(string material)
+        {
+           return  await _context.JewelryItems.Where(m => m.Material == material).ToListAsync();
+        }
 
         // PUT: api/JewelryItems/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for

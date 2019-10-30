@@ -222,6 +222,9 @@ namespace TinkerJems.Web2.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Category")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -232,6 +235,9 @@ namespace TinkerJems.Web2.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LongDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Material")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
