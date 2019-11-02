@@ -7,6 +7,8 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
 
 namespace TinkerJems.Web2
 {
@@ -15,6 +17,17 @@ namespace TinkerJems.Web2
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
+            const string accountSid = "ACd4303a58147c10be0b54f140b10beba6";
+            const string authToken = "92cc4e41a273e134ce8b1fca3b658227";
+            TwilioClient.Init(accountSid, authToken);
+
+            var message = MessageResource.Create(
+                body: "Is this working?",
+                from: new Twilio.Types.PhoneNumber("+14844986297"),
+                to: new Twilio.Types.PhoneNumber("+14356719074")
+            );
+
+            Console.WriteLine(message.Sid);
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
