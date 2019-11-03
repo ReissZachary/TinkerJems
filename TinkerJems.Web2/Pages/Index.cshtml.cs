@@ -4,38 +4,36 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using TinkerJems.Core.Models;
 using TinkerJems.Web2.Services;
 
 namespace TinkerJems.Web2.Pages
 {
     public class HomePageModel : PageModel
     {
-        private readonly QuoteService _quoteService;
-        
 
         public HomePageModel()
         {
-            _quoteService = new QuoteService();
-           // _ = PrintQuote();
+            _photoService = new PhotoService();
         }
 
+        private readonly PhotoService _photoService;
 
-        private Quote quote;
+        private ApiPhotos photos;
 
-        public Quote Quote
+        public ApiPhotos Photos
         {
-            get { return quote; }
-            set { quote = value; }
+            get { return photos; }
+            set { photos = value; }
         }
 
-        //private async Task PrintQuote()
-        //{
-        //    Quote = await _quoteService.getQuoteAsync();
-        //}
+       
 
-        public void OnGet()
+
+
+        public async Task OnGetAsync()
         {
-
+            Photos = await _photoService.GetApiPhotosAsync();
         }
     }
 }

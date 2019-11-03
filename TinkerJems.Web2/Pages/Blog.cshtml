@@ -48,6 +48,10 @@
     </div>
 </nav>
 
+<div style="text-align:center">
+    <span style="font-size:large; font-weight:bold;">Daily advice: @Model.Advice.Advice</span>
+</div>
+
 <div>
     @foreach (var blog in Model.sortedPosts)
     {
@@ -73,6 +77,7 @@
         </a>
         <hr />
     }
+
 </div>
 
 @if (canAdd)

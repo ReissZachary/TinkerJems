@@ -10,7 +10,7 @@ using TinkerJems.Web2.Controllers;
 
 namespace TinkerJems.Wpf.Application.Services
 {
-    class JewelryService
+    public class JewelryService
     {
         public async Task<IEnumerable<JewelryItem>> GetJewelryItemsAsync()
         {

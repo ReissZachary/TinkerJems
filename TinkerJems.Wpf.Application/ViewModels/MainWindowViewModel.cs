@@ -18,7 +18,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
         {
             this.regionManager = regionManager;
             _jewelryService = new JewelryService();
-            _ = populateJewelry();
+            _ = PopulateJewelry();
         }
 
         private IEnumerable<JewelryItem> jewelryItems;
@@ -29,12 +29,9 @@ namespace TinkerJems.Wpf.Application.ViewModels
             set { jewelryItems = value; }
         }
 
-        private async Task populateJewelry()
+        private async Task PopulateJewelry()
         {
             JewelryItems = await _jewelryService.GetJewelryItemsAsync();
         }
-
-
-
     }
 }

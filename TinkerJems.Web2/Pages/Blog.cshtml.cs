@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using TinkerJems.Core.Models;
 using TinkerJems.Web2.Data;
+using TinkerJems.Web2.Services;
 
 namespace TinkerJems.Web2.Pages
 {
@@ -16,6 +17,9 @@ namespace TinkerJems.Web2.Pages
 
         public IList<TinkerJemsBlogPost> BlogPosts { get; set; }
         public IList<TinkerJemsBlogPost> sortedPosts { get; set; }
+
+        private readonly AdviceService _greatAdviceService;
+
         public TinkerJemsBlogPost BlogPost { get; set; }
 
         public BlogsModel(ApplicationDbContext context)
@@ -23,11 +27,22 @@ namespace TinkerJems.Web2.Pages
             _context = context;
             BlogPosts = new List<TinkerJemsBlogPost>();
             sortedPosts = new List<TinkerJemsBlogPost>();
+            _greatAdviceService = new AdviceService();
         }
+
+        private GreatAdvice advice;
+
+        public GreatAdvice Advice
+        {
+            get { return advice; }
+            set { advice = value; }
+        }
+
         public async Task OnGetAsync()
         {
             BlogPosts = await _context.TinkerJemsBlogPost.ToListAsync();
             sortedPosts = BlogPosts.OrderByDescending(o => o.Posted).ToList();
+            Advice = await _greatAdviceService.GetAdviceAsync();
         }
     }
 }
