@@ -9,7 +9,7 @@ using TinkerJems.Core.Models;
 
 namespace TinkerJems.Web2.Services
 {
-    public class PhotoService
+    public class PhotoService : IPhotoService
     {
         public async Task<ApiPhotos> GetApiPhotosAsync()
         {

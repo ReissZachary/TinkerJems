@@ -18,6 +18,7 @@ using TinkerJems.Web2.graphQL;
 using GraphQL.Server;
 using GraphQL.Server.Ui.Playground;
 using TinkerJems.Core.Models;
+using TinkerJems.Web2.Services;
 
 namespace TinkerJems.Web2
 {
@@ -64,6 +65,8 @@ namespace TinkerJems.Web2
             services.AddScoped<TinkerJemsSchema>();
             services.AddGraphQL(o => {o.ExposeExceptions = true; })
                 .AddGraphTypes(ServiceLifetime.Scoped);
+            services.AddScoped<IPhotoService, PhotoService>();
+            services.AddScoped<IAdviceService, AdviceService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

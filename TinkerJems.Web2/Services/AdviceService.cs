@@ -10,7 +10,7 @@ using TinkerJems.Core.Models;
 
 namespace TinkerJems.Web2.Services
 {
-    public class AdviceService
+    public class AdviceService : IAdviceService
     {
         public async Task<GreatAdvice> GetAdviceAsync()
         {

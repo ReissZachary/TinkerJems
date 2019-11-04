@@ -12,12 +12,12 @@ namespace TinkerJems.Web2.Pages
     public class HomePageModel : PageModel
     {
 
-        public HomePageModel()
+        public HomePageModel(IPhotoService photoService)
         {
-            _photoService = new PhotoService();
+            _photoService = photoService;
         }
 
-        private readonly PhotoService _photoService;
+        private readonly IPhotoService _photoService;
 
         private ApiPhotos photos;
 
@@ -26,10 +26,6 @@ namespace TinkerJems.Web2.Pages
             get { return photos; }
             set { photos = value; }
         }
-
-       
-
-
 
         public async Task OnGetAsync()
         {

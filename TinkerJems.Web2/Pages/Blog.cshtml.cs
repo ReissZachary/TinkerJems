@@ -18,16 +18,16 @@ namespace TinkerJems.Web2.Pages
         public IList<TinkerJemsBlogPost> BlogPosts { get; set; }
         public IList<TinkerJemsBlogPost> sortedPosts { get; set; }
 
-        private readonly AdviceService _greatAdviceService;
+        private readonly IAdviceService _greatAdviceService;
 
         public TinkerJemsBlogPost BlogPost { get; set; }
 
-        public BlogsModel(ApplicationDbContext context)
+        public BlogsModel(ApplicationDbContext context, IAdviceService adviceService)
         {
             _context = context;
             BlogPosts = new List<TinkerJemsBlogPost>();
             sortedPosts = new List<TinkerJemsBlogPost>();
-            _greatAdviceService = new AdviceService();
+            _greatAdviceService = adviceService;
         }
 
         private GreatAdvice advice;
