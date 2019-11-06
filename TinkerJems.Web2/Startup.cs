@@ -94,7 +94,7 @@ namespace TinkerJems.Web2
 
             app.UseAuthentication();
             app.UseAuthorization();
-            SeedData.EnsureInitialized(userManager, roleManager);
+            //SeedData.EnsureInitialized(userManager, roleManager);
             app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
