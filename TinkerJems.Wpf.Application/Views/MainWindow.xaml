@@ -8,12 +8,11 @@
         xmlns:views="clr-namespace:TinkerJems.Wpf.Application.Views"
         prism:ViewModelLocator.AutoWireViewModel="True"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="800">
+        Title="MainWindow" Height="900" Width="1000">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         
@@ -28,34 +27,18 @@
         <TextBlock Grid.Row="1"
                    Text="NavBar"
                    />
-        
-        <!--image-->
-        <Image Grid.Row="2"
-               Height="500"
-               Source="https://i.ytimg.com/vi/-mMhKYJFOnQ/maxresdefault.jpg"
-               />
-        
-        <!--jewelryItems-->
-        <ListView Grid.Row="3"
-                  Width="500"
-                  Height="450"
-                  ItemsSource="{Binding JewelryItems}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel
-                       Orientation="Vertical"
-                       HorizontalAlignment="Right">
-                        <Image Source="{Binding ImageUrl, StringFormat=TinkerJems.Web2/wwwroot/Images/{0}}"
-                               Height="75px"/>
-                        <TextBlock Text="{Binding ImageUrl, StringFormat=TinkerJems.Web2/wwwroot/Images/{0}}"/>
-                        <TextBlock Text="{Binding Name}"/>
-                        <TextBlock Text="{Binding Price}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
+        <Button Command="{Binding NavigateToSearch}"
+                CommandParameter="SearchView"
+                Width="50"
+                Height="20"
+                Content="ITEM"
+                Grid.Row="1">
+        </Button>
 
-        </ListView>
-
+        <ContentControl Name="ContentRegion"
+                        prism:RegionManager.RegionName="ContentRegion"
+                        Grid.Row="2">
+        </ContentControl>
 
     </Grid>
 </Window>

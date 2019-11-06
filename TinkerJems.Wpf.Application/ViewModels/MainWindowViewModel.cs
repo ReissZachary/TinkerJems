@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using Prism.Commands;
+using Prism.Mvvm;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
@@ -11,30 +12,16 @@ namespace TinkerJems.Wpf.Application.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
-        private readonly IRegionManager regionManager;
-        private readonly JewelryService _jewelryService;
+        private readonly IRegionManager _regionManager;
+        public DelegateCommand<string> NavigateToSearch { get; }
 
         public MainWindowViewModel(IRegionManager regionManager)
         {
-            this.regionManager = regionManager;
-            _jewelryService = new JewelryService();
-            _ = populateJewelry();
+            _regionManager = regionManager;
+            NavigateToSearch = new DelegateCommand<string>((uri) =>
+            {
+                regionManager.RequestNavigate("ContentRegion", uri);
+            });            
         }
-
-        private IEnumerable<JewelryItem> jewelryItems;
-
-        public IEnumerable<JewelryItem> JewelryItems
-        {
-            get { return jewelryItems; }
-            set { jewelryItems = value; }
-        }
-
-        private async Task populateJewelry()
-        {
-            JewelryItems = await _jewelryService.GetJewelryItemsAsync();
-        }
-
-
-
     }
 }
