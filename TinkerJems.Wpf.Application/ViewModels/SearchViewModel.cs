@@ -2,6 +2,7 @@
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TinkerJems.Core.Models;
@@ -31,6 +32,8 @@ namespace TinkerJems.Wpf.Application.ViewModels
         private async Task populateJewelry()
         {
             JewelryItems = await _jewelryService.GetJewelryItemsAsync();
+            foreach (var j in JewelryItems)
+                j.ImageUrl = $"https://localhost:5001/images/{j.ImageUrl}";
         }        
     }
 }

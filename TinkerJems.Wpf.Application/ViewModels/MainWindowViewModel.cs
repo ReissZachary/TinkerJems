@@ -17,31 +17,11 @@ namespace TinkerJems.Wpf.Application.ViewModels
 
         public MainWindowViewModel(IRegionManager regionManager)
         {
-            this.regionManager = regionManager;
+            this._regionManager = regionManager;
             NavigateToSearch = new DelegateCommand<string>((uri) =>
             {
                 _regionManager.RequestNavigate("ContentRegion", uri);
             });
-            _jewelryService = new JewelryService();
-            _ = PopulateJewelry();
         }
-
-        private IEnumerable<JewelryItem> jewelryItems;
-
-        public IEnumerable<JewelryItem> JewelryItems
-        {
-            get { return jewelryItems; }
-            set { jewelryItems = value; }
-        }
-
-        private async Task PopulateJewelry()
-        {
-            JewelryItems = await _jewelryService.GetJewelryItemsAsync();
-            foreach (var j in JewelryItems)
-                j.ImageUrl = $"https://localhost:5001/Images/{j.ImageUrl}";
-        }
-
-
-
     }
 }

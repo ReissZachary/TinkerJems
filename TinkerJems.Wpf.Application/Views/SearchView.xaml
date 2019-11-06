@@ -28,9 +28,9 @@
                     <StackPanel
                       Orientation="Vertical"
                       HorizontalAlignment="Right">
-                        <Image Source="{Binding ImageUrl, StringFormat=TinkerJems.Web2/wwwroot/Images/{0}}"
+                        <Image Source="{Binding ImageUrl}"
                               Height="75px"/>
-                        <TextBlock Text="{Binding ImageUrl, StringFormat=TinkerJems.Web2/wwwroot/Images/{0}}"/>
+                        <TextBlock Text="{Binding ImageUrl}"/>
                         <TextBlock Text="{Binding Name}"/>
                         <TextBlock Text="{Binding Price}"/>
                     </StackPanel>
