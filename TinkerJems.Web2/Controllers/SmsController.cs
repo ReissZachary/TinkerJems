@@ -15,8 +15,8 @@ namespace TinkerJems.Web2.Controllers
     {
         public ActionResult SendSms()
         {
-            var accountSid = "ACd4303a58147c10be0b54f140b10beba6";
-            var authToken = "92cc4e41a273e134ce8b1fca3b658227";
+            string accountSid = Environment.GetEnvironmentVariable("TWILIO_ACCOUNT_SID");
+            string authToken = Environment.GetEnvironmentVariable("TWILIO_AUTH_TOKEN");
 
             TwilioClient.Init(accountSid, authToken);
 
