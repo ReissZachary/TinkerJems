@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TinkerJems.Core\TinkerJems.Core.csproj" />
-    <ProjectReference Include="..\TinkerJems.Web2\TinkerJems.Web2.csproj" />
   </ItemGroup>
 
 </Project>

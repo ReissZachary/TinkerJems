@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using TinkerJems.Core.Models;
-using TinkerJems.Web2.Controllers;
 
 namespace TinkerJems.Wpf.Application.Services
 {

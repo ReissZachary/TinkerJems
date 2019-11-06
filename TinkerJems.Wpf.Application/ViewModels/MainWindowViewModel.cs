@@ -32,6 +32,8 @@ namespace TinkerJems.Wpf.Application.ViewModels
         private async Task PopulateJewelry()
         {
             JewelryItems = await _jewelryService.GetJewelryItemsAsync();
+            foreach (var j in JewelryItems)
+                j.ImageUrl = $"https://localhost:5001/Images/{j.ImageUrl}";
         }
     }
 }
