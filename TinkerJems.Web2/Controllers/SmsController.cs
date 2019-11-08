@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Twilio;
 using Twilio.Rest.Api.V2010.Account;
 using Twilio.Types;
@@ -8,10 +9,16 @@ namespace TinkerJems.Web2.Controllers
 {
     public class SmsController : Controller //twilio
     {
+        private readonly IConfiguration configuration;
+
+        public SmsController(IConfiguration configuration)
+        {
+            this.configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+        }
         public ActionResult SendSms()
         {
-            string accountSid = Environment.GetEnvironmentVariable("TWILIO_ACCOUNT_SID");
-            string authToken = Environment.GetEnvironmentVariable("TWILIO_AUTH_TOKEN");
+            string accountSid = configuration["TwilioAccountSid"];
+            string authToken = configuration["TwilioAuthToken"];
 
             TwilioClient.Init(accountSid, authToken);
 
