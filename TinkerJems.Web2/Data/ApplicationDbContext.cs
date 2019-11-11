@@ -21,11 +21,26 @@ namespace TinkerJems.Web2.Data
             base.OnModelCreating(builder);
             builder.Entity<TinkerJemsBlogPost>()
                 .HasAlternateKey(p => p.Slug)
-                .HasName("Unique_Slug");                
+                .HasName("Unique_Slug");
+            builder.Entity<JewelryItemTag>()
+                .HasOne<JewelryItem>(t => t.JewelryItem)
+                .WithMany(i => i.Tags)
+                .HasForeignKey(t => t.JewelryItemId);
+
+            builder.Entity<JewelryItemTag>()
+                .HasOne<Tag>(t => t.Tag)
+                .WithMany(t => t.TaggedItems)
+                .HasForeignKey(t => t.TagId);
+            
         }
+        
         public DbSet<JewelryItem> JewelryItems { get; set; }
 
         public DbSet<TinkerJemsBlogPost> TinkerJemsBlogPost { get; set; }
+
+        public DbSet<Tag> Tags { get; set; }
+
+        public DbSet<JewelryItemTag> ItemTags { get; set; }
 
         public IEnumerable<JewelryItem> GetAllJewelryItems()
         {

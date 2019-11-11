@@ -26,5 +26,7 @@ namespace TinkerJems.Core.Models
 
         public string Category { get; set; }
 
+        public IEnumerable<JewelryItemTag> Tags { get; set; }
+
     }
 }

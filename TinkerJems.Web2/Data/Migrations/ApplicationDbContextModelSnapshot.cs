@@ -251,6 +251,43 @@ namespace TinkerJems.Web2.Data.Migrations
                     b.ToTable("JewelryItems");
                 });
 
+            modelBuilder.Entity("TinkerJems.Core.Models.JewelryItemTag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("JewelryItemId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TagId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("JewelryItemId");
+
+                    b.HasIndex("TagId");
+
+                    b.ToTable("ItemTags");
+                });
+
+            modelBuilder.Entity("TinkerJems.Core.Models.Tag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tags");
+                });
+
             modelBuilder.Entity("TinkerJems.Core.Models.TinkerJemsBlogPost", b =>
                 {
                     b.Property<int>("ID")
@@ -335,6 +372,21 @@ namespace TinkerJems.Web2.Data.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("TinkerJems.Core.Models.JewelryItemTag", b =>
+                {
+                    b.HasOne("TinkerJems.Core.Models.JewelryItem", "JewelryItem")
+                        .WithMany("Tags")
+                        .HasForeignKey("JewelryItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TinkerJems.Core.Models.Tag", "Tag")
+                        .WithMany("TaggedItems")
+                        .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
