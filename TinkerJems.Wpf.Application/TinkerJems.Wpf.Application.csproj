@@ -17,4 +17,8 @@
     <ProjectReference Include="..\TinkerJems.Core\TinkerJems.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Shared\Images\" />
+  </ItemGroup>
+
 </Project>

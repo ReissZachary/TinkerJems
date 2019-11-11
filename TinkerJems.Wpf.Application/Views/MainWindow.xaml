@@ -5,12 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TinkerJems.Wpf.Application"
         xmlns:prism="http://prismlibrary.com/"
+        xmlns:dxa="http://schemas.devexpress.com/winfx/2008/xaml/accordion"
+        xmlns:layoutToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit"
         xmlns:views="clr-namespace:TinkerJems.Wpf.Application.Views"
+        xmlns:layoutToolkit1="clr-namespace:System.Windows.Controls;assembly=Accordion"
         prism:ViewModelLocator.AutoWireViewModel="True"
         mc:Ignorable="d"
         Title="MainWindow" Height="900" Width="1000">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
@@ -20,24 +24,116 @@
         <TextBlock Grid.Row="0"
                    Text="Tinker Jems"
                    HorizontalAlignment="Center"
-                   FontSize="24"
-                   />
+                   FontSize="60"
+                   Foreground="#123c69"
+                   Margin="0 0 0 25"
+                   />     
         
         <!--navbar-->
-        <TextBlock Grid.Row="1"
-                   Text="NavBar"
-                   />
-        <Button Command="{Binding NavigateToSearch}"
-                CommandParameter="SearchView"
-                Width="50"
-                Height="20"
-                Content="ITEM"
-                Grid.Row="1">
-        </Button>
+        <Border BorderBrush="Gray"
+                BorderThickness="2"
+                Grid.Row="2"
+                CornerRadius="5"
+                Margin="10 0 10 0">
+            <Grid Background="#edd8ce">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!--<TextBlock Text="&lt;&lt;&lt;"
+                           Grid.Column="0"
+                           Margin="10"/>-->
+                <Button Command="{Binding NavigateToSearch}"
+                        CommandParameter="SearchView"
+                        Width="auto"
+                        Height="auto"
+                        Content="3"
+                        Grid.Column="0"
+                        Margin="10"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        FontFamily="Marlett"
+                        FontSize="25"
+                        Foreground="#123c69">
+                </Button>
+
+                <Button Command="{Binding NavigateToSearch}"
+                        CommandParameter="SearchView"
+                        Width="auto"
+                        Height="auto"
+                        Content="ITEM"
+                        Grid.Column="1"
+                        Margin="10"
+                        Background="Transparent"
+                        BorderThickness="0">                    
+                </Button>
+                <!--<layoutToolkit1:Accordion ExpandDirection="Down"
+                                          Grid.Column="2"
+                                          Margin="10">
+                    <layoutToolkit1:AccordionItem Header="Red">
+                        <TextBlock Text="Rings"/>
+                    </layoutToolkit1:AccordionItem>
+                </layoutToolkit1:Accordion>-->
+
+                <!--<TextBlock Text="About Me"
+                           Grid.Column="2"
+                           Margin="10"/>-->
+
+                <StackPanel Margin="10"
+                            Grid.Column="2">
+                    <ComboBox>
+                        <ComboBoxItem IsSelected="True"
+                                      Content="Jewelry"/>
+                        <ComboBoxItem Content="Rings"/>
+                        <ComboBoxItem Content="Necklaces"/>
+                        <ComboBoxItem Content="Earrings"/>
+                        <ComboBoxItem Content="Bracelets"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <Button Command="{}"
+                        CommandParameter="SearchView"
+                        Width="auto"
+                        Height="auto"
+                        Content="About Me"
+                        Grid.Column="3"
+                        Margin="10"
+                        Background="Transparent"
+                        BorderThickness="0">
+                </Button>
+                
+                <Button Command="{}"
+                        CommandParameter="SearchView"
+                        Width="auto"
+                        Height="auto"
+                        Content="How It Works"
+                        Grid.Column="4"
+                        Margin="10"
+                        Background="Transparent"
+                        BorderThickness="0">
+                </Button>
+
+                <Button Command="{}"
+                        CommandParameter="SearchView"
+                        Width="auto"
+                        Height="auto"
+                        Content="Contact Me"
+                        Grid.Column="5"
+                        Margin="10"
+                        Background="Transparent"
+                        BorderThickness="0">
+                </Button>
+            </Grid>
+        </Border>
 
         <ContentControl Name="ContentRegion"
                         prism:RegionManager.RegionName="ContentRegion"
-                        Grid.Row="2">
+                        Grid.Row="3">
         </ContentControl>
 
     </Grid>
