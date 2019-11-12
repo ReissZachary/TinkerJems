@@ -74,5 +74,7 @@
             Grid.Row="3"
             BorderThickness="1">
         </Button>
+        <ContentControl Grid.Row="1"
+                       prism:RegionManager.RegionName="ContentRegion" />
     </Grid>
 </Window>
