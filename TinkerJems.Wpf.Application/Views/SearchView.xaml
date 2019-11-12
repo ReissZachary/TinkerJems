@@ -27,9 +27,6 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="0">
@@ -40,12 +37,40 @@
                            Text="image"
                            FontSize="20"/>
             </StackPanel>
-            <StackPanel Grid.Column="1">
+            <Grid Grid.Column="1">
+                <ListView ItemsSource="{Binding JewelryItems}"
+                          Background="Transparent"
+                          Width="875"
+                          Height="450"
+                          Margin="10">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Background="Transparent" Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Center"
+                                        Width="auto">
+                                <Image Source="{Binding ImageUrl}"
+                                       Height="100"
+                                       Width="200"/>
+                                <TextBlock Text="{Binding Price}"
+                                           FontSize="17"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Bottom"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+            <!--<StackPanel Grid.Column="1">
                 <Image Source="{Binding ImageUrl}"
                        Height="80px"/>
                 <TextBlock Text="{Binding Name}"/>
                 <TextBlock Text="{Binding Price}"/>
-            </StackPanel>
+            </StackPanel>-->
 
         </Grid>
         <!--jewelryItems-->

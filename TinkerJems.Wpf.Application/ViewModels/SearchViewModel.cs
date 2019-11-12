@@ -16,6 +16,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
         {
             _jewelryService = new JewelryService();
             _ = populateJewelry();
+            _ = PopulateRandomJewleryItems();
         }
 
         private readonly JewelryService _jewelryService;
@@ -27,6 +28,20 @@ namespace TinkerJems.Wpf.Application.ViewModels
             get { return jewelryItems; }
             set { jewelryItems = value; }
         }
+
+        private IEnumerable<JewelryItem> randomItems;
+
+        public IEnumerable<JewelryItem> RandomItems
+        {
+            get { return randomItems; }
+            set { randomItems = value; }
+        }
+
+        private async Task PopulateRandomJewleryItems()
+        {
+
+        }
+
 
         private async Task populateJewelry()
         {
