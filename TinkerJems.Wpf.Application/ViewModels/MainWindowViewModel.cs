@@ -13,12 +13,12 @@ namespace TinkerJems.Wpf.Application.ViewModels
     public class MainWindowViewModel : BindableBase
     {
         private readonly IRegionManager _regionManager;
-        public DelegateCommand<string> NavigateToSearch { get; }
+        public DelegateCommand<string> NavigateToHome { get; }
 
         public MainWindowViewModel(IRegionManager regionManager)
         {
             this._regionManager = regionManager;
-            NavigateToSearch = new DelegateCommand<string>((uri) =>
+            NavigateToHome = new DelegateCommand<string>((uri) =>
             {
                 _regionManager.RequestNavigate("ContentRegion", uri);
             });

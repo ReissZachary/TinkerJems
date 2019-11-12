@@ -25,6 +25,7 @@ namespace TinkerJems.Wpf.Application
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<SearchView>();
+            containerRegistry.RegisterForNavigation<HomeView>();
         }
 
         protected override void ConfigureServiceLocator()

@@ -12,7 +12,6 @@ namespace TinkerJems.Wpf.Application.ViewModels
 {
     public class SearchViewModel : BindableBase
     {
-
         public SearchViewModel()
         {
             _jewelryService = new JewelryService();
@@ -34,6 +33,6 @@ namespace TinkerJems.Wpf.Application.ViewModels
             JewelryItems = await _jewelryService.GetJewelryItemsAsync();
             foreach (var j in JewelryItems)
                 j.ImageUrl = $"https://localhost:5001/images/{j.ImageUrl}";
-        }        
+        }
     }
 }
