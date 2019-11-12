@@ -59,7 +59,7 @@
         <TextBlock
             Text="TINKER JEMS"
             Grid.Row="1"
-            Visibility="{Binding SplashScreenVisibility}"
+            Visibility="{Binding SplashScreenHomeVisibility}"
             HorizontalAlignment="Center"
             FontSize="48"
             FontWeight="Thin"
@@ -67,10 +67,10 @@
         <Image
             Source="http://simpleicon.com/wp-content/uploads/diamond.png"
             Grid.Row="2"
-            Visibility="{Binding SplashScreenVisibility}"
+            Visibility="{Binding SplashScreenHomeVisibility}"
             Height="100"/>
         <Button Command="{Binding NavigateToHome}"
-            Visibility="{Binding SplashScreenVisibility}"
+            Visibility="{Binding SplashScreenHomeVisibility}"
             CommandParameter="HomeView"
             Width="Auto"
             Content="SHOP NOW"
