@@ -3,23 +3,53 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:TinkerJems.Wpf.Application.Views"
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="White">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <!--image-->
         <Image Grid.Row="0"
-              Height="500"
+              Height="400"
               Source="https://localHost:5001/Images/tinkerJemsLogo.png"
               />
+        
+        <!--RING CARDS-->
+        <Grid Grid.Row="1"              
+              Background="LightSteelBlue"
+              Margin="0 30 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <TextBlock Margin="10 10 0 0"
+                           Text="Rings"
+                           FontSize="40"/>
+                <TextBlock Margin="12 10 0 0"
+                           Text="image"
+                           FontSize="20"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <Image Source="{Binding ImageUrl}"
+                       Height="80px"/>
+                <TextBlock Text="{Binding Name}"/>
+                <TextBlock Text="{Binding Price}"/>
+            </StackPanel>
+
+        </Grid>
         <!--jewelryItems-->
-        <ListView Grid.Row="1"
+        <!--<ListView Grid.Row="1"
                  Width="500"
                  Height="450"
                  ItemsSource="{Binding JewelryItems}">
@@ -30,11 +60,9 @@
                       HorizontalAlignment="Right">
                         <Image Source="{Binding ImageUrl}"
                               Height="75px"/>
-                        <TextBlock Text="{Binding Name}"/>
-                        <TextBlock Text="{Binding Price}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>
+        </ListView>-->
     </Grid>
 </UserControl>
