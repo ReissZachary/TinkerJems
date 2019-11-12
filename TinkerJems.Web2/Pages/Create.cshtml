@@ -97,7 +97,20 @@
         </form>
     </div>
 </div>
-
+<div class="row" style="width:max-content;">
+    <div class="col-md-4">
+        <form method="post" asp-page-handler="addTag">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label" style="width:300px">Add Tag</label>
+                <input asp-for="NewTagName" class="form-control" style="width:500px" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add Tag" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
 <div>
     <a asp-page="Items">Back to List</a>
 </div>

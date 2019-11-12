@@ -25,6 +25,7 @@ namespace TinkerJems.Web2.Pages
         }
 
        
+        public string NewTagName { get; set; }
 
         public string[] Images { get; set; }
 
@@ -61,6 +62,11 @@ namespace TinkerJems.Web2.Pages
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Items");
+        }
+
+        public async Task OnPostAddTagAsync()
+        {
+
         }
     }
 }

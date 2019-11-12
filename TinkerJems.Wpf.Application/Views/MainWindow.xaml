@@ -5,10 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TinkerJems.Wpf.Application"
         xmlns:prism="http://prismlibrary.com/"
-        xmlns:dxa="http://schemas.devexpress.com/winfx/2008/xaml/accordion"
-        xmlns:layoutToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit"
         xmlns:views="clr-namespace:TinkerJems.Wpf.Application.Views"
-        xmlns:layoutToolkit1="clr-namespace:System.Windows.Controls;assembly=Accordion"
         prism:ViewModelLocator.AutoWireViewModel="True"
         mc:Ignorable="d"
         Title="MainWindow" Height="900" Width="1000">
