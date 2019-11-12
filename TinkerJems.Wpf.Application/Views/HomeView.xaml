@@ -117,8 +117,8 @@
             </Grid>
         </Border>
         
-        <ContentControl Name="ContentRegion"
-                        prism:RegionManager.RegionName="ContentRegion"
+        <ContentControl Name="NavigationRegion"
+                        prism:RegionManager.RegionName="NavigationRegion"
                         Grid.Row="3">
         </ContentControl>
 
