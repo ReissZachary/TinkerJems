@@ -4,10 +4,13 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>tinkerJemsLogo.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Views\Images\ringIcon.png" />
     <None Remove="Views\Images\splashscreen.jpg" />
+    <None Remove="Views\Images\tinkerJemsLogo.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,7 +29,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Views\Images\ringIcon.png" />
     <Resource Include="Views\Images\splashscreen.jpg" />
+    <Resource Include="Views\Images\tinkerJemsLogo.ico" />
   </ItemGroup>
 
 </Project>

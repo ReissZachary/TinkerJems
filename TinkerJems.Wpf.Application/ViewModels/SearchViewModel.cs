@@ -45,7 +45,9 @@ namespace TinkerJems.Wpf.Application.ViewModels
 
         private async Task populateJewelry()
         {
+            var rnd = new Random();
             JewelryItems = await _jewelryService.GetJewelryItemsAsync();
+            RandomItems = jewelryItems.OrderBy(i => rnd.Next()).Take(4);
             foreach (var j in JewelryItems)
                 j.ImageUrl = $"https://localhost:5001/images/{j.ImageUrl}";
         }
