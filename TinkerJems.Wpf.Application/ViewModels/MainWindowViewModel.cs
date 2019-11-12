@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using TinkerJems.Core.Models;
 using TinkerJems.Wpf.Application.Services;
 
@@ -21,7 +22,16 @@ namespace TinkerJems.Wpf.Application.ViewModels
             NavigateToHome = new DelegateCommand<string>((uri) =>
             {
                 _regionManager.RequestNavigate("ContentRegion", uri);
+                SplashScreenHomeVisibility = Visibility.Collapsed;
             });
+        }
+
+        private Visibility splashScreenHomeVisibility;
+
+        public Visibility SplashScreenHomeVisibility
+        {
+            get { return splashScreenHomeVisibility; }
+            set { SetProperty(ref splashScreenHomeVisibility, value); }
         }
     }
 }

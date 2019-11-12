@@ -59,6 +59,7 @@
         <TextBlock
             Text="TINKER JEMS"
             Grid.Row="1"
+            Visibility="{Binding SplashScreenVisibility}"
             HorizontalAlignment="Center"
             FontSize="48"
             FontWeight="Thin"
@@ -66,13 +67,17 @@
         <Image
             Source="http://simpleicon.com/wp-content/uploads/diamond.png"
             Grid.Row="2"
+            Visibility="{Binding SplashScreenVisibility}"
             Height="100"/>
         <Button Command="{Binding NavigateToHome}"
+            Visibility="{Binding SplashScreenVisibility}"
             CommandParameter="HomeView"
             Width="Auto"
             Content="SHOP NOW"
             Grid.Row="3"
             BorderThickness="1">
         </Button>
+        <ContentControl Grid.Row="1"
+                        prism:RegionManager.RegionName="ContentRegion" />
     </Grid>
 </Window>
