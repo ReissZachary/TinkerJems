@@ -19,11 +19,17 @@ namespace TinkerJems.Wpf.Application.ViewModels
             _regionManager = regionManager;
             _eventAggregator = eventAggregator;
 
-            eventAggregator.GetEvent<SelectedItemEvent>().Subscribe((message) => { this.SelectedItem = message; });
-            var x = eventAggregator.GetEvent<SelectedItemEvent>();
+            _eventAggregator.GetEvent<SelectedItemEvent>().Subscribe(msg => {
+                SelectedItem = msg;
+            }, ThreadOption.UIThread);
+            var x = eventAggregator.GetEvent<SelectedItemEvent>().SynchronizationContext;
                 
         }
 
+        public void SomeFunction(JewelryItem item)
+        {
+            var x = "";
+        }
         private JewelryItem selectedItem;
         public JewelryItem SelectedItem
         {

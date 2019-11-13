@@ -27,7 +27,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
         public DelegateCommand NavigateToItem => navigateToItem ?? (navigateToItem = new DelegateCommand(
                 ()=>
                 {
-                    _regionManager.RequestNavigate("ContentRegion", "ItemView");
+                    _regionManager.RequestNavigate("NavigationRegion", "ItemView");
                 }
             ));
 

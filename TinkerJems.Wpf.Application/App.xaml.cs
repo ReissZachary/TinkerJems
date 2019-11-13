@@ -1,4 +1,5 @@
 ﻿using CommonServiceLocator;
+using Prism.Events;
 using Prism.Ioc;
 using Prism.Unity;
 using System;

@@ -27,7 +27,7 @@
         
         <!--RING CARDS-->
         <Grid Grid.Row="1"              
-              Background="LightGray">
+              Background="#faf1ed">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
@@ -97,7 +97,7 @@
 
         <!--Necklace Cards-->
         <Grid Grid.Row="2"              
-              Background="LightGray">
+              Background="#e7f0fd">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
@@ -173,7 +173,7 @@
 
         <!--Earring Cards-->
         <Grid Grid.Row="3"              
-              Background="LightGray">
+              Background="#eaced7">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
@@ -243,7 +243,7 @@
 
         <!--Bracelets Cards-->
         <Grid Grid.Row="4"              
-              Background="LightGray">
+              Background="#e4f0de">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
