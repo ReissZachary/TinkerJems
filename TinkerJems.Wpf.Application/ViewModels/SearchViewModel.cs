@@ -1,4 +1,6 @@
-﻿using Prism.Mvvm;
+﻿using Prism.Commands;
+using Prism.Events;
+using Prism.Mvvm;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
@@ -6,18 +8,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TinkerJems.Core.Models;
+using TinkerJems.Wpf.Application.Events;
 using TinkerJems.Wpf.Application.Services;
 
 namespace TinkerJems.Wpf.Application.ViewModels
 {
     public class SearchViewModel : BindableBase
     {
-        public SearchViewModel()
+        public SearchViewModel(IRegionManager regionManager, IEventAggregator eventAggregator)
         {
+            _regionManager = regionManager;
+            _eventAggregator = eventAggregator;
             _jewelryService = new JewelryService();
             _ = populateJewelry();
         }
 
+        private DelegateCommand navigateToItem;
+        public DelegateCommand NavigateToItem => navigateToItem ?? (navigateToItem = new DelegateCommand(
+                ()=>
+                {
+                    _regionManager.RequestNavigate("ContentRegion", "ItemView");
+                }
+            ));
+
+        private readonly IRegionManager _regionManager;
+        private readonly IEventAggregator _eventAggregator;
         private readonly JewelryService _jewelryService;
 
         private IEnumerable<JewelryItem> jewelryItems;
@@ -27,6 +42,20 @@ namespace TinkerJems.Wpf.Application.ViewModels
             get { return jewelryItems; }
             set { jewelryItems = value; }
         }
+
+        private JewelryItem selectedJewelryItem;
+
+        public JewelryItem SelectedJewelryItem
+        {
+            get { return selectedJewelryItem; }
+            set 
+            { 
+                SetProperty(ref selectedJewelryItem, value);
+                _eventAggregator.GetEvent<SelectedItemEvent>().Publish(value);
+                NavigateToItem.Execute();
+            }
+        }
+
 
         private IEnumerable<JewelryItem> randomRings;
         public IEnumerable<JewelryItem> RandomRings

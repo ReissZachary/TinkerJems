@@ -56,7 +56,8 @@
                           Height="auto"
                           Margin="10"
                           HorizontalAlignment="Right"
-                          BorderBrush="Transparent">
+                          BorderBrush="Transparent"
+                          SelectedItem="{Binding SelectedJewelryItem}">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Background="Transparent" Orientation="Horizontal" />
