@@ -16,7 +16,6 @@ namespace TinkerJems.Wpf.Application.ViewModels
         {
             _jewelryService = new JewelryService();
             _ = populateJewelry();
-            _ = PopulateRandomJewleryItems();
         }
 
         private readonly JewelryService _jewelryService;
@@ -29,27 +28,82 @@ namespace TinkerJems.Wpf.Application.ViewModels
             set { jewelryItems = value; }
         }
 
-        private IEnumerable<JewelryItem> randomItems;
-
-        public IEnumerable<JewelryItem> RandomItems
+        private IEnumerable<JewelryItem> randomRings;
+        public IEnumerable<JewelryItem> RandomRings
         {
-            get { return randomItems; }
-            set { randomItems = value; }
+            get { return randomRings; }
+            set { randomRings = value; }
+        }
+        
+        private IEnumerable<JewelryItem> randomNecklaces;
+
+        public IEnumerable<JewelryItem> RandomNecklaces
+        {
+            get { return randomNecklaces; }
+            set { randomNecklaces = value; }
         }
 
-        private async Task PopulateRandomJewleryItems()
-        {
+        private IEnumerable<JewelryItem> randomEarrings;
 
+        public IEnumerable<JewelryItem> RandomEarrings
+        {
+            get { return randomEarrings; }
+            set { randomEarrings = value; }
         }
 
+        private IEnumerable<JewelryItem> randomBracelets;
+
+        public IEnumerable<JewelryItem> RandomBracelets
+        {
+            get { return randomBracelets; }
+            set { randomBracelets = value; }
+        }
 
         private async Task populateJewelry()
         {
-            var rnd = new Random();
             JewelryItems = await _jewelryService.GetJewelryItemsAsync();
-            RandomItems = jewelryItems.OrderBy(i => rnd.Next()).Take(4);
             foreach (var j in JewelryItems)
                 j.ImageUrl = $"https://localhost:5001/images/{j.ImageUrl}";
+            populateRandomJewelryItems(JewelryItems);
         }
+
+        private void populateRandomJewelryItems(IEnumerable<JewelryItem> jewelryItems)
+        {
+            populateRandomRings(jewelryItems);
+            populateRandomNecklaces(jewelryItems);
+            populateRandomEarrings(jewelryItems);
+            populateRandomBracelets(jewelryItems);
+
+        }
+
+        private void populateRandomRings(IEnumerable<JewelryItem> jewelryItems)
+        {
+            var rnd = new Random();
+            var rings = jewelryItems.Where(i=>i.Category == "Ring");
+            RandomRings = rings.OrderBy(i => rnd.Next()).Take(4);
+        }
+
+        private void populateRandomNecklaces(IEnumerable<JewelryItem> jewelryItems)
+        {
+            var rnd = new Random();
+            var necklaces = jewelryItems.Where(i=>i.Category == "Necklace");
+            RandomNecklaces = necklaces.OrderBy(i => rnd.Next()).Take(4);
+        }
+
+        private void populateRandomEarrings(IEnumerable<JewelryItem> jewelryItems)
+        {
+            var rnd = new Random();
+            var earrings = jewelryItems.Where(i => i.Category == "Earring");
+            RandomEarrings = earrings.OrderBy(i => rnd.Next()).Take(4);
+        }
+
+        private void populateRandomBracelets(IEnumerable<JewelryItem> jewelryItems)
+        {
+            var rnd = new Random();
+            var bracelets = jewelryItems.Where(i => i.Category == "Bracelet");
+            RandomBracelets = bracelets.OrderBy(i => rnd.Next()).Take(4);
+        }
+
+
     }
 }

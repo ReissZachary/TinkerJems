@@ -8,8 +8,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Background="White">
-    <Grid>
+
+<ScrollViewer VerticalScrollBarVisibility="Visible" CanContentScroll="True">
+<StackPanel Orientation="Horizontal">
+<Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -35,7 +40,6 @@
                     VerticalAlignment="Center">
                     <Image Source="https://icon-library.net/images/ring-icon-png/ring-icon-png-25.jpg"
                            Grid.Row="2"
-                           Visibility="{Binding SplashScreenHomeVisibility}"
                            Height="100"/>
                     <TextBlock 
                         Text="Rings"
@@ -47,7 +51,7 @@
                 </StackPanel>
             </Grid>
             <Grid Grid.Column="1">
-                <ListView ItemsSource="{Binding RandomItems}"
+                <ListView ItemsSource="{Binding RandomRings}"
                           Background="Transparent"
                           Height="auto"
                           Margin="10"
@@ -90,8 +94,8 @@
             </Grid>
         </Grid>
 
-        <!--RING CARDS-->
-        <Grid Grid.Row="1"              
+        <!--Necklace Cards-->
+        <Grid Grid.Row="2"              
               Background="LightGray">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
@@ -105,7 +109,6 @@
                     VerticalAlignment="Center">
                     <Image Source="https://icon-library.net/images/ring-icon-png/ring-icon-png-25.jpg"
                            Grid.Row="2"
-                           Visibility="{Binding SplashScreenHomeVisibility}"
                            Height="100"/>
                     <TextBlock 
                         Text="Rings"
@@ -117,7 +120,83 @@
                 </StackPanel>
             </Grid>
             <Grid Grid.Column="1">
-                <ListView ItemsSource="{Binding RandomItems}"
+                <ListView ItemsSource="{Binding RandomNecklaces}"
+                          Background="Transparent"
+                          Height="auto"
+                          Margin="10"
+                          HorizontalAlignment="Right"
+                          BorderBrush="Transparent">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Background="Transparent" Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border>
+                                <StackPanel 
+                                    Orientation="Vertical"
+                                    Width="auto">
+                                    <Image 
+                                        Source="{Binding ImageUrl}"
+                                        Height="250"
+                                        Width="250"
+                                        Stretch="UniformToFill"/>
+                                    <TextBlock 
+                                        Text="{Binding Name}"
+                                        FontSize="24"
+                                        TextAlignment="Left"
+                                        Padding="10 0 0 0 "
+                                        Background="white"
+                                        Width="250"
+                                        Height="50"/>
+                                    <TextBlock 
+                                        Text="{Binding Price}"
+                                        FontSize="27"
+                                        FontWeight="Bold"
+                                        TextAlignment="Right"
+                                        Background="white"
+                                        Padding="0 0 10 0"
+                                        Width="250"
+                                        Height="50"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Grid>
+        <!--END-->
+
+
+
+        <!--Earring Cards-->
+        <Grid Grid.Row="3"              
+              Background="LightGray">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0"
+                  Width="auto">
+                <StackPanel
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                    <Image Source="https://icon-library.net/images/ring-icon-png/ring-icon-png-25.jpg"
+                           Grid.Row="2"
+                           Height="100"/>
+                    <TextBlock 
+                        Text="Rings"
+                        FontSize="40"
+                        Padding=" 104 0 99 0"
+                        HorizontalAlignment="Center"
+                        Grid.Column="2"
+                        FontWeight="Thin"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="1">
+                <ListView ItemsSource="{Binding RandomEarrings}"
                           Background="Transparent"
                           Height="auto"
                           Margin="10"
@@ -159,5 +238,78 @@
                 </ListView>
             </Grid>
         </Grid>
+        <!--End-->
+
+        <!--Bracelets Cards-->
+        <Grid Grid.Row="4"              
+              Background="LightGray">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0"
+                  Width="auto">
+                <StackPanel
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                    <Image Source="https://icon-library.net/images/ring-icon-png/ring-icon-png-25.jpg"
+                           Grid.Row="2"
+                           Height="100"/>
+                    <TextBlock 
+                        Text="Rings"
+                        FontSize="40"
+                        Padding=" 104 0 99 0"
+                        HorizontalAlignment="Center"
+                        Grid.Column="2"
+                        FontWeight="Thin"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="1">
+                <ListView ItemsSource="{Binding RandomBracelets}"
+                          Background="Transparent"
+                          Height="auto"
+                          Margin="10"
+                          HorizontalAlignment="Right"
+                          BorderBrush="Transparent">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Background="Transparent" Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border>
+                                <StackPanel Orientation="Vertical"
+                                            Width="auto">
+                                    <Image Source="{Binding ImageUrl}"
+                                           Height="250"
+                                           Width="250"
+                                           Stretch="UniformToFill"/>
+                                    <TextBlock Text="{Binding Name}"
+                                               FontSize="24"
+                                               TextAlignment="Left"
+                                               Padding="10 0 0 0 "
+                                               Background="white"
+                                               Width="250"
+                                               Height="50"/>
+                                    <TextBlock Text="{Binding Price}"
+                                               FontSize="27"
+                                               FontWeight="Bold"
+                                               TextAlignment="Right"
+                                               Background="white"
+                                               Padding="0 0 10 0"
+                                               Width="250"
+                                               Height="50"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Grid>
+        <!--End-->
     </Grid>
+</StackPanel>
+</ScrollViewer>
 </UserControl>
