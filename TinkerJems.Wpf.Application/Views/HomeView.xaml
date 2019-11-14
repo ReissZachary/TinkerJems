@@ -43,9 +43,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!--navbar-->
@@ -129,7 +127,7 @@
 
         <ContentControl Name="NavigationRegion"
                         prism:RegionManager.RegionName="NavigationRegion"
-                        Grid.Row="3">
+                        Grid.Row="1">
         </ContentControl>
 
     </Grid>
