@@ -91,6 +91,9 @@
                 <input asp-for="JewelryItem.Category" class="form-control" style="width:42em;"/>
                 <span asp-validation-for="JewelryItem.Category" class="text-danger"></span>
             </div>
+            <textarea rows="5" cols="8" asp-for="NewTags">
+            
+            </textarea>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
@@ -99,21 +102,6 @@
     <a asp-page="Items">Back to List</a>
 </div>
 </div>
-    
-<div class="row" style="width:auto; display:inline-block; background-color:lavenderblush; border-radius:.5em">    
-        <form method="post" asp-page-handler="addTag" style="margin:15px">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label class="control-label" style="width:100px">Add Tag</label>
-                <input asp-for="NewTagName" class="form-control" style="width:200px" />
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Add Tag" class="btn btn-default" />
-            </div>
-        </form>    
-</div>
-
-
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

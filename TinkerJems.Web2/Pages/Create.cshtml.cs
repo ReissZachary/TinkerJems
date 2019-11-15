@@ -24,11 +24,9 @@ namespace TinkerJems.Web2.Pages
             this.hostingEnvironment = hostingEnvironment;
         }
 
-       [BindProperty]
-        public Tag NewTagName { get; set; }
-
         public string[] Images { get; set; }
 
+        public string NewTags { get; set; }
         public IActionResult OnGet()
         {
             var folder = Path.Combine(hostingEnvironment.ContentRootPath, "wwwroot", "Images");
@@ -49,13 +47,24 @@ namespace TinkerJems.Web2.Pages
             JewelryItem.ImageThumbnailUrl = JewelryItem.ImageUrl;
             _context.JewelryItems.Add(JewelryItem);
             await _context.SaveChangesAsync();
+           foreach (var tagName in NewTags.Split("\r"))
+            {
+                var tag = await _context.Tags.FirstOrDefaultAsync(t => t.Name == tagName);
+                if(tag == null)
+                {
+                    tag = new Tag { Name = tagName };
+                    _context.Tags.Add(tag);
+                    await _context.SaveChangesAsync();
+                }
+                var itemTag = new JewelryItemTag();
+                itemTag.JewelryItem = JewelryItem;
+                itemTag.Tag = tag;
+                _context.ItemTags.Add(itemTag);
+                await _context.SaveChangesAsync();
+            }
 
             return RedirectToPage("./Items");
         }
-
-        public async Task OnPostAddTagAsync()
-        {
-
-        }
+       
     }
 }
