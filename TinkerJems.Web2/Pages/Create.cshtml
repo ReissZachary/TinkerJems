@@ -45,31 +45,31 @@
     </div>
 </nav>
 
-<div class="row" style="width:max-content;">
-    <div class="col-md-4">
+
+<div class="row" style="auto; display:inline-block; float:left; padding-left:30px; padding-right:16px; padding-bottom:70px">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="JewelryItem.Name" class="control-label"></label>
-                <input asp-for="JewelryItem.Name" class="form-control" />
+                <input asp-for="JewelryItem.Name" class="form-control" style="width:42em;" />
                 <span asp-validation-for="JewelryItem.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="JewelryItem.Price" class="control-label"></label>
-                <input asp-for="JewelryItem.Price" class="form-control" />
+                <input asp-for="JewelryItem.Price" class="form-control" style="width:42em;" />
                 <span asp-validation-for="JewelryItem.Price" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="JewelryItem.Description" class="control-label"></label>
-                <input asp-for="JewelryItem.Description" class="form-control" />
+                <input asp-for="JewelryItem.Description" class="form-control" style="width:42em;"/>
                 <span asp-validation-for="JewelryItem.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="JewelryItem.LongDescription" class="control-label"></label>
-                <input asp-for="JewelryItem.LongDescription" class="form-control" />
+                <input asp-for="JewelryItem.LongDescription" class="form-control" style="width:42em;" />
                 <span asp-validation-for="JewelryItem.LongDescription" class="text-danger"></span>
             </div>
-            <div class="form-group" style="display:inline-flex; flex-wrap:wrap">
+            <div class="form-group" style="display:inline-flex; flex-wrap:wrap; width:45em">
                 @foreach (var img in Model.Images)
                 {
                     var relativePath = System.IO.Path.GetRelativePath("wwwroot", img);
@@ -83,37 +83,37 @@
             </div>
             <div class="form-group">
                 <label asp-for="JewelryItem.Material" class="control-label"></label>
-                <input asp-for="JewelryItem.Material" class="form-control" />
+                <input asp-for="JewelryItem.Material" class="form-control" style="width:42em;" />
                 <span asp-validation-for="JewelryItem.Material" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="JewelryItem.Category" class="control-label"></label>
-                <input asp-for="JewelryItem.Category" class="form-control" />
+                <input asp-for="JewelryItem.Category" class="form-control" style="width:42em;"/>
                 <span asp-validation-for="JewelryItem.Category" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </form>
-    </div>
+<div style="">
+    <a asp-page="Items">Back to List</a>
 </div>
-<div class="row" style="width:max-content;">
-    <div class="col-md-4">
-        <form method="post" asp-page-handler="addTag">
+</div>
+    
+<div class="row" style="width:auto; display:inline-block; background-color:lavenderblush; border-radius:.5em">    
+        <form method="post" asp-page-handler="addTag" style="margin:15px">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label class="control-label" style="width:300px">Add Tag</label>
-                <input asp-for="NewTagName" class="form-control" style="width:500px" />
+                <label class="control-label" style="width:100px">Add Tag</label>
+                <input asp-for="NewTagName" class="form-control" style="width:200px" />
             </div>
             <div class="form-group">
                 <input type="submit" value="Add Tag" class="btn btn-default" />
             </div>
-        </form>
-    </div>
+        </form>    
 </div>
-<div>
-    <a asp-page="Items">Back to List</a>
-</div>
+
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

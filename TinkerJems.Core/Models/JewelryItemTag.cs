@@ -8,10 +8,8 @@ namespace TinkerJems.Core.Models
     {
         public int Id { get; set; }
         public int JewelryItemId { get; set; }
-        public int TagId { get; set; }
-        
+        public int TagId { get; set; }        
         public JewelryItem JewelryItem { get; set; }
         public Tag  Tag { get; set; }
-
     }
 }

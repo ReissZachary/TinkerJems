@@ -24,26 +24,15 @@ namespace TinkerJems.Web2.Pages
             this.hostingEnvironment = hostingEnvironment;
         }
 
-       
-        public string NewTagName { get; set; }
+       [BindProperty]
+        public Tag NewTagName { get; set; }
 
         public string[] Images { get; set; }
 
         public IActionResult OnGet()
         {
-            //if (id == null)
-            //{
-            //    return NotFound();
-            //}
-
-            //JewelryItem = await _context.JewelryItems.FirstOrDefaultAsync(m => m.Id == id);
             var folder = Path.Combine(hostingEnvironment.ContentRootPath, "wwwroot", "Images");
             Images = Directory.GetFiles(folder);
-
-            //if (JewelryItem == null)
-            //{
-            //    return NotFound();
-            //}
             return Page();
         }
 
