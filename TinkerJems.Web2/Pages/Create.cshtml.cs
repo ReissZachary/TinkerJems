@@ -25,7 +25,7 @@ namespace TinkerJems.Web2.Pages
         }
 
         public string[] Images { get; set; }
-
+        [BindProperty]
         public string NewTags { get; set; }
         public IActionResult OnGet()
         {
@@ -47,7 +47,7 @@ namespace TinkerJems.Web2.Pages
             JewelryItem.ImageThumbnailUrl = JewelryItem.ImageUrl;
             _context.JewelryItems.Add(JewelryItem);
             await _context.SaveChangesAsync();
-           foreach (var tagName in NewTags.Split("\r"))
+           foreach (var tagName in NewTags.Split("\r\n"))
             {
                 var tag = await _context.Tags.FirstOrDefaultAsync(t => t.Name == tagName);
                 if(tag == null)
@@ -59,10 +59,10 @@ namespace TinkerJems.Web2.Pages
                 var itemTag = new JewelryItemTag();
                 itemTag.JewelryItem = JewelryItem;
                 itemTag.Tag = tag;
-                _context.ItemTags.Add(itemTag);
+                _context.ItemTags.Add(itemTag);                
                 await _context.SaveChangesAsync();
+                
             }
-
             return RedirectToPage("./Items");
         }
        

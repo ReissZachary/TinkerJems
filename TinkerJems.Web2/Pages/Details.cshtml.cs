@@ -20,7 +20,6 @@ namespace TinkerJems.Web2.Pages
             _context = context;
         }
 
-
         public JewelryItem JewelryItem { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)

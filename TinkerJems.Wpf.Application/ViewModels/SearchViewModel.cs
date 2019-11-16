@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using TinkerJems.Core.Models;
 using TinkerJems.Wpf.Application.Events;
 using TinkerJems.Wpf.Application.Services;
+using TinkerJems.Wpf.Application.Shared;
+using TinkerJems.Wpf.Application.Views;
 
 namespace TinkerJems.Wpf.Application.ViewModels
 {
@@ -27,7 +29,9 @@ namespace TinkerJems.Wpf.Application.ViewModels
         public DelegateCommand NavigateToItem => navigateToItem ?? (navigateToItem = new DelegateCommand(
                 ()=>
                 {
-                    _regionManager.RequestNavigate("NavigationRegion", "ItemView");
+                    var navigationParams = new NavigationParameters();
+                    navigationParams.Add("Item", SelectedJewelryItem);
+                    _regionManager.RequestNavigate(Constants.NavigationRegion, nameof(ItemView), navigationParams);
                 }
             ));
 
@@ -48,8 +52,8 @@ namespace TinkerJems.Wpf.Application.ViewModels
         public JewelryItem SelectedJewelryItem
         {
             get { return selectedJewelryItem; }
-            set 
-            { 
+            set
+            {
                 SetProperty(ref selectedJewelryItem, value);
                 _eventAggregator.GetEvent<SelectedItemEvent>().Publish(value);
                 NavigateToItem.Execute();
@@ -63,7 +67,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
             get { return randomRings; }
             set { randomRings = value; }
         }
-        
+
         private IEnumerable<JewelryItem> randomNecklaces;
 
         public IEnumerable<JewelryItem> RandomNecklaces

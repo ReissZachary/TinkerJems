@@ -91,9 +91,9 @@
                 <input asp-for="JewelryItem.Category" class="form-control" style="width:42em;"/>
                 <span asp-validation-for="JewelryItem.Category" class="text-danger"></span>
             </div>
-            <textarea rows="5" cols="8" asp-for="NewTags">
-            
-            </textarea>
+            @*<label asp-for="NewTags" class="control-label">Add Tags</label>
+            <input asp-for="NewTags" class="form-control" />*@
+            <textarea rows="5" cols="8" asp-for="NewTags"></textarea>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
