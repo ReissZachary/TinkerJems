@@ -51,10 +51,9 @@
     </div>
 </nav>
 
-<div class="align-">
-    <hr />
-    <img src="/Images/@Html.DisplayFor(model => model.JewelryItem.ImageUrl)" alt="image of item" style="width:300px; height:auto; margin:1em" />
-    <div style="display:inline-block; margin-top:2em; margin-left:2em">
+<div>
+    <img src="/Images/@Html.DisplayFor(model => model.JewelryItem.ImageUrl)" alt="image of item" style="width:300px; height:auto; margin:1em; vertical-align:top;" />
+    <div style="display:inline-block; margin-top:.7em; margin-left:2em; vertical-align:top;">
         <dl class="dl-horizontal text-left" style="display:inline-block">
             <dt>
                 @Html.DisplayNameFor(model => model.JewelryItem.Name)
@@ -69,32 +68,48 @@
                 $@Html.DisplayFor(model => model.JewelryItem.Price)
             </dd>
             @*<dt>
-                    @Html.DisplayNameFor(model => model.JewelryItem.Description)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.JewelryItem.Description)
-                </dd>*@
+            @Html.DisplayNameFor(model => model.JewelryItem.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.JewelryItem.Description)
+        </dd>*@
             <dt>
                 @Html.DisplayNameFor(model => model.JewelryItem.LongDescription)
             </dt>
             <dd>
                 @Html.DisplayFor(model => model.JewelryItem.LongDescription)
             </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.JewelryItem.Tags)
+            </dt>
+            <dd>
+                @if (Model.JewelryItem.Tags == null)
+                {
+                    <span style="color:darkgrey">There are no tags for this item</span>
+                }
+                else
+                {
+                    @foreach (var tag in Model.JewelryItem.Tags)
+                    {
+                        <button type="button" class="btn btn-outline-info">@tag</button>
+                    }
+                }
+            </dd>
             <dd class="align-middle">
-                <button class="btn btn-primary" type="submit">Checkout</button>
+                <button class="btn btn-primary" type="submit" style="margin-top:10px">Checkout</button>
             </dd>
         </dl>
     </div>
 </div>
 
-<hr />
+
 <div class="text-center">
-    |   <a asp-page="./Items">Back to List</a>  |
+    |   <a asp-page="./Items" style="color:black">Back to List</a>  |
 
     @if (canEdit)
     {
-        <a asp-page="./Edit" asp-route-id="@Model.JewelryItem.Id">Edit</a>
-        <a asp-page="./Delete" asp-route-id="@Model.JewelryItem.Id">Delete Item</a>
+        <a asp-page="./Edit" asp-route-id="@Model.JewelryItem.Id" style="color:black">Edit |</a>
+        <a asp-page="./Delete" asp-route-id="@Model.JewelryItem.Id" style="color:black">Delete Item |</a>
     }
 
 </div>

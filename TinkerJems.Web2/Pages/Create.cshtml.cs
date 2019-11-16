@@ -59,10 +59,10 @@ namespace TinkerJems.Web2.Pages
                 var itemTag = new JewelryItemTag();
                 itemTag.JewelryItem = JewelryItem;
                 itemTag.Tag = tag;
-                _context.ItemTags.Add(itemTag);                
+                _context.ItemTags.Add(itemTag);
                 await _context.SaveChangesAsync();
-                
             }
+            await _context.SaveChangesAsync();
             return RedirectToPage("./Items");
         }
        
