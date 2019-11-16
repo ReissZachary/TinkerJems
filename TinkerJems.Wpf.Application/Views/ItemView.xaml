@@ -8,8 +8,50 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    
     <Grid>
-        <TextBlock Text="{Binding SelectedItem.Name}"
-                   FontSize="50"/>
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="auto" />
+            <RowDefinition  Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0"
+              Height="700px"
+              Background="#eaced7"
+              Margin="15">
+            <!--<Grid.Background>
+                <ImageBrush ImageSource="{Binding SelectedItem.ImageUrl}"/>
+            </Grid.Background>-->
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0"
+                        Grid.RowSpan="4"
+                        Width="50px"
+                        Background="Aqua"
+                        Margin="20"
+                        Height="800px"
+                        HorizontalAlignment="Left">
+                
+            </StackPanel>
+            <Image Source="{Binding SelectedItem.ImageUrl}"
+                   Grid.Column="1"
+                   Grid.RowSpan="4"
+                   Width="400px"
+                   Height="800px"
+                   Margin="20"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Stretch"/>
+        </Grid>
+        
     </Grid>
 </UserControl>
