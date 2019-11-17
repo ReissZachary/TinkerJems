@@ -51,9 +51,38 @@
     </div>
 </nav>
 
-<div>
-    <img src="/Images/@Html.DisplayFor(model => model.JewelryItem.ImageUrl)" alt="image of item" style="width:300px; height:auto; margin:1em; vertical-align:top;" />
-    <div style="display:inline-block; margin-top:.7em; margin-left:2em; vertical-align:top;">
+<div style="display:flex">
+    <div>
+        <img src="/Images/@Html.DisplayFor(model => model.JewelryItem.ImageUrl)" alt="image of item" style="width:300px; height:auto; margin:1em; vertical-align:top;" />
+        <div style="margin-left:1em; display:flex">
+            <h5 style="text-align:center; margin-bottom:0em;">Tags</h5>
+        </div>
+        <hr />
+        <div class="container">
+            <ul class="list-group list-group-horizontal" style="list-style-type:none">
+                @if (Model.JewelryItem.Tags == null)
+                {
+                    <li style="color:darkgrey;">There are no tags for this item</li>
+                }
+                else
+                {
+                    @foreach (var tag in Model.JewelryItem.Tags)
+                    {
+                        <li class="list-group-item">@tag</li>
+                    }
+                }
+            </ul>
+        </div>
+        <hr />
+        @if (canEdit)
+        {
+            <div style="margin-left:1em;">
+                <h5 style="text-align:center; margin-bottom:0em;">Add Tags</h5>
+            </div>
+            <textarea rows="5" cols="45" @*asp-for="NewTags"*@></textarea>
+        }
+    </div>
+    <div style="display:inline-block; margin-top:1em; margin-left:2em; vertical-align:top; display:inline-block">
         <dl class="dl-horizontal text-left" style="display:inline-block">
             <dt>
                 @Html.DisplayNameFor(model => model.JewelryItem.Name)
@@ -68,33 +97,17 @@
                 $@Html.DisplayFor(model => model.JewelryItem.Price)
             </dd>
             @*<dt>
-            @Html.DisplayNameFor(model => model.JewelryItem.Description)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.JewelryItem.Description)
-        </dd>*@
+                    @Html.DisplayNameFor(model => model.JewelryItem.Description)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.JewelryItem.Description)
+                </dd>*@
             <dt>
                 @Html.DisplayNameFor(model => model.JewelryItem.LongDescription)
             </dt>
             <dd>
                 @Html.DisplayFor(model => model.JewelryItem.LongDescription)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.JewelryItem.Tags)
-            </dt>
-            <dd>
-                @if (Model.JewelryItem.Tags == null)
-                {
-                    <span style="color:darkgrey">There are no tags for this item</span>
-                }
-                else
-                {
-                    @foreach (var tag in Model.JewelryItem.Tags)
-                    {
-                        <button type="button" class="btn btn-outline-info">@tag</button>
-                    }
-                }
-            </dd>
+            </dd>            
             <dd class="align-middle">
                 <button class="btn btn-primary" type="submit" style="margin-top:10px">Checkout</button>
             </dd>
@@ -103,7 +116,7 @@
 </div>
 
 
-<div class="text-center">
+<div class="text-center" style="margin-top:50px">
     |   <a asp-page="./Items" style="color:black">Back to List</a>  |
 
     @if (canEdit)

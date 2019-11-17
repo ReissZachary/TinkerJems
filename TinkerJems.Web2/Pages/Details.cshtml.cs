@@ -22,6 +22,9 @@ namespace TinkerJems.Web2.Pages
 
         public JewelryItem JewelryItem { get; set; }
 
+        [BindProperty]
+        public string NewTags { get; set; }
+
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
