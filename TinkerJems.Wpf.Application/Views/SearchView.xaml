@@ -127,6 +127,7 @@
                           Height="auto"
                           Margin="10"
                           HorizontalAlignment="Right"
+                          SelectedItem="{Binding SelectedJewelryItem}"
                           BorderBrush="Transparent">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -200,6 +201,7 @@
             </Grid>
             <Grid Grid.Column="1">
                 <ListView ItemsSource="{Binding RandomEarrings}"
+                          SelectedItem="{Binding SelectedJewelryItem}"
                           Background="Transparent"
                           Height="auto"
                           Margin="10"
@@ -275,6 +277,7 @@
                           Height="auto"
                           Margin="10"
                           HorizontalAlignment="Right"
+                          SelectedItem="{Binding SelectedJewelryItem}"
                           BorderBrush="Transparent">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>

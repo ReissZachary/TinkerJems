@@ -1,4 +1,5 @@
-﻿using Prism.Events;
+﻿using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Regions;
@@ -7,6 +8,8 @@ using System.Collections.Generic;
 using System.Text;
 using TinkerJems.Core.Models;
 using TinkerJems.Wpf.Application.Events;
+using TinkerJems.Wpf.Application.Shared;
+using TinkerJems.Wpf.Application.Views;
 
 namespace TinkerJems.Wpf.Application.ViewModels
 {
@@ -19,21 +22,24 @@ namespace TinkerJems.Wpf.Application.ViewModels
         {
             _regionManager = regionManager;
             _eventAggregator = eventAggregator;
-
-            _eventAggregator.GetEvent<SelectedItemEvent>().Subscribe(msg => {
-                SelectedItem = msg;
-            }, ThreadOption.UIThread);
-            var x = eventAggregator.GetEvent<SelectedItemEvent>().SynchronizationContext;
-
         }
 
+        private DelegateCommand navigateToCheckout;
+        public DelegateCommand NavigateToCheckout => navigateToCheckout ?? (navigateToCheckout= new DelegateCommand(
+                () =>
+                {
+                    var navigationParams = new NavigationParameters();
+                    navigationParams.Add("OrderedItem", SelectedItem);
+                    _regionManager.RequestNavigate(Constants.NavigationRegion, nameof(CheckoutView), navigationParams);
+                }
+            ));
         private JewelryItem selectedItem;
         public JewelryItem SelectedItem
         {
             get { return selectedItem; }
             set { SetProperty(ref selectedItem,value); }
         }
-
+        
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
             SelectedItem = navigationContext.Parameters.GetValue<JewelryItem>("Item");
@@ -46,7 +52,6 @@ namespace TinkerJems.Wpf.Application.ViewModels
 
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
-            throw new NotImplementedException();
         }
     }
 }
