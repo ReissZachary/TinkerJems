@@ -104,7 +104,9 @@
                         {
                             foreach (var tagLink in Model.JewelryItem.Tags)
                             {
-                                <li class="list-group-item" style="margin-right:5px; height:max-content; padding:5px;">@tagLink.Tag.Name</li>
+                                <li class="list-group-item" style="margin-right:5px; height:max-content; padding:5px;">
+                                    <a asp-page="./SelectedTag" asp-route-id="@tagLink.Tag.Name" style="color:black">@tagLink.Tag.Name</a>
+                                </li>
                             }
                         }
                     </ul>
