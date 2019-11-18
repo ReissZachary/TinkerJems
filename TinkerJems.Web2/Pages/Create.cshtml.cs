@@ -57,8 +57,9 @@ namespace TinkerJems.Web2.Pages
                     await _context.SaveChangesAsync();
                 }
                 var itemTag = new JewelryItemTag();
-                itemTag.JewelryItem = JewelryItem;
+                itemTag.JewelryItemId = JewelryItem.Id;
                 itemTag.Tag = tag;
+                itemTag.TagId = tag.Id;
                 _context.ItemTags.Add(itemTag);
                 await _context.SaveChangesAsync();
             }

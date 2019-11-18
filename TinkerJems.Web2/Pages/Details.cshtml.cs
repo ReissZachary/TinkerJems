@@ -40,5 +40,28 @@ namespace TinkerJems.Web2.Pages
             }
             return Page();
         }
+
+        public async Task<IActionResult> OnPostAsync(int? id)
+        {
+            foreach (var tagName in NewTags.Split("\r\n"))
+            {
+                var tag = await _context.Tags.FirstOrDefaultAsync(t => t.Name == tagName);
+                if (tag == null)
+                {
+                    tag = new Tag { Name = tagName };
+                    _context.Tags.Add(tag);
+                    await _context.SaveChangesAsync();
+                }
+                JewelryItem = _context.JewelryItems.FirstOrDefault(m => m.Id == id);
+                var itemTag = new JewelryItemTag();
+                itemTag.JewelryItem = JewelryItem;
+                itemTag.JewelryItemId = JewelryItem.Id;
+                itemTag.Tag = tag;
+                itemTag.TagId = tag.Id;
+                _context.ItemTags.Add(itemTag);
+                await _context.SaveChangesAsync();
+            }
+            return Page();
+        }
     }
 }
