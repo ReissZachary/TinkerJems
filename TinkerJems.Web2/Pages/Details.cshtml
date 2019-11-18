@@ -83,13 +83,7 @@
             </dt>
             <dd>
                 $@Html.DisplayFor(model => model.JewelryItem.Price)
-            </dd>
-            @*<dt>
-            @Html.DisplayNameFor(model => model.JewelryItem.Description)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.JewelryItem.Description)
-        </dd>*@
+            </dd>            
             <dt>
                 @Html.DisplayNameFor(model => model.JewelryItem.LongDescription)
             </dt>
@@ -108,9 +102,9 @@
                         }
                         else
                         {
-                            @foreach (var tag in Model.JewelryItem.Tags)
+                            foreach (var tagLink in Model.JewelryItem.Tags)
                             {
-                                <li class="list-group-item" style="margin-right:5px; height:max-content; padding:5px;>@tag.Tag.Name</li>
+                                <li class="list-group-item" style="margin-right:5px; height:max-content; padding:5px;">@tagLink.Tag.Name</li>
                             }
                         }
                     </ul>
