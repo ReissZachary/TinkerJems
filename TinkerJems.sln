@@ -20,7 +20,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TInkerJems.Tests", "TInkerJ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinkerJems.Web2", "TinkerJems.Web2\TinkerJems.Web2.csproj", "{CFAB94BE-64D2-438A-A1AE-8E358FDB83FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinkerJems.Wpf.Application", "TinkerJems.Wpf.Application\TinkerJems.Wpf.Application.csproj", "{9F3E82E6-A925-47B9-9033-C669D0082D30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinkerJems.Wpf.Application", "TinkerJems.Wpf.Application\TinkerJems.Wpf.Application.csproj", "{9F3E82E6-A925-47B9-9033-C669D0082D30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinkerJems.WPF.Application.Tests", "TinkerJems.WPF.Application.Tests\TinkerJems.WPF.Application.Tests.csproj", "{AC25C04C-EFDF-4A0D-A6B2-C2BA3DC253D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,6 +54,10 @@ Global
 		{9F3E82E6-A925-47B9-9033-C669D0082D30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F3E82E6-A925-47B9-9033-C669D0082D30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F3E82E6-A925-47B9-9033-C669D0082D30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC25C04C-EFDF-4A0D-A6B2-C2BA3DC253D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC25C04C-EFDF-4A0D-A6B2-C2BA3DC253D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC25C04C-EFDF-4A0D-A6B2-C2BA3DC253D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC25C04C-EFDF-4A0D-A6B2-C2BA3DC253D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
