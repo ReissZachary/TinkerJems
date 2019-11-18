@@ -52,5 +52,10 @@ namespace TinkerJems.Wpf.Application.Services
                 return false;
             }
         }
+
+        public bool ValidateQuantity(int quantity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
