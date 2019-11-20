@@ -54,7 +54,6 @@ namespace TinkerJems.Wpf.Application.ViewModels
             set
             {
                 SetProperty(ref selectedJewelryItem, value);
-                _eventAggregator.GetEvent<SelectedItemEvent>().Publish(value);
                 NavigateToItem.Execute();
             }
         }

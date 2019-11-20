@@ -213,12 +213,20 @@ namespace TinkerJems.Wpf.Application.ViewModels
                     {
                         var message = new MimeMessage();
                         message.From.Add(new MailboxAddress("ZackDiego", "testemail.zachary.reiss@gmail.com"));
-                        message.To.Add(new MailboxAddress("Mrs. Chanandler Bong", "testemail.zachary.reiss@gmail.com"));
-                        message.Subject = "How you doin'?";
+                        message.To.Add(new MailboxAddress("Valued Customer", "testemail.zachary.reiss@gmail.com"));
+                        message.Subject = "Incoming Jewelry Order";
 
                         message.Body = new TextPart("plain")
                         {
-                            Text = OrderDetails + Quantity.ToString() + SelectedSize
+                            Text =  "Nettie, Here is a new order for you to process!" + "\n\n" +
+                                    "Item: " + OrderedItem.Name + "\n" +
+                                    "Total price: " + "$" + (OrderedItem.Price * Quantity) + "\n" +
+                                    "Quantity: " + Quantity.ToString() + "\n" +
+                                    "Size: " + SelectedSize + "\n" +
+                                    "Details: " + OrderDetails + "\n\n\n" +
+
+                                    "Contact Email: " + CustomerEmail + "\n\n" 
+
                         };
 
                         using (var client = new SmtpClient())
