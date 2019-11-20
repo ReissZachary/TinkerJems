@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using MimeKit;
 using MailKit.Net.Smtp;
 using MailKit;
+using TinkerJems.Wpf.Application.Services;
+using System.Windows;
 
 namespace TinkerJems.Wpf.Application.ViewModels
 {
@@ -18,14 +20,22 @@ namespace TinkerJems.Wpf.Application.ViewModels
 
         private readonly IRegionManager _regionManager;
         private readonly IEventAggregator _eventAggregator;
+        private readonly ValidationService _valiationService;
 
         public CheckoutViewModel(IRegionManager regionManager, IEventAggregator eventAggregator)
         {
             _regionManager = regionManager;
             _eventAggregator = eventAggregator;
+            _valiationService = new ValidationService();
+            initializeErrors();
         }
 
-        IConfiguration config;
+        private void initializeErrors()
+        {
+            QuantityError = "You have not selected a quantity";
+            SizeError = "You have not selected a size";
+            CustomerEmailError = "You have not entered an email";
+        }
 
         private JewelryItem orderedItem;
 
@@ -40,7 +50,39 @@ namespace TinkerJems.Wpf.Application.ViewModels
         public int Quantity
         {
             get { return quantity; }
-            set { SetProperty(ref quantity, value); }
+            set
+            {
+                if (_valiationService.ValidateQuantity(value) == false)
+                {
+                    QuantityError = "Error: Quantity must be a number above 0 and less than 50";
+                }
+                else
+                {
+                    QuantityError = null;
+                }
+                SetProperty(ref quantity, value);
+            }
+        }
+
+        private Visibility quantityErrorVisibility;
+
+        public Visibility QuantityErrorVisibility
+        {
+            get { return quantityErrorVisibility; }
+            set { SetProperty(ref quantityErrorVisibility, value); }
+        }
+
+        private string quantityError;
+
+        public string QuantityError
+        {
+            get { return quantityError; }
+            set
+            {
+                SetProperty(ref quantityError, value);
+                QuantityErrorVisibility = value.IsNullOrWhiteSpace() ? Visibility.Collapsed : Visibility.Visible;
+            }
+
         }
 
         private int size;
@@ -48,7 +90,30 @@ namespace TinkerJems.Wpf.Application.ViewModels
         public int Size
         {
             get { return size; }
-            set { SetProperty(ref size, value); }
+            set
+            {                
+                SetProperty(ref size, value);
+            }
+        }
+
+        private Visibility sizeErrorVisibility;
+
+        public Visibility SizeErrorVisibility
+        {
+            get { return sizeErrorVisibility; }
+            set { SetProperty(ref sizeErrorVisibility, value); }
+        }
+
+        private string sizeError;
+
+        public string SizeError
+        {
+            get { return sizeError; }
+            set
+            {
+               SetProperty(ref sizeError, value);
+               SizeErrorVisibility = value.IsNullOrWhiteSpace() ? Visibility.Collapsed : Visibility.Visible;
+            }
         }
 
         private string customerEmail;
@@ -56,8 +121,42 @@ namespace TinkerJems.Wpf.Application.ViewModels
         public string CustomerEmail
         {
             get { return customerEmail; }
-            set { SetProperty(ref customerEmail, value); }
+            set
+            {
+                if (_valiationService.ValidateEmail(value) == false)
+                {
+                    CustomerEmailError = "Error: Must enter a valid email address";
+                }
+                else
+                {
+                    CustomerEmailError = null;
+                }
+                SetProperty(ref customerEmail, value);
+            }
         }
+
+        private Visibility customerEmailErrorVisibility;
+
+        public Visibility CustomerEmailErrorVisibility
+        {
+            get { return customerEmailErrorVisibility; }
+            set { SetProperty(ref customerEmailErrorVisibility, value); }
+        }
+
+
+        private string customerEmailError;
+
+        public string CustomerEmailError
+        {
+            get { return customerEmailError; }
+            set
+            {
+                SetProperty(ref customerEmailError, value);
+                CustomerEmailErrorVisibility = value.IsNullOrWhiteSpace() ? Visibility.Collapsed : Visibility.Visible;
+            }
+
+    }
+
 
         private string orderDetails;
 
@@ -112,6 +211,14 @@ namespace TinkerJems.Wpf.Application.ViewModels
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
             throw new NotImplementedException();
+        }
+    }
+
+    public static class DemoExtensionMethods
+    {
+        public static bool IsNullOrWhiteSpace(this string value)
+        {
+            return String.IsNullOrWhiteSpace(value);
         }
     }
 }

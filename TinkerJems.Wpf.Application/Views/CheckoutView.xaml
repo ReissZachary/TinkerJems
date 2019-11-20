@@ -9,19 +9,66 @@
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <StackPanel>
-            <TextBlock Text="{Binding OrderedItem.Name}" />
-            <TextBlock Text="Email" />
-            <TextBox Text="{Binding CustomerEmail}"/>
-            <TextBlock Text="Quantity" />
-            <TextBox Text="{Binding Quantity}"/>
-            <TextBlock Text="Size" />
-            <TextBox Text="{Binding Size}"/>
-            <TextBlock Text="Personal Requests" />
-            <TextBox Text="{Binding OrderDetails}"
-                     Height="300px"/>
-            <Button Command="{Binding SubmitOrder}"
-                    Content="Submit Order" />
-        </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Text="{Binding OrderedItem.Name}"
+            Grid.Row="0"/>
+        <TextBlock
+            Text="Email"
+            Grid.Row="1"/>
+        <TextBox
+            Text="{Binding CustomerEmail, ValidatesOnDataErrors=True}"
+            Grid.Row="2"/>
+        <TextBlock
+            Text="{Binding CustomerEmailError}"
+            Visibility="{Binding CustomerEmailErrorVisibility}"
+            Grid.Row="3"
+            Foreground ="Red"/>
+        <TextBlock
+            Text="Quantity"
+            Grid.Row="4"/>
+        <TextBox
+            Text="{Binding Quantity, ValidatesOnDataErrors=True}"
+            Grid.Row="5"/>
+        <TextBlock
+            Text="{Binding QuantityError}"
+            Visibility ="{Binding QuantityErrorVisibility}"
+            Grid.Row="6"
+            Foreground ="Red"/>
+        <TextBlock
+            Text="Size"
+            Grid.Row="7"
+                   />
+        <TextBox
+            Text="{Binding Size}"
+            Grid.Row="8"
+            />
+        <TextBlock
+            Text="Personal Requests"
+            Grid.Row="9"
+                   />
+        <TextBox
+            Text="{Binding OrderDetails}"
+            Height="300px"
+            Grid.Row="10"/>
+        <Button
+            Command="{Binding SubmitOrder}"
+            Content="Submit Order"
+            Grid.Row="11"/>
     </Grid>
 </UserControl>

@@ -55,7 +55,76 @@ namespace TinkerJems.Wpf.Application.Services
 
         public bool ValidateQuantity(int quantity)
         {
-            throw new NotImplementedException();
+            if (quantity <= 0)
+            {
+                return false;
+            }
+
+            if(quantity > 50)
+            {
+                return false;
+            }
+
+            if (quantity.GetType().FullName != "System.Int32")
+            {
+                return false;
+            }
+
+            return true;
         }
+
+        public List<string> GetAllSizesByCategory(string category)
+        {
+            if(category == "Ring")
+            {
+                return RingSizeList;
+            }
+            if (category == "Necklace")
+            {
+                return NecklaceSizeList;
+            }
+            if (category == "Bracelet")
+            {
+                return BraceletSizeList;
+            }
+            if (category == "Earring")
+            {
+                return EarringSizeList;
+            }
+
+            return RingSizeList;
+        }
+
+        private List<string> RingSizeList = new List<string>
+            {
+                "0.5", "1", "1.5", "2", "2.5", "3", "3.5", "4", "4.5", "5", "5.5", "6", "6.6",
+                "7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5", "11", "11.5", "12", "12.5",
+                "13", "13.5", "14"
+            };
+        private List<string> BraceletSizeList = new List<string>
+            {
+                "Small: 17-19 cm",
+                "Medium: 19-21 cm",
+                "Large: 21-23 cm",
+                "Extra Large: 23-25 cm"
+            };
+        private List<string> NecklaceSizeList = new List<string>
+            {
+                "14 inches",
+                "16 inches",
+                "18 inches",
+                "20 inches",
+                "22 inches",
+                "24 inches",
+                "30 inches",
+                "36 inches"
+            };
+        private List<string> EarringSizeList = new List<string>
+            {
+                "Small",
+                "Medium",
+                "Large",
+                "Extra Large"
+            };
     }
 }
