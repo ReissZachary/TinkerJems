@@ -32,17 +32,43 @@ namespace TinkerJems.Wpf.Application.ViewModels
 
         private void initializeErrors()
         {
-            QuantityError = "You have not selected a quantity";
-            SizeError = "You have not selected a size";
-            CustomerEmailError = "You have not entered an email";
+            QuantityError = "*";
+            CustomerEmailError = "* Required";
+            SizeError = "*";
         }
+
+        private bool hasNoErrors()
+        {
+            if (CustomerEmail == null || Quantity == 0 || SelectedSize == null ||
+                CustomerEmailError != null || QuantityError != null || SizeError != null)
+            {
+                SubmitError = "Please complete the form correctly to procede";
+                return false;
+            }
+
+            SubmitError = null;
+            return true;
+        }
+
+        private string submitError;
+
+        public string SubmitError
+        {
+            get { return submitError; }
+            set { SetProperty(ref submitError, value); }
+        }
+
 
         private JewelryItem orderedItem;
 
         public JewelryItem OrderedItem
         {
             get { return orderedItem; }
-            set { SetProperty(ref orderedItem, value); }
+            set
+            {
+                SetProperty(ref orderedItem, value);
+                SizeList = _valiationService.GetAllSizesByCategory(OrderedItem.Category);
+            }
         }
 
         private int quantity;
@@ -85,16 +111,29 @@ namespace TinkerJems.Wpf.Application.ViewModels
 
         }
 
-        private int size;
+        private List<string> sizeList;
 
-        public int Size
+        public List<string> SizeList
         {
-            get { return size; }
+            get { return sizeList; }
             set
-            {                
-                SetProperty(ref size, value);
+            {
+                SetProperty(ref sizeList, value);
             }
         }
+
+        private string selectedSize;
+
+        public string SelectedSize
+        {
+            get { return selectedSize; }
+            set
+            {
+                SetProperty(ref selectedSize, value);
+                SizeError = null;
+            }
+        }
+
 
         private Visibility sizeErrorVisibility;
 
@@ -170,28 +209,31 @@ namespace TinkerJems.Wpf.Application.ViewModels
         public DelegateCommand SubmitOrder => submitOrder ?? (submitOrder = new DelegateCommand(
                 () =>
                 {
-                    var message = new MimeMessage();
-                    message.From.Add(new MailboxAddress("ZackDiego", "testemail.zachary.reiss@gmail.com"));
-                    message.To.Add(new MailboxAddress("Mrs. Chanandler Bong", "testemail.zachary.reiss@gmail.com"));
-                    message.Subject = "How you doin'?";
-
-                    message.Body = new TextPart("plain")
+                    if (hasNoErrors())
                     {
-                        Text = OrderDetails + Quantity.ToString() + Size.ToString()
-                    };
+                        var message = new MimeMessage();
+                        message.From.Add(new MailboxAddress("ZackDiego", "testemail.zachary.reiss@gmail.com"));
+                        message.To.Add(new MailboxAddress("Mrs. Chanandler Bong", "testemail.zachary.reiss@gmail.com"));
+                        message.Subject = "How you doin'?";
 
-                    using (var client = new SmtpClient())
-                    {
-                        // For demo-purposes, accept all SSL certificates (in case the server supports STARTTLS)
-                        client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+                        message.Body = new TextPart("plain")
+                        {
+                            Text = OrderDetails + Quantity.ToString() + SelectedSize
+                        };
 
-                        client.Connect("smtp.gmail.com", 587, false);
+                        using (var client = new SmtpClient())
+                        {
+                            // For demo-purposes, accept all SSL certificates (in case the server supports STARTTLS)
+                            client.ServerCertificateValidationCallback = (s, c, h, e) => true;
 
-                        // Note: only needed if the SMTP server requires authentication
-                        client.Authenticate("testemail.zachary.reiss@gmail.com", "Thisisatestemail!");
+                            client.Connect("smtp.gmail.com", 587, false);
 
-                        client.Send(message);
-                        client.Disconnect(true);
+                            // Note: only needed if the SMTP server requires authentication
+                            client.Authenticate("testemail.zachary.reiss@gmail.com", "Thisisatestemail!");
+
+                            client.Send(message);
+                            client.Disconnect(true);
+                        }
                     }
                 }
             ));
