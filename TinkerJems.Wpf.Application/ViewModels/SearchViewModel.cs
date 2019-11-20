@@ -17,10 +17,9 @@ namespace TinkerJems.Wpf.Application.ViewModels
 {
     public class SearchViewModel : BindableBase
     {
-        public SearchViewModel(IRegionManager regionManager, IEventAggregator eventAggregator)
+        public SearchViewModel(IRegionManager regionManager)
         {
             _regionManager = regionManager;
-            _eventAggregator = eventAggregator;
             _jewelryService = new JewelryService();
             _ = populateJewelry();
         }
