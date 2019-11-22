@@ -21,6 +21,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
         {
             _regionManager = regionManager;
             _jewelryService = new JewelryService();
+            Title = "SearchView";
             _ = populateJewelry();
         }
 
@@ -30,13 +31,22 @@ namespace TinkerJems.Wpf.Application.ViewModels
                 {
                     var navigationParams = new NavigationParameters();
                     navigationParams.Add("Item", SelectedJewelryItem);
+                    HistoryStack.ViewStack.Push(new History { PageName = Title });
                     _regionManager.RequestNavigate(Constants.NavigationRegion, nameof(ItemView), navigationParams);
                 }
             ));
 
         private readonly IRegionManager _regionManager;
-        private readonly IEventAggregator _eventAggregator;
         private readonly JewelryService _jewelryService;
+
+        private string title;
+
+        public string Title
+        {
+            get { return title; }
+            set { title = value; }
+        }
+
 
         private IEnumerable<JewelryItem> jewelryItems;
 

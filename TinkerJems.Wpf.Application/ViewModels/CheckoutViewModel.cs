@@ -28,6 +28,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
             _eventAggregator = eventAggregator;
             _valiationService = new ValidationService();
             initializeErrors();
+            Title = "CheckoutView";
         }
 
         private void initializeErrors()
@@ -48,6 +49,14 @@ namespace TinkerJems.Wpf.Application.ViewModels
 
             SubmitError = null;
             return true;
+        }
+
+        private string title;
+
+        public string Title
+        {
+            get { return title; }
+            set { title = value; }
         }
 
         private string submitError;
@@ -225,7 +234,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
                                     "Size: " + SelectedSize + "\n" +
                                     "Details: " + OrderDetails + "\n\n\n" +
 
-                                    "Contact Email: " + CustomerEmail + "\n\n" 
+                                    "Contact Email: " + CustomerEmail + "\n\n"
 
                         };
 
@@ -255,12 +264,11 @@ namespace TinkerJems.Wpf.Application.ViewModels
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
-            throw new NotImplementedException();
         }
     }
 

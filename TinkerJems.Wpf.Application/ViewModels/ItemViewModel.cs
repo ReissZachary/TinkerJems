@@ -22,6 +22,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
         {
             _regionManager = regionManager;
             _eventAggregator = eventAggregator;
+            Title = "ItemView";
         }
 
         private DelegateCommand navigateToCheckout;
@@ -30,16 +31,26 @@ namespace TinkerJems.Wpf.Application.ViewModels
                 {
                     var navigationParams = new NavigationParameters();
                     navigationParams.Add("OrderedItem", SelectedItem);
+                    HistoryStack.ViewStack.Push(new History { PageName = Title, Item = SelectedItem });
                     _regionManager.RequestNavigate(Constants.NavigationRegion, nameof(CheckoutView), navigationParams);
                 }
             ));
+
+        private string title;
+
+        public string Title
+        {
+            get { return title; }
+            set { title = value; }
+        }
+
         private JewelryItem selectedItem;
         public JewelryItem SelectedItem
         {
             get { return selectedItem; }
             set { SetProperty(ref selectedItem,value); }
         }
-        
+
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
             SelectedItem = navigationContext.Parameters.GetValue<JewelryItem>("Item");
@@ -47,7 +58,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public void OnNavigatedFrom(NavigationContext navigationContext)

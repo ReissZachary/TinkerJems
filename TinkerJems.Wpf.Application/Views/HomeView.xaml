@@ -60,16 +60,11 @@
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
 
-                <!--<TextBlock Text="&lt;&lt;&lt;"
-                           Grid.Column="0"
-                           Margin="10"/>-->
-                <Button Command="{Binding NavigateToSearch}"
-                        CommandParameter="SearchView"
+                <Button Command="{Binding NavigateBack}"
                         Width="auto"
                         Height="auto"
                         Content="3"
                         Grid.Column="0"
-                        Background="Transparent"
                         BorderThickness="0"
                         FontFamily="Marlett"
                         FontSize="25"
