@@ -32,16 +32,21 @@ namespace TinkerJems.Web2.Pages
                 return NotFound();
             }
 
-            JewelryItem = await _context.JewelryItems
-                .Include(j => j.Tags)
-                .ThenInclude(t=> t.Tag)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            await loadJewelryItem(id);
 
             if (JewelryItem == null)
             {
                 return NotFound();
             }
             return Page();
+        }
+
+        private async Task loadJewelryItem(int? id)
+        {
+            JewelryItem = await _context.JewelryItems
+                            .Include(j => j.Tags)
+                            .ThenInclude(t => t.Tag)
+                            .FirstOrDefaultAsync(m => m.Id == id);
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
@@ -66,5 +71,17 @@ namespace TinkerJems.Web2.Pages
             }
             return Page();
         }
+
+        public async Task<IActionResult> OnPostDeleteTagAsync( int jewelryItemId, int tagId)
+        {
+            var itemTag = await _context.ItemTags.FirstOrDefaultAsync(it => it.JewelryItemId == jewelryItemId && it.TagId == tagId);
+            if (itemTag != null)
+            {
+                _context.ItemTags.Remove(itemTag);
+                 await _context.SaveChangesAsync();
+                await loadJewelryItem(jewelryItemId);
+            }
+            return Page();
+        } 
     }
 }
