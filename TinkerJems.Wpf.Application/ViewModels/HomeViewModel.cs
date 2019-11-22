@@ -34,7 +34,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
 
                         var navigationParams = new NavigationParameters();
                         navigationParams.Add("Item", view.Item);
-                        _regionManager.RequestNavigate(Constants.NavigationRegion, nameof(view.PageName), navigationParams);
+                        _regionManager.RequestNavigate(Constants.NavigationRegion, view.PageName, navigationParams);
                     }
                     else
                     {
