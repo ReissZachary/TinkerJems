@@ -105,16 +105,21 @@
                             foreach (var tagLink in Model.JewelryItem.Tags)
                             {
                                 <li class="list-group-item" style="margin-right:5px; height:max-content; width:max-content; padding:5px;">
-                                    <span>
-                                        <a asp-page="./SelectedTag" asp-route-tagName="@tagLink.Tag.Name" style="color:black">@tagLink.Tag.Name</a>
-                                        <a asp-page="./DeleteTag" asp-route-id="@Model.JewelryItem.Id">
-                                            <button style="background:none; border:none;" onclick="deleteTagFromItem()">
-                                                <svg style="pointer-events:none;" width="12" height="12" viewBox="0 0 14 14">
-                                                    <path d="M12 3.41L10.59 2 7 5.59 3.41 2 2 3.41 5.59 7 2 10.59 3.41 12 7 8.41 10.59 12 12 10.59 8.41 7z"></path>
-                                                </svg>
-                                            </button>
-                                        </a>
-                                    </span>
+                                    
+                                    <a asp-page="./SelectedTag" asp-route-tagName="@tagLink.Tag.Name" style="color:black">@tagLink.Tag.Name</a>
+                                    @if (canEdit)
+                                    {
+                                <form method="post" asp-page-handler="DeleteTag">
+                                    <input type="hidden" value="@Model.JewelryItem.Id" name="JewelryItemId" />
+                                    <input type="hidden" value="@tagLink.TagId" name="TagId" />
+                                    <button style="background:none; border:none;" onclick="deleteTagFromItem()">
+                                        <svg style="pointer-events:none;" width="12" height="12" viewBox="0 0 14 14">
+                                            <path d="M12 3.41L10.59 2 7 5.59 3.41 2 2 3.41 5.59 7 2 10.59 3.41 12 7 8.41 10.59 12 12 10.59 8.41 7z"></path>
+                                        </svg>
+                                    </button>
+                                </form>
+                                    }
+                                    
                                 </li>
                             }
                         }
@@ -140,8 +145,3 @@
 
 </div>
 
-<script>
-    function deleteTagFromItem() {
-
-    }
-</script>

@@ -47,9 +47,7 @@
         </Grid.RowDefinitions>
 
         <!--navbar-->
-        <Border
-                Grid.Row="0"
-                >
+        <Border Grid.Row="0" >
             <Grid Background="#edd8ce">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
