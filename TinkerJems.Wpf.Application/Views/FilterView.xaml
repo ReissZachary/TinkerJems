@@ -9,6 +9,8 @@
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-
+        <TextBlock Text="{Binding SelectedCategory}"
+                   Margin="200"
+                   FontSize="40"/>
     </Grid>
 </UserControl>

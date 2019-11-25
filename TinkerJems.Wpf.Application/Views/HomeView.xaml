@@ -79,13 +79,9 @@
                 </Button>
                 <StackPanel Margin="10"
                             Grid.Column="2">
-                    <ComboBox>
-                        <ComboBoxItem IsSelected="True"
-                                      Content="Jewelry"/>
-                        <ComboBoxItem Content="Rings"/>
-                        <ComboBoxItem Content="Necklaces"/>
-                        <ComboBoxItem Content="Earrings"/>
-                        <ComboBoxItem Content="Bracelets"/>
+                    <ComboBox
+                        SelectedItem="{Binding SelectedCategory}"
+                        ItemsSource="{Binding Categories}">
                     </ComboBox>
                 </StackPanel>
 

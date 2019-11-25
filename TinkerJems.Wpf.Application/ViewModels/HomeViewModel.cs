@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using TinkerJems.Wpf.Application.Shared;
+using TinkerJems.Wpf.Application.Views;
 
 namespace TinkerJems.Wpf.Application.ViewModels
 {
@@ -43,6 +44,18 @@ namespace TinkerJems.Wpf.Application.ViewModels
                 }
             ));
 
+
+        private DelegateCommand navigateToFilter;
+        public DelegateCommand NavigateToFilter => navigateToFilter ?? (navigateToFilter = new DelegateCommand(
+                () =>
+                {
+                    var navigationParams = new NavigationParameters();
+                    navigationParams.Add("Category", SelectedCategory);
+                    HistoryStack.ViewStack.Push(new History { PageName = Title });
+                    _regionManager.RequestNavigate(Constants.NavigationRegion, nameof(FilterView), navigationParams);
+                }
+            ));
+
         private string title;
 
         public string Title
@@ -50,5 +63,21 @@ namespace TinkerJems.Wpf.Application.ViewModels
             get { return title; }
             set { title = value; }
         }
+
+        private string selectedCategory;
+
+        public string SelectedCategory
+        {
+            get { return selectedCategory; }
+            set
+            {
+                SetProperty(ref selectedCategory,value);
+                NavigateToFilter.Execute();
+
+            }
+        }
+
+        public IEnumerable<string> Categories { get; } = new[] { "Jewelry", "Rings", "Necklaces", "Earrings", "Bracelets" };
+
     }
 }
