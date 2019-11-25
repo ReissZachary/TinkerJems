@@ -28,6 +28,7 @@ namespace TinkerJems.Wpf.Application
             containerRegistry.RegisterForNavigation<SearchView>();
             containerRegistry.RegisterForNavigation<HomeView>();
             containerRegistry.RegisterForNavigation<ItemView>();
+            containerRegistry.RegisterForNavigation<FilterView>();
             containerRegistry.RegisterForNavigation<CheckoutView>();
         }
 
