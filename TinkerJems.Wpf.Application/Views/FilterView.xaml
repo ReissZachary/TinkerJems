@@ -9,8 +9,43 @@
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <TextBlock Text="{Binding SelectedCategory}"
-                   Margin="200"
-                   FontSize="40"/>
+                   FontSize="40"
+                   Grid.Row="0"
+                   Grid.ColumnSpan="2"
+                   HorizontalAlignment="Center"/>
+        <Border Grid.Row="1"                
+                Grid.Column="1"
+                BorderBrush="Black"
+                BorderThickness="2px">
+
+            <ComboBox SelectedItem="{Binding SelectedSort}"
+                      ItemsSource="{Binding SortBy}"
+                      Width="100px"
+                      Margin="5"
+                      HorizontalAlignment="Right">
+            </ComboBox>
+        </Border>
+
+        <StackPanel Grid.Row="1"
+                    Grid.Column="0"
+                    Background="LightBlue"
+                    Width="300"
+                    HorizontalAlignment="Left">
+            
+        </StackPanel>
+                    
     </Grid>
 </UserControl>

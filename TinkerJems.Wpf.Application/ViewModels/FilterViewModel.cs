@@ -30,5 +30,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
             set { SetProperty(ref selectedCategory, value); }
         }
 
+        public IEnumerable<string> SortBy { get; } = new[] { "Price (Low-High)", "Price (High-Low)", "Name (A-Z)", "Namme (Z-A)"};
+
     }
 }
