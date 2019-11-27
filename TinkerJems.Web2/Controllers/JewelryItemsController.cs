@@ -46,13 +46,20 @@ namespace TinkerJems.Web2.Controllers
         [HttpGet("[action]")]
         public async Task<ActionResult<IEnumerable<JewelryItem>>> GetJewelryByMaterial(string material)
         {
-           return  await _context.JewelryItems.Where(m => m.Material == material).ToListAsync();
+           return await _context.JewelryItems.Where(m => m.Material == material).ToListAsync();
         }
 
         [HttpGet("[action]")]
         public async Task<ActionResult<IEnumerable<JewelryItem>>> GetJewelryByCategory(string category)
         {
+
             return await _context.JewelryItems.Where(m => m.Category == category).ToListAsync();
+            //var items = await _context.JewelryItems.
+            //     Include(j => j.Tags)
+            //     .ThenInclude(t => t.Tag)
+            //     .Where(m => m.Category == category).ToListAsync();
+
+            //return items;
         }
 
         // PUT: api/JewelryItems/5

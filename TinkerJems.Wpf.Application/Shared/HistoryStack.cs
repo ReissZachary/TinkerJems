@@ -14,5 +14,6 @@ namespace TinkerJems.Wpf.Application.Shared
     {
         public string PageName { get; set; }
         public JewelryItem Item { get; set; }
+        public string Category { get; set; }
     }
 }

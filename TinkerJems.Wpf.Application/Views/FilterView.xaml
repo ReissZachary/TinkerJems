@@ -8,6 +8,40 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <Grid>
+                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15 0 15 0"/>
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#f7e5dc"/>
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#debeaf" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -65,38 +99,37 @@
                            FontSize="30"
                            TextDecorations="Underline"
                            HorizontalAlignment="Center"/>
+                <TextBlock Text="Materials"
+                           FontSize="24"
+                           Margin="15"/>
+                <ListView ItemsSource="{Binding Materials}"
+                          Margin="10"
+                          BorderBrush="Transparent"
+                          Background="Transparent">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox Content="{Binding}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <ListView ItemsSource="{Binding Tags}"
+                          Margin="10"
+                          BorderBrush="Transparent"
+                          Background="Transparent">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox Content="{Binding Name}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackPanel>
         </Border>
 
         <!--ITEM LIST-->
-        <Button Grid.Column="1"
-                Grid.Row="2">
-            <Button.Template>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <ContentPresenter/>
-                </ControlTemplate>
-            </Button.Template>
-            <StackPanel Background='Transparent'                    
-                        HorizontalAlignment="Left"
-                        Margin="50">
-                <Ellipse Width="250"
-                         Height="250"
-                         HorizontalAlignment="Center">
-                    <Ellipse.Fill>
-                        <ImageBrush ImageSource="https://localHost:5001/Images/bracelet.jpg"/>
-                    </Ellipse.Fill>
-                </Ellipse>
-                <TextBlock Text="$10.00"
-                           FontSize="24"
-                           HorizontalAlignment="Center"
-                           Margin="20"
-                           Foreground="Black"/>
-            </StackPanel>
-        </Button>
-        <!--<ItemsControl Grid.Column="1"
+        
+        <ItemsControl Grid.Column="1"
                       Grid.Row="2"
-                      Background="#ebebed"
-                      Opacity=".7">
+                      ItemsSource="{Binding JewelryItems}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Columns="3" />
@@ -104,20 +137,27 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Background='Transparent'>
-                        <Ellipse Width="250"
-                                 Height="250"
-                                 HorizontalAlignment="Center">
-                            <Ellipse.Fill>
-                                <ImageBrush ImageSource="https://localHost:5001/Images/bracelet.jpg"/>
-                            </Ellipse.Fill>
-                        </Ellipse>
-                        <TextBlock Text="$10.00"
-                                   FontSize="18"/>
-                    </StackPanel>
+                    <Button Command="{Binding NavigateToItem}"
+                            CommandParameter="ItemView">
+                        <StackPanel HorizontalAlignment="Left"
+                                    Margin="50">
+                            <Ellipse Width="250"
+                                     Height="250"
+                                     HorizontalAlignment="Center">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="{Binding ImageUrl}"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <TextBlock Text="{Binding Price}"
+                                       FontSize="24"
+                                       HorizontalAlignment="Center"
+                                       Margin="20"
+                                       Foreground="Black"/>
+                        </StackPanel>
+                    </Button>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
-        </ItemsControl>-->
+        </ItemsControl>
         
 
     </Grid>
