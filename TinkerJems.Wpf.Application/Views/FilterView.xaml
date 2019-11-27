@@ -80,8 +80,8 @@
                         HorizontalAlignment="Left"
                         Margin="50">
                 <Ellipse Width="250"
-                                     Height="250"
-                                     HorizontalAlignment="Center">
+                         Height="250"
+                         HorizontalAlignment="Center">
                     <Ellipse.Fill>
                         <ImageBrush ImageSource="https://localHost:5001/Images/bracelet.jpg"/>
                     </Ellipse.Fill>

@@ -3,11 +3,18 @@ using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TinkerJems.Core.Models;
+using TinkerJems.Wpf.Application.Services;
 
 namespace TinkerJems.Wpf.Application.ViewModels
 {
     public class FilterViewModel : BindableBase, INavigationAware
     {
+        private JewelryService _jewelryService;
+        public FilterViewModel()
+        {
+            _jewelryService = new JewelryService();
+        }
         public bool IsNavigationTarget(NavigationContext navigationContext)
         {
             return true;
@@ -20,7 +27,17 @@ namespace TinkerJems.Wpf.Application.ViewModels
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
             SelectedCategory = navigationContext.Parameters.GetValue<string>("Category");
+            JewelryItems = _jewelryService.GetJewelryByCategory(SelectedCategory);
         }
+
+        private IEnumerable<JewelryItem> jewelryItems;
+
+        public IEnumerable<JewelryItem> JewelryItems
+        {
+            get { return jewelryItems; }
+            set { jewelryItems = value; }
+        }
+
 
         private string selectedCategory;
 

@@ -49,6 +49,12 @@ namespace TinkerJems.Web2.Controllers
            return  await _context.JewelryItems.Where(m => m.Material == material).ToListAsync();
         }
 
+        [HttpGet("[action]")]
+        public async Task<ActionResult<IEnumerable<JewelryItem>>> GetJewelryByCategory(string category)
+        {
+            return await _context.JewelryItems.Where(m => m.Category == category).ToListAsync();
+        }
+
         // PUT: api/JewelryItems/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.

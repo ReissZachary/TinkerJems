@@ -21,5 +21,16 @@ namespace TinkerJems.Wpf.Application.Services
 
             return JewelryItems;
         }
+
+        public IEnumerable<JewelryItem> GetJewelryByCategory(string category)
+        {
+            var client = new RestClient($"https://localhost:5001/api/jewelryitems/GetJewelryByCategory?category={category}");
+            var request = new RestRequest(Method.GET);
+            var response = client.Execute(request).Content;
+
+            IEnumerable<JewelryItem> JewelryItems = JsonConvert.DeserializeObject<IEnumerable<JewelryItem>>(response);
+
+            return JewelryItems;
+        }
     }
 }
