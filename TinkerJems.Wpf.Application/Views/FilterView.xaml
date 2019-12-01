@@ -52,7 +52,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        
+
         <!--SELECTED TITLE-->
         <TextBlock Text="{Binding SelectedCategory}"
                    FontSize="40"
@@ -60,9 +60,9 @@
                    Grid.ColumnSpan="2"
                    HorizontalAlignment="Center"
                    Foreground="#ac3b61"/>
-        
+
         <!--SORT BY HEADER-->
-        <Border Grid.Row="1"                
+        <Border Grid.Row="1"
                 Grid.Column="1"
                 BorderBrush="Black"
                 BorderThickness="1px">
@@ -102,34 +102,29 @@
                 <TextBlock Text="Materials"
                            FontSize="24"
                            Margin="15"/>
-                <ListView ItemsSource="{Binding Materials}"
+                <ListBox ItemsSource="{Binding Materials}"
+                          SelectionMode="Multiple"
                           Margin="10"
                           BorderBrush="Transparent"
                           Background="Transparent">
-                    <ListView.ItemTemplate>
+                    <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <CheckBox Content="{Binding}"/>
+                            <ListBoxItem IsSelected="{Binding IsSelected, Mode=TwoWay}">
+                                <CheckBox Content="{Binding}"
+                                          IsChecked="{Binding IsSelected, Mode=TwoWay}"/>
+                            </ListBoxItem>
                         </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                <ListView ItemsSource="{Binding Tags}"
-                          Margin="10"
-                          BorderBrush="Transparent"
-                          Background="Transparent">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <CheckBox Content="{Binding Name}"/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </StackPanel>
         </Border>
 
         <!--ITEM LIST-->
-        
+
         <ItemsControl Grid.Column="1"
                       Grid.Row="2"
-                      ItemsSource="{Binding JewelryItems}">
+                      ItemsSource="{Binding JewelryItems}"
+                      >
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Columns="3" />
@@ -148,6 +143,10 @@
                                     <ImageBrush ImageSource="{Binding ImageUrl}"/>
                                 </Ellipse.Fill>
                             </Ellipse>
+                            <TextBlock Text="{Binding Name}"
+                                       FontSize="24"
+                                       HorizontalAlignment="Center"
+                                       Foreground="Black"/>
                             <TextBlock Text="{Binding Price}"
                                        FontSize="24"
                                        HorizontalAlignment="Center"
@@ -158,7 +157,6 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        
 
     </Grid>
 </UserControl>
