@@ -139,6 +139,26 @@ namespace TinkerJems.Wpf.Application.ViewModels
             }
         }
 
+
+        private string selectedMaterial;
+
+        public string SelectedMaterial
+        {
+            get { return selectedMaterial; }
+            set
+            {
+                SetProperty(ref selectedMaterial, value);
+                FilterMaterial(value);
+            }
+        }
+
+        private void FilterMaterial(string value)
+        {
+            //For now, it will be the only filter
+            JewelryItems = AllJewelryItems;
+            JewelryItems = JewelryItems.Where(j => j.Material == value);
+        }
+
         private void SortItems(string sort)
         {
             JewelryItems = AllJewelryItems;
@@ -162,6 +182,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
         }
 
         public IEnumerable<string> SortBy { get; } = new[] { "Price (Low-High)", "Price (High-Low)", "Name (A-Z)", "Name (Z-A)"};
+        public IEnumerable<string> FilterByMaterial { get; } = Constants.Materials;
 
     }
 }
