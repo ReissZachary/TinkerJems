@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		attach-database.ps1 = attach-database.ps1
 		detach-database.ps1 = detach-database.ps1
+		Dockerfile = Dockerfile
 		heroku.yml = heroku.yml
 	EndProjectSection
 EndProject
@@ -22,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinkerJems.Web2", "TinkerJe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinkerJems.Wpf.Application", "TinkerJems.Wpf.Application\TinkerJems.Wpf.Application.csproj", "{9F3E82E6-A925-47B9-9033-C669D0082D30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinkerJems.WPF.Application.Tests", "TinkerJems.WPF.Application.Tests\TinkerJems.WPF.Application.Tests.csproj", "{AC25C04C-EFDF-4A0D-A6B2-C2BA3DC253D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinkerJems.WPF.Application.Tests", "TinkerJems.WPF.Application.Tests\TinkerJems.WPF.Application.Tests.csproj", "{AC25C04C-EFDF-4A0D-A6B2-C2BA3DC253D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
