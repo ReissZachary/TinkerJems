@@ -37,6 +37,12 @@ namespace TinkerJems.Wpf.Application.ViewModels
                         navigationParams.Add("Item", view.Item);
                         _regionManager.RequestNavigate(Constants.NavigationRegion, view.PageName, navigationParams);
                     }
+                    else if (view.PageName == "FilterView")
+                    {
+                        var navigationParams = new NavigationParameters();
+                        navigationParams.Add("Category", view.Category);
+                        _regionManager.RequestNavigate(Constants.NavigationRegion, view.PageName, navigationParams);
+                    }
                     else
                     {
                         _regionManager.RequestNavigate(Constants.NavigationRegion, view.PageName);

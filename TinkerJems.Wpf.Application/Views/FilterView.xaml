@@ -144,7 +144,7 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button Command="{Binding NavigateToItem}"
+                    <Button Command="{Binding DataContext.NavigateToItem, RelativeSource={RelativeSource AncestorType={x:Type local:FilterView}}}"
                             CommandParameter="ItemView">
                         <StackPanel HorizontalAlignment="Left"
                                     Margin="50">
