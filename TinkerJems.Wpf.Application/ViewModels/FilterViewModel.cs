@@ -3,6 +3,7 @@ using Prism.Mvvm;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TinkerJems.Core.Models;
 using TinkerJems.Wpf.Application.Services;
@@ -36,7 +37,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
         {
-            return true;
+            return false;
         }
 
         public void OnNavigatedFrom(NavigationContext navigationContext)
@@ -59,7 +60,9 @@ namespace TinkerJems.Wpf.Application.ViewModels
 
                 }
             }
-            
+
+            AllJewelryItems = JewelryItems;
+
         }
 
         private IEnumerable<JewelryItem> jewelryItems;
@@ -68,6 +71,15 @@ namespace TinkerJems.Wpf.Application.ViewModels
         {
             get { return jewelryItems; }
             set { SetProperty(ref jewelryItems , value); }
+        }
+
+
+        private IEnumerable<JewelryItem> allJewelryItems;
+
+        public IEnumerable<JewelryItem> AllJewelryItems
+        {
+            get { return allJewelryItems; }
+            set { SetProperty(ref allJewelryItems, value); }
         }
 
         private JewelryItem selectedJewelryItem;
@@ -86,7 +98,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
         public List<Tag> Tags
         {
             get { return tags; }
-            set { tags = value; }
+            set { SetProperty( ref tags, value); }
         }
 
 
@@ -107,7 +119,70 @@ namespace TinkerJems.Wpf.Application.ViewModels
             set { SetProperty(ref selectedCategory, value); }
         }
 
+        private bool isSelected;
+
+        public bool IsSelected
+        {
+            get { return isSelected; }
+            set { SetProperty(ref isSelected, value); }
+        }
+
+        private string selectedSort;
+
+        public string SelectedSort
+        {
+            get { return selectedSort; }
+            set
+            {
+                SetProperty(ref selectedSort, value);
+                SortItems(value);
+            }
+        }
+
+
+        private string selectedMaterial;
+
+        public string SelectedMaterial
+        {
+            get { return selectedMaterial; }
+            set
+            {
+                SetProperty(ref selectedMaterial, value);
+                FilterMaterial(value);
+            }
+        }
+
+        private void FilterMaterial(string value)
+        {
+            //For now, it will be the only filter
+            JewelryItems = AllJewelryItems;
+            JewelryItems = JewelryItems.Where(j => j.Material == value);
+        }
+
+        private void SortItems(string sort)
+        {
+            JewelryItems = AllJewelryItems;
+
+            if(sort == "Price (Low-High)")
+            {
+                JewelryItems = JewelryItems.OrderBy(j => j.Price);
+            }
+            else if(sort == "Price (High-Low)")
+            {
+                JewelryItems = JewelryItems.OrderByDescending(j => j.Price);
+            }
+            else if(sort == "Name (A-Z)")
+            {
+                JewelryItems = JewelryItems.OrderBy(j => j.Name);
+            }
+            else
+            {
+                JewelryItems = JewelryItems.OrderByDescending(j => j.Name);
+            }
+        }
+
         public IEnumerable<string> SortBy { get; } = new[] { "Price (Low-High)", "Price (High-Low)", "Name (A-Z)", "Name (Z-A)"};
+        public IEnumerable<string> FilterByMaterial { get; } = Constants.Materials;
 
     }
 }
