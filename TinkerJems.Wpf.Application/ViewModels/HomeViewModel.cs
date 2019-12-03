@@ -4,12 +4,13 @@ using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using TinkerJems.Wpf.Application.Shared;
 using TinkerJems.Wpf.Application.Views;
 
 namespace TinkerJems.Wpf.Application.ViewModels
 {
-    public class HomeViewModel : BindableBase
+    public class HomeViewModel : BindableBase, INavigationAware
     {
         private readonly IRegionManager _regionManager;
         public DelegateCommand<string> NavigateToSearch { get; }
@@ -23,6 +24,25 @@ namespace TinkerJems.Wpf.Application.ViewModels
                 HistoryStack.ViewStack.Push(new History {PageName = Title });
                 _regionManager.RequestNavigate("NavigationRegion", uri);
             });
+        }
+
+        private void populateHome()
+        {
+            NavigateToSearch.Execute("SearchView");
+        }
+
+        public void OnNavigatedTo(NavigationContext navigationContext)
+        {
+            populateHome();
+        }
+
+        public bool IsNavigationTarget(NavigationContext navigationContext)
+        {
+            return true;
+        }
+
+        public void OnNavigatedFrom(NavigationContext navigationContext)
+        {
         }
 
         private DelegateCommand navigateBack;

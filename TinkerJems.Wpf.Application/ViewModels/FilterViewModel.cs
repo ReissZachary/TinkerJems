@@ -48,8 +48,8 @@ namespace TinkerJems.Wpf.Application.ViewModels
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
             SelectedCategory = navigationContext.Parameters.GetValue<string>("Category");
-            FilteredJewelryItems = _jewelryService.GetJewelryByCategory(SelectedCategory);
-            foreach (var j in FilteredJewelryItems)
+            AllJewelryItems = _jewelryService.GetJewelryByCategory(SelectedCategory);
+            foreach (var j in AllJewelryItems)
             {
                 j.ImageUrl = $"https://localhost:5001/images/{j.ImageUrl}";
                 if(j.Tags != null)
@@ -62,7 +62,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
                 }
             }
 
-            AllJewelryItems = FilteredJewelryItems;
+            FilteredJewelryItems = AllJewelryItems;
 
         }
 
@@ -157,7 +157,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
         private void FilterMaterial(string value)
         {
             //For now, it will be the only filter
-            //JewelryItems = AllJewelryItems;
+            FilteredJewelryItems = AllJewelryItems;
             FilteredJewelryItems = FilteredJewelryItems.Where(j => j.Material == value);
         }
 
