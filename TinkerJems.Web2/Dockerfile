@@ -5,9 +5,9 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
 WORKDIR /src
-COPY ["TinkerJems.Web2/TinkerJems.Web2.csproj", "TinkerJems.Web2/"]
+COPY ["TinkerJems.Web2.csproj", "TinkerJems.Web2/"]
 RUN dotnet restore "TinkerJems.Web2/TinkerJems.Web2.csproj"
-COPY . .
+COPY . "./TinkerJems.Web2"
 WORKDIR "/src/TinkerJems.Web2"
 RUN dotnet build "TinkerJems.Web2.csproj" -c Release -o /app
 
@@ -17,4 +17,4 @@ RUN dotnet publish "TinkerJems.Web2.csproj" -c Release -o /app
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-ENTRYPOINT ["dotnet", "TinkerJems.Web2.dll"]
+CMD dotnet TinkerJems.Web2.dll
