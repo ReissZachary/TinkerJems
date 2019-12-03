@@ -51,11 +51,11 @@
                    Margin="0"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Stretch" />
-            
+
             <!--Description-->
             <TextBlock Grid.Row="0"
                        Grid.Column="2"
-                       Text="Description:" 
+                       Text="Description:"
                        FontSize="32"
                        Margin="15 0 0 0"
                        />
@@ -64,14 +64,14 @@
                        Text="{Binding SelectedItem.LongDescription}"
                        Margin="50 40 0 0"
                        FontSize="20px"/>
-            
+
             <!--Price-->
             <TextBlock Text="{Binding SelectedItem.Price, StringFormat=${0}}"
                        FontSize="32px"
                        Grid.Row="1"
                        Grid.Column="2"
                        Margin="15 20 0 0"/>
-            
+
             <!--RelatedTags-->
             <StackPanel Orientation="Horizontal"
                         Grid.Row="2"
@@ -95,13 +95,13 @@
                                FontSize="20" />
                 </Border>
             </StackPanel>
-            
+
             <!--submitOrderButton-->
             <Button Content="Place Custom Order"
                     Background="LightBlue"
                     HorizontalAlignment="Center"
                     Grid.Row="3"
-                    Grid.Column="2" 
+                    Grid.Column="2"
                     Width="300"
                     Height="70px"
                     VerticalAlignment="Bottom"

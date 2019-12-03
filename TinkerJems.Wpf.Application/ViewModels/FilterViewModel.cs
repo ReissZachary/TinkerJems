@@ -23,10 +23,11 @@ namespace TinkerJems.Wpf.Application.ViewModels
             _regionManager = regionManager;
         }
 
-        private DelegateCommand navigateToItem;
-        public DelegateCommand NavigateToItem => navigateToItem ?? (navigateToItem = new DelegateCommand(
-                () =>
+        private DelegateCommand<JewelryItem> navigateToItem;
+        public DelegateCommand<JewelryItem> NavigateToItem => navigateToItem ?? (navigateToItem = new DelegateCommand<JewelryItem>(
+                (item) =>
                 {
+                    SelectedJewelryItem = item;
                     var navigationParams = new NavigationParameters();
                     navigationParams.Add("Item", SelectedJewelryItem);
                     HistoryStack.ViewStack.Push(new History { PageName = nameof(FilterView), Category = SelectedCategory});
@@ -47,8 +48,8 @@ namespace TinkerJems.Wpf.Application.ViewModels
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
             SelectedCategory = navigationContext.Parameters.GetValue<string>("Category");
-            JewelryItems = _jewelryService.GetJewelryByCategory(SelectedCategory);
-            foreach (var j in JewelryItems)
+            AllJewelryItems = _jewelryService.GetJewelryByCategory(SelectedCategory);
+            foreach (var j in AllJewelryItems)
             {
                 j.ImageUrl = $"https://localhost:5001/images/{j.ImageUrl}";
                 if(j.Tags != null)
@@ -61,19 +62,21 @@ namespace TinkerJems.Wpf.Application.ViewModels
                 }
             }
 
-            AllJewelryItems = JewelryItems;
+            FilteredJewelryItems = AllJewelryItems;
 
         }
 
-        private IEnumerable<JewelryItem> jewelryItems;
+        //Jewelry items to be modified
+        private IEnumerable<JewelryItem> filteredJewelryItems;
 
-        public IEnumerable<JewelryItem> JewelryItems
+        public IEnumerable<JewelryItem> FilteredJewelryItems
         {
-            get { return jewelryItems; }
-            set { SetProperty(ref jewelryItems , value); }
+            get { return filteredJewelryItems; }
+            set { SetProperty(ref filteredJewelryItems , value); }
         }
 
 
+        //All the elements in the selected category
         private IEnumerable<JewelryItem> allJewelryItems;
 
         public IEnumerable<JewelryItem> AllJewelryItems
@@ -89,7 +92,6 @@ namespace TinkerJems.Wpf.Application.ViewModels
             set
             {
                 SetProperty(ref selectedJewelryItem, value);
-                NavigateToItem.Execute();
             }
         }
 
@@ -155,29 +157,29 @@ namespace TinkerJems.Wpf.Application.ViewModels
         private void FilterMaterial(string value)
         {
             //For now, it will be the only filter
-            JewelryItems = AllJewelryItems;
-            JewelryItems = JewelryItems.Where(j => j.Material == value);
+            FilteredJewelryItems = AllJewelryItems;
+            FilteredJewelryItems = FilteredJewelryItems.Where(j => j.Material == value);
         }
 
         private void SortItems(string sort)
         {
-            JewelryItems = AllJewelryItems;
+            FilteredJewelryItems = AllJewelryItems;
 
             if(sort == "Price (Low-High)")
             {
-                JewelryItems = JewelryItems.OrderBy(j => j.Price);
+                FilteredJewelryItems = FilteredJewelryItems.OrderBy(j => j.Price);
             }
             else if(sort == "Price (High-Low)")
             {
-                JewelryItems = JewelryItems.OrderByDescending(j => j.Price);
+                FilteredJewelryItems = FilteredJewelryItems.OrderByDescending(j => j.Price);
             }
             else if(sort == "Name (A-Z)")
             {
-                JewelryItems = JewelryItems.OrderBy(j => j.Name);
+                FilteredJewelryItems = FilteredJewelryItems.OrderBy(j => j.Name);
             }
             else
             {
-                JewelryItems = JewelryItems.OrderByDescending(j => j.Name);
+                FilteredJewelryItems = FilteredJewelryItems.OrderByDescending(j => j.Name);
             }
         }
 

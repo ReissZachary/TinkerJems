@@ -4,12 +4,13 @@ using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using TinkerJems.Wpf.Application.Shared;
 using TinkerJems.Wpf.Application.Views;
 
 namespace TinkerJems.Wpf.Application.ViewModels
 {
-    public class HomeViewModel : BindableBase
+    public class HomeViewModel : BindableBase, INavigationAware
     {
         private readonly IRegionManager _regionManager;
         public DelegateCommand<string> NavigateToSearch { get; }
@@ -25,6 +26,25 @@ namespace TinkerJems.Wpf.Application.ViewModels
             });
         }
 
+        private void populateHome()
+        {
+            NavigateToSearch.Execute("SearchView");
+        }
+
+        public void OnNavigatedTo(NavigationContext navigationContext)
+        {
+            populateHome();
+        }
+
+        public bool IsNavigationTarget(NavigationContext navigationContext)
+        {
+            return true;
+        }
+
+        public void OnNavigatedFrom(NavigationContext navigationContext)
+        {
+        }
+
         private DelegateCommand navigateBack;
         public DelegateCommand NavigateBack => navigateBack ?? (navigateBack = new DelegateCommand(
                 () =>
@@ -35,6 +55,12 @@ namespace TinkerJems.Wpf.Application.ViewModels
 
                         var navigationParams = new NavigationParameters();
                         navigationParams.Add("Item", view.Item);
+                        _regionManager.RequestNavigate(Constants.NavigationRegion, view.PageName, navigationParams);
+                    }
+                    else if (view.PageName == "FilterView")
+                    {
+                        var navigationParams = new NavigationParameters();
+                        navigationParams.Add("Category", view.Category);
                         _regionManager.RequestNavigate(Constants.NavigationRegion, view.PageName, navigationParams);
                     }
                     else
