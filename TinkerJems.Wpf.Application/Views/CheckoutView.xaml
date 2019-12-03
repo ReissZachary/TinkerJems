@@ -160,7 +160,9 @@
                                            Margin="20"
                                            FontSize="20"
                                            FontStyle="Italic"
-                                           Text="&quot;At Tinker Gems, we prioritize the personal experience for all of our customers. To reach this goal, we have eliminated the need for the customer to insert sensitive information such as credit cards and addresses. Instead, the customer is in direct contact with the jewler, communicating to them their prefered payment methods and shipping details&quot; -Tinker Gems CEO"/>
+                                           Text="&quot;At Tinker Gems, we prioritize the personal experience for all of our customers. To reach this goal, we have eliminated the need for the customer to insert sensitive information such as credit cards and addresses. Instead, the customer is in direct contact with the jewler, communicating to them their prefered payment methods and shipping details&quot;
+
+                                           -Tinker Gems Team"/>
                                 <TextBlock Text="STEP 1:" FontWeight="Medium" FontSize="20"></TextBlock>
                                 <Line Stroke="Gray" StrokeThickness="2" X2="500"/>
                                 <TextBlock Text="Insert your information in the form" FontWeight="Thin" FontSize="20" Margin="0 0 0 20"></TextBlock>
