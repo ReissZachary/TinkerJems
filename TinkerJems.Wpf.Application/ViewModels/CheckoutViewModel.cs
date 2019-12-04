@@ -235,7 +235,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
         private void SendConfirmationEmail()
         {
             var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("ZackDiego", "testemail.zachary.reiss@gmail.com"));
+            message.From.Add(new MailboxAddress("TinkerGems", "testemail.zachary.reiss@gmail.com"));
             message.To.Add(new MailboxAddress("Valued Customer", CustomerEmail));
             message.Subject = "Your confirmation order from Tinker Gems!";
 
@@ -279,7 +279,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
         private void SendEmailToJeweler()
         {
             var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("ZackDiego", "testemail.zachary.reiss@gmail.com"));
+            message.From.Add(new MailboxAddress("TinkerGems", "testemail.zachary.reiss@gmail.com"));
             message.To.Add(new MailboxAddress("Valued Customer", "testemail.zachary.reiss@gmail.com"));
             message.Subject = "Incoming Jewelry Order";
 
