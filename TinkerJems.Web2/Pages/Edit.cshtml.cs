@@ -31,6 +31,9 @@ namespace TinkerJems.Web2.Pages
         [BindProperty]
         public string[] Images { get; set; }
 
+        [BindProperty]
+        public string NewTags { get; set; }
+
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -38,7 +41,7 @@ namespace TinkerJems.Web2.Pages
                 return NotFound();
             }
 
-            JewelryItem = await _context.JewelryItems.FirstOrDefaultAsync(m => m.Id == id);
+            await loadJewelryItem(id);
             var folder = Path.Combine(hostingEnvironment.ContentRootPath, "wwwroot", "Images");
             Images = Directory.GetFiles(folder);
 
@@ -58,7 +61,7 @@ namespace TinkerJems.Web2.Pages
 
             JewelryItem.ImageThumbnailUrl = JewelryItem.ImageUrl;
             var id = JewelryItem.Id;
-            _context.Attach(JewelryItem).State = EntityState.Modified;
+            _context.Attach(JewelryItem).State = EntityState.Modified;            
 
             try
             {
@@ -83,5 +86,13 @@ namespace TinkerJems.Web2.Pages
         {
             return _context.JewelryItems.Any(e => e.Id == id);
         }
+
+        private async Task loadJewelryItem(int? id)
+        {
+            JewelryItem = await _context.JewelryItems
+                            .Include(j => j.Tags)
+                            .ThenInclude(t => t.Tag)
+                            .FirstOrDefaultAsync(m => m.Id == id);
+        }      
     }
 }

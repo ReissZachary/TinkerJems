@@ -1,8 +1,13 @@
 ﻿@page
+@using Microsoft.AspNetCore.Authorization
 @model TinkerJems.Web2.Pages.EditModel
-
+@inject IAuthorizationService Authorization
 @{
     ViewData["Title"] = "Edit";
+}
+
+@{
+    var canEdit = (await Authorization.AuthorizeAsync(User, SeedData.SecurityPolicy_Edit)).Succeeded;
 }
 
 <h2>Edit</h2>
@@ -83,7 +88,7 @@
                     </div>
                 }
             </div>
-            <div class="form-group">
+            <div class="form-group" style="margin-top:1em">
                 <input type="submit" value="Save" class="btn btn-outline-dark" />
             </div>
         </form>
