@@ -12,6 +12,8 @@ using MailKit.Net.Smtp;
 using MailKit;
 using TinkerJems.Wpf.Application.Services;
 using System.Windows;
+using TinkerJems.Wpf.Application.Shared;
+using TinkerJems.Wpf.Application.Views;
 
 namespace TinkerJems.Wpf.Application.ViewModels
 {
@@ -220,42 +222,94 @@ namespace TinkerJems.Wpf.Application.ViewModels
                 {
                     if (hasNoErrors())
                     {
-                        var message = new MimeMessage();
-                        message.From.Add(new MailboxAddress("ZackDiego", "testemail.zachary.reiss@gmail.com"));
-                        message.To.Add(new MailboxAddress("Valued Customer", "testemail.zachary.reiss@gmail.com"));
-                        message.Subject = "Incoming Jewelry Order";
+                        SendEmailToJeweler();
+                        SendConfirmationEmail();
+                        HistoryStack.ViewStack.Push(new History { PageName = nameof(SearchView)});
+                        ResetCheckout();
+                        _regionManager.RequestNavigate(Constants.NavigationRegion, nameof(ConfirmationView));
 
-                        message.Body = new TextPart("plain")
-                        {
-                            Text =  "Nettie, Here is a new order for you to process!" + "\n\n" +
-                                    "Item: " + OrderedItem.Name + "\n" +
-                                    "Total price: " + "$" + (OrderedItem.Price * Quantity) + "\n" +
-                                    "Quantity: " + Quantity.ToString() + "\n" +
-                                    "Size: " + SelectedSize + "\n" +
-                                    "Details: " + OrderDetails + "\n\n\n" +
-
-                                    "Contact Email: " + CustomerEmail + "\n\n"
-
-                        };
-
-                        using (var client = new SmtpClient())
-                        {
-                            // For demo-purposes, accept all SSL certificates (in case the server supports STARTTLS)
-                            client.ServerCertificateValidationCallback = (s, c, h, e) => true;
-
-                            client.Connect("smtp.gmail.com", 587, false);
-
-                            // Note: only needed if the SMTP server requires authentication
-                            client.Authenticate("testemail.zachary.reiss@gmail.com", "Thisisatestemail!");
-
-                            client.Send(message);
-                            client.Disconnect(true);
-                        }
                     }
                 }
             ));
 
+        private void SendConfirmationEmail()
+        {
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("ZackDiego", "testemail.zachary.reiss@gmail.com"));
+            message.To.Add(new MailboxAddress("Valued Customer", CustomerEmail));
+            message.Subject = "Your confirmation order from Tinker Gems!";
 
+            message.Body = new TextPart("plain")
+            {
+                Text = "Dear " + CustomerEmail + "\n\n" +
+                        "Here is a summary of your order:\n\n" +
+                        "Item: " + OrderedItem.Name + "\n" +
+                        "Total price: " + "$" + (OrderedItem.Price * Quantity) + "\n" +
+                        "Quantity: " + Quantity.ToString() + "\n" +
+                        "Size: " + SelectedSize + "\n" +
+                        "Details: " + OrderDetails + "\n\n\n"
+
+            };
+
+            using (var client = new SmtpClient())
+            {
+                // For demo-purposes, accept all SSL certificates (in case the server supports STARTTLS)
+                client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+
+                client.Connect("smtp.gmail.com", 587, false);
+
+                // Note: only needed if the SMTP server requires authentication
+                client.Authenticate("testemail.zachary.reiss@gmail.com", "Thisisatestemail!");
+
+                client.Send(message);
+                client.Disconnect(true);
+            }
+        }
+
+        private void ResetCheckout()
+        {
+            initializeErrors();
+            CustomerEmail = null;
+            Quantity = 0;
+            OrderDetails = null;
+            SelectedSize = null;
+
+        }
+
+        private void SendEmailToJeweler()
+        {
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("ZackDiego", "testemail.zachary.reiss@gmail.com"));
+            message.To.Add(new MailboxAddress("Valued Customer", "testemail.zachary.reiss@gmail.com"));
+            message.Subject = "Incoming Jewelry Order";
+
+            message.Body = new TextPart("plain")
+            {
+                Text = "Nettie, Here is a new order for you to process!" + "\n\n" +
+                        "Item: " + OrderedItem.Name + "\n" +
+                        "Total price: " + "$" + (OrderedItem.Price * Quantity) + "\n" +
+                        "Quantity: " + Quantity.ToString() + "\n" +
+                        "Size: " + SelectedSize + "\n" +
+                        "Details: " + OrderDetails + "\n\n\n" +
+
+                        "Contact Email: " + CustomerEmail + "\n\n"
+
+            };
+
+            using (var client = new SmtpClient())
+            {
+                // For demo-purposes, accept all SSL certificates (in case the server supports STARTTLS)
+                client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+
+                client.Connect("smtp.gmail.com", 587, false);
+
+                // Note: only needed if the SMTP server requires authentication
+                client.Authenticate("testemail.zachary.reiss@gmail.com", "Thisisatestemail!");
+
+                client.Send(message);
+                client.Disconnect(true);
+            }
+        }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {

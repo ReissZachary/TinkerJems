@@ -8,6 +8,7 @@ namespace TinkerJems.Wpf.Application.Shared
     {
         public const string NavigationRegion = "NavigationRegion";
 
+
         public static List<string> Materials = new List<string>
         {
             "Rock",
