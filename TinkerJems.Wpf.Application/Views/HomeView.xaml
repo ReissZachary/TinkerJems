@@ -7,33 +7,50 @@
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450"
+             d:DesignWidth="800">
     <UserControl.Resources>
         <Style TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="#edd8ce" />
-            <Setter Property="Foreground" Value="#123c69" />
-            <Setter Property="FontSize" Value="20" />
-            <Setter Property="FontWeight" Value="Thin" />
-            <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Background"
+                    Value="#edd8ce" />
+            <Setter Property="Foreground"
+                    Value="#123c69" />
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="FontWeight"
+                    Value="Thin" />
+            <Setter Property="SnapsToDevicePixels"
+                    Value="True" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border Background="{TemplateBinding Background}">
                             <Grid>
-                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15 0 15 0"/>
+                                <ContentPresenter x:Name="MyContentPresenter"
+                                                  Content="{TemplateBinding Content}"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  Margin="15 0 15 0" />
                             </Grid>
                         </Border>
 
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#debeaf"/>
-                                <Setter Property="Foreground" Value="White" />
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#debeaf" />
+                                <Setter Property="Foreground"
+                                        Value="White" />
                             </Trigger>
 
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" Value="#debeaf" />
-                                <Setter Property="Foreground" Value="White" />
+                            <Trigger Property="IsPressed"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#debeaf" />
+                                <Setter Property="Foreground"
+                                        Value="White" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -42,9 +59,10 @@
         </Style>
         <Style x:Key="ComboBoxTest" TargetType="{x:Type ComboBox}">
             <Setter Property="FontWeight" Value="Thin"/>
-            <Setter Property="FontSize" Value="15"/>
-            <Setter Property="Text" Value="Categories"/>
-            <Setter Property="IsEditable" Value="True"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="#123c69"/>
+            <Setter Property="SelectedItem" Value="{Binding SelectedCategory, FallbackValue='Categories', TargetNullValue='Select a category'}"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ComboBox">
@@ -58,8 +76,8 @@
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <Border x:Name="Border"  Grid.ColumnSpan="2" Background="#edd8ce" />
-                                            <Border Grid.Column="0" Margin="1"  Background="#edd8ce"  BorderBrush="Black" BorderThickness="0,0,1,0" />
-                                            <Path x:Name="Arrow" Grid.Column="1"  Fill="Gray" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z"/>
+                                            <Border Grid.Column="0" Margin="1"  Background="#edd8ce"  BorderThickness="0,0,0,0" />
+                                            <Path x:Name="Arrow" Grid.Column="1"  Fill="#123c69" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z"/>
                                         </Grid>
                                         <ControlTemplate.Triggers>
                                             <Trigger Property="IsMouseOver" Value="True">
@@ -76,7 +94,7 @@
                                     </ControlTemplate>
                                 </ToggleButton.Template>
                             </ToggleButton>
-                            <ContentPresenter Name="ContentSite" IsHitTestVisible="False"  Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Margin="3"  />
+                            <ContentPresenter Name="ContentSite" IsHitTestVisible="False"  Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Margin="5"  />
                             <TextBox x:Name="PART_EditableTextBox" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}"/>
                             <Popup Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True"  Focusable="False" PopupAnimation="Slide">
                                 <Grid  Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
@@ -96,20 +114,20 @@
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <!--navbar-->
-        <Border Grid.Row="0" >
+        <Border Grid.Row="0">
             <Grid Background="#edd8ce">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>
 
                 <Button Command="{Binding NavigateBack}"
@@ -136,11 +154,9 @@
                     <StackPanel Margin="0"
                                 Grid.Column="2">
                         <ComboBox
-                            SelectedItem="{Binding SelectedCategory}"
                             ItemsSource="{Binding Categories}"
-                            Height="30"
-                            Style="{StaticResource ComboBoxTest}"
-                            Width="125">
+                            Height="auto"
+                            Style="{StaticResource ComboBoxTest}">
                         </ComboBox>
                     </StackPanel>
 

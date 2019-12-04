@@ -3,6 +3,7 @@ using Prism.Mvvm;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TinkerJems.Wpf.Application.Shared;
@@ -24,6 +25,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
                 HistoryStack.ViewStack.Push(new History {PageName = Title });
                 _regionManager.RequestNavigate("NavigationRegion", uri);
             });
+            SelectedCategory = Categories.First();
         }
 
         private void populateHome()

@@ -14,6 +14,7 @@ using TinkerJems.Wpf.Application.Services;
 using System.Windows;
 using TinkerJems.Wpf.Application.Shared;
 using TinkerJems.Wpf.Application.Views;
+using System.Linq;
 
 namespace TinkerJems.Wpf.Application.ViewModels
 {
@@ -79,6 +80,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
             {
                 SetProperty(ref orderedItem, value);
                 SizeList = _valiationService.GetAllSizesByCategory(OrderedItem.Category);
+                SelectedSize = SizeList.Skip(SizeList.Count / 2).First();
             }
         }
 
@@ -239,15 +241,15 @@ namespace TinkerJems.Wpf.Application.ViewModels
             message.To.Add(new MailboxAddress("Valued Customer", CustomerEmail));
             message.Subject = "Your confirmation order from Tinker Gems!";
 
-            message.Body = new TextPart("plain")
+            message.Body = new TextPart(MimeKit.Text.TextFormat.Html)
             {
-                Text = "Dear " + CustomerEmail + "\n\n" +
-                        "Here is a summary of your order:\n\n" +
-                        "Item: " + OrderedItem.Name + "\n" +
-                        "Total price: " + "$" + (OrderedItem.Price * Quantity) + "\n" +
-                        "Quantity: " + Quantity.ToString() + "\n" +
-                        "Size: " + SelectedSize + "\n" +
-                        "Details: " + OrderDetails + "\n\n\n"
+                Text = "Dear " + CustomerEmail + "<br/><br/>" +
+                        "<strong>Here is a summary of your order:</strong><br/><br/>" +
+                        "Item: " + OrderedItem.Name + "<br/>" +
+                        "Total price: " + "$" + (OrderedItem.Price * Quantity) + "<br/>" +
+                        "Quantity: " + Quantity.ToString() + "<br/>" +
+                        "Size: " + SelectedSize + "<br/>" +
+                        "Details: " + OrderDetails + "<br/><br/><br/>"
 
             };
 

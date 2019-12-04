@@ -8,73 +8,112 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450"
+             d:DesignWidth="800">
 
     <UserControl.Resources>
         <Style TargetType="TextBlock">
-            <Setter Property="FontWeight" Value="Thin"/>
-            <Setter Property="FontSize" Value=" 25"/>
+            <Setter Property="FontWeight"
+                    Value="Thin" />
+            <Setter Property="FontSize"
+                    Value=" 25" />
         </Style>
         <Style TargetType="TextBox">
-            <Setter Property="Height" Value="30"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="FontWeight" Value="Medium"/>
-            <Setter Property="Padding" Value="5 0 0 0"/>
+            <Setter Property="Height"
+                    Value="30" />
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="FontWeight"
+                    Value="Medium" />
+            <Setter Property="Padding"
+                    Value="5 0 0 0" />
         </Style>
-        <Style x:Key="Submit" TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="#123c69" />
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="FontSize" Value="15" />
-            <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Style x:Key="Submit"
+               TargetType="{x:Type Button}">
+            <Setter Property="Background"
+                    Value="#123c69" />
+            <Setter Property="Foreground"
+                    Value="White" />
+            <Setter Property="FontSize"
+                    Value="15" />
+            <Setter Property="SnapsToDevicePixels"
+                    Value="True" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border Background="{TemplateBinding Background}">
                             <Grid>
-                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15 0 15 0"/>
+                                <ContentPresenter x:Name="MyContentPresenter"
+                                                  Content="{TemplateBinding Content}"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  Margin="15 0 15 0" />
                             </Grid>
                         </Border>
 
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#4989cc"/>
-                                <Setter Property="Foreground" Value="White" />
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#4989cc" />
+                                <Setter Property="Foreground"
+                                        Value="White" />
                             </Trigger>
 
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" Value="#4989cc" />
-                                <Setter Property="Foreground" Value="White" />
+                            <Trigger Property="IsPressed"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#4989cc" />
+                                <Setter Property="Foreground"
+                                        Value="White" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style x:Key="NeedHelp" TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="#ac3b61" />
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="FontSize" Value="15" />
-            <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Style x:Key="NeedHelp"
+               TargetType="{x:Type Button}">
+            <Setter Property="Background"
+                    Value="#ac3b61" />
+            <Setter Property="Foreground"
+                    Value="White" />
+            <Setter Property="FontSize"
+                    Value="15" />
+            <Setter Property="SnapsToDevicePixels"
+                    Value="True" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border Background="{TemplateBinding Background}">
                             <Grid>
-                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15 0 15 0"/>
+                                <ContentPresenter x:Name="MyContentPresenter"
+                                                  Content="{TemplateBinding Content}"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  Margin="15 0 15 0" />
                             </Grid>
                         </Border>
 
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#d67696"/>
-                                <Setter Property="Foreground" Value="White" />
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#d67696" />
+                                <Setter Property="Foreground"
+                                        Value="White" />
                             </Trigger>
 
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" Value="#4989cc" />
-                                <Setter Property="Foreground" Value="White" />
+                            <Trigger Property="IsPressed"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#4989cc" />
+                                <Setter Property="Foreground"
+                                        Value="White" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -85,74 +124,78 @@
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
 
-            <TextBlock
-            Text="Place Order"
-            Grid.Row="0"
-            FontSize="40"
-            Grid.ColumnSpan="3"
-            Padding="10"
-            FontWeight="Thin"/>
+            <TextBlock Text="Place Order"
+                       Grid.Row="0"
+                       FontSize="40"
+                       Grid.ColumnSpan="3"
+                       Padding="10"
+                       FontWeight="Thin" />
             <Ellipse Width="250"
-                 Height="250"
-                 HorizontalAlignment="Left"
-                 Grid.Row="1"
-                 Margin="30">
+                     Height="250"
+                     HorizontalAlignment="Left"
+                     Grid.Row="1"
+                     Margin="30">
                 <Ellipse.Fill>
-                    <ImageBrush ImageSource="{Binding OrderedItem.ImageUrl}"/>
+                    <ImageBrush ImageSource="{Binding OrderedItem.ImageUrl}" />
                 </Ellipse.Fill>
             </Ellipse>
             <StackPanel Grid.Row="1"
-                    Grid.Column="1"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center">
-                <TextBlock
-                Text="{Binding OrderedItem.Name}"
-                FontSize="35"
-                FontWeight="Thin"/>
-                <TextBlock
-                Text="{Binding OrderedItem.Price}"
-                FontSize="25"
-                FontWeight="DemiBold"/>
+                        Grid.Column="1"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center">
+                <TextBlock Text="{Binding OrderedItem.Name}"
+                           FontSize="35"
+                           FontWeight="Thin" />
+                <TextBlock Text="{Binding OrderedItem.Price}"
+                           FontSize="25"
+                           FontWeight="DemiBold" />
             </StackPanel>
             <Button Grid.Column="2"
-                Grid.Row="1"
-                Height="50"
-                Width="250"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Top"
-                Content="Need Help?"
-                FontSize="25"
-                FontWeight="Thin"
-                Style="{StaticResource NeedHelp}"
-                ToolTipService.ShowDuration="1200000">
+                    Grid.Row="1"
+                    Height="50"
+                    Width="250"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Content="Need Help?"
+                    FontSize="25"
+                    FontWeight="Thin"
+                    Style="{StaticResource NeedHelp}"
+                    ToolTipService.ShowDuration="1200000">
                 <Button.ToolTip>
                     <ToolTip>
-                        <StackPanel Width="500" Height="auto">
-                            <StackPanel Orientation="Horizontal" Background="#ac3b61" Width="500">
-                                <Label Content="How it Works" Foreground="White" Margin="10 5" FontSize="20" FontWeight="Thin"></Label>
+                        <StackPanel Width="500"
+                                    Height="auto">
+                            <StackPanel Orientation="Horizontal"
+                                        Background="#ac3b61"
+                                        Width="500">
+                                <Label Content="How it Works"
+                                       Foreground="White"
+                                       Margin="10 5"
+                                       FontSize="20"
+                                       FontWeight="Thin"></Label>
                             </StackPanel>
                             <StackPanel Margin="10">
                                 <TextBlock Height="auto"
@@ -162,22 +205,57 @@
                                            FontStyle="Italic"
                                            Text="&quot;At Tinker Gems, we prioritize the personal experience for all of our customers. To reach this goal, we have eliminated the need for the customer to insert sensitive information such as credit cards and addresses. Instead, the customer is in direct contact with the jewler, communicating to them their prefered payment methods and shipping details&quot;
 
-                                           -Tinker Gems Team"/>
-                                <TextBlock Text="STEP 1:" FontWeight="Medium" FontSize="20"></TextBlock>
-                                <Line Stroke="Gray" StrokeThickness="2" X2="500"/>
-                                <TextBlock Text="Insert your information in the form" FontWeight="Thin" FontSize="20" Margin="0 0 0 20"></TextBlock>
-                                <TextBlock Text="STEP 2:" FontWeight="Medium" FontSize="20"></TextBlock>
-                                <Line Stroke="Gray" StrokeThickness="2" X2="500"/>
-                                <TextBlock Text="Enter any personal requests you may have" FontWeight="Thin" FontSize="20" Margin="0 0 0 20"></TextBlock>
-                                <TextBlock Text="STEP 3:" FontWeight="Medium" FontSize="20"></TextBlock>
-                                <Line Stroke="Gray" StrokeThickness="2" X2="500"/>
-                                <TextBlock Text="Click submit order" FontWeight="Thin" FontSize="20" Margin="0 0 0 20"></TextBlock>
-                                <TextBlock Text="STEP 4:" FontWeight="Medium" FontSize="20"></TextBlock>
-                                <Line Stroke="Gray" StrokeThickness="2" X2="500"/>
-                                <TextBlock Text="The jeweler will be notified of your order!" FontWeight="Thin" FontSize="20" Margin="0 0 0 20"></TextBlock>
-                                <TextBlock Text="STEP 5:" FontWeight="Medium" FontSize="20"></TextBlock>
-                                <Line Stroke="Gray" StrokeThickness="2" X2="500"/>
-                                <TextBlock Text="Wait for a response from the jeweler (~1 business day)" FontWeight="Thin" FontSize="20" Margin="0 0 0 20"></TextBlock>
+                                           -Tinker Gems Team" />
+                                <TextBlock Text="STEP 1:"
+                                           FontWeight="Medium"
+                                           FontSize="20"></TextBlock>
+                                <Line Stroke="Gray"
+                                      StrokeThickness="2"
+                                      X2="500" />
+                                <TextBlock Text="Insert your information in the form"
+                                           FontWeight="Thin"
+                                           FontSize="20"
+                                           Margin="0 0 0 20"></TextBlock>
+                                <TextBlock Text="STEP 2:"
+                                           FontWeight="Medium"
+                                           FontSize="20"></TextBlock>
+                                <Line Stroke="Gray"
+                                      StrokeThickness="2"
+                                      X2="500" />
+                                <TextBlock Text="Enter any personal requests you may have"
+                                           FontWeight="Thin"
+                                           FontSize="20"
+                                           Margin="0 0 0 20"></TextBlock>
+                                <TextBlock Text="STEP 3:"
+                                           FontWeight="Medium"
+                                           FontSize="20"></TextBlock>
+                                <Line Stroke="Gray"
+                                      StrokeThickness="2"
+                                      X2="500" />
+                                <TextBlock Text="Click submit order"
+                                           FontWeight="Thin"
+                                           FontSize="20"
+                                           Margin="0 0 0 20"></TextBlock>
+                                <TextBlock Text="STEP 4:"
+                                           FontWeight="Medium"
+                                           FontSize="20"></TextBlock>
+                                <Line Stroke="Gray"
+                                      StrokeThickness="2"
+                                      X2="500" />
+                                <TextBlock Text="The jeweler will be notified of your order!"
+                                           FontWeight="Thin"
+                                           FontSize="20"
+                                           Margin="0 0 0 20"></TextBlock>
+                                <TextBlock Text="STEP 5:"
+                                           FontWeight="Medium"
+                                           FontSize="20"></TextBlock>
+                                <Line Stroke="Gray"
+                                      StrokeThickness="2"
+                                      X2="500" />
+                                <TextBlock Text="Wait for a response from the jeweler (~1 business day)"
+                                           FontWeight="Thin"
+                                           FontSize="20"
+                                           Margin="0 0 0 20"></TextBlock>
                             </StackPanel>
                             <!--<BulletDecorator>
                                 <BulletDecorator.Bullet>
@@ -190,53 +268,39 @@
                 </Button.ToolTip>
             </Button>
             <StackPanel Grid.Row="2"
-                    Margin="20 0 0 0"
-                    Grid.ColumnSpan="2">
+                        Margin="20 0 0 0"
+                        Grid.ColumnSpan="2">
 
-                <TextBlock
-                Text="Email"
-                FontSize="25"/>
-                <TextBox
-                Text="{Binding CustomerEmail, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                />
-                <TextBlock
-                Text="{Binding CustomerEmailError}"
-                Visibility="{Binding CustomerEmailErrorVisibility}"
-                Foreground ="Red"/>
-                <TextBlock
-                Text="Quantity"/>
-                <TextBox
-                Text="{Binding Quantity, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-               />
-                <TextBlock
-                Text="{Binding QuantityError}"
-                Visibility ="{Binding QuantityErrorVisibility}"
-                Foreground ="Red"/>
-                <TextBlock
-                Text="Size"/>
-                <ComboBox
-                ItemsSource="{Binding SizeList}"
-                SelectedValue="{Binding SelectedSize}"
-                FontSize="20"
-                FontWeight="Medium"
-                Width="auto"
-                HorizontalAlignment="Left"/>
-                <TextBlock
-                Text="Personal Requests"/>
-                <TextBox
-                Text="{Binding OrderDetails}"
-                Height="300px"/>
-                <TextBlock
-                Text="{Binding SubmitError}"
-                Foreground ="Red"/>
-                <Button
-                Command="{Binding SubmitOrder}"
-                Content="Submit Order"
-                Height="75"
-                Width="1000"
-                FontSize="30"
-                FontWeight="Thin"
-                Style="{StaticResource Submit}"/>
+                <TextBlock Text="Email"
+                           FontSize="25" />
+                <TextBox Text="{Binding CustomerEmail, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock Text="{Binding CustomerEmailError}"
+                           Visibility="{Binding CustomerEmailErrorVisibility}"
+                           Foreground="Red" />
+                <TextBlock Text="Quantity" />
+                <TextBox Text="{Binding Quantity, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock Text="{Binding QuantityError}"
+                           Visibility="{Binding QuantityErrorVisibility}"
+                           Foreground="Red" />
+                <TextBlock Text="Size" />
+                <ComboBox ItemsSource="{Binding SizeList}"
+                          SelectedValue="{Binding SelectedSize}"
+                          FontSize="20"
+                          FontWeight="Medium"
+                          MinWidth="100"
+                          HorizontalAlignment="Left" />
+                <TextBlock Text="Personal Requests" />
+                <TextBox Text="{Binding OrderDetails}"
+                         Height="300px" />
+                <TextBlock Text="{Binding SubmitError}"
+                           Foreground="Red" />
+                <Button Command="{Binding SubmitOrder}"
+                        Content="Submit Order"
+                        Height="75"
+                        Width="1000"
+                        FontSize="30"
+                        FontWeight="Thin"
+                        Style="{StaticResource Submit}" />
             </StackPanel>
         </Grid>
     </ScrollViewer>
