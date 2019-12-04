@@ -11,8 +11,9 @@
     <UserControl.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Background" Value="#edd8ce" />
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="FontSize" Value="15" />
+            <Setter Property="Foreground" Value="#123c69" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontWeight" Value="Thin" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Template">
@@ -56,7 +57,7 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
-                </Grid.ColumnDefinitions>
+                </Grid.ColumnDefinitions>                
 
                 <Button Command="{Binding NavigateBack}"
                         Width="auto"
@@ -65,52 +66,55 @@
                         Grid.Column="0"
                         BorderThickness="0"
                         FontFamily="Marlett"
-                        FontSize="25"
+                        FontSize="30"
                         Foreground="#123c69">
                 </Button>
+                <StackPanel Grid.Column="1"
+                            Orientation="Horizontal"
+                            Margin="410 0 0 0">                    
+                    <Button Command="{Binding NavigateToSearch}"
+                            CommandParameter="SearchView"
+                            Width="auto"
+                            Height="Auto"
+                            Content="Home"
+                            Grid.Column="1"
+                            BorderThickness="0">
+                    </Button>
+                    <StackPanel Margin="10"
+                                Grid.Column="2">
+                        <ComboBox
+                            SelectedItem="{Binding SelectedCategory}"
+                            ItemsSource="{Binding Categories}">
+                        </ComboBox>
+                    </StackPanel>
 
-                <Button Command="{Binding NavigateToSearch}"
-                        CommandParameter="SearchView"
-                        Width="auto"
-                        Height="Auto"
-                        Content="ITEM"
-                        Grid.Column="1"
-                        BorderThickness="0">
-                </Button>
-                <StackPanel Margin="10"
-                            Grid.Column="2">
-                    <ComboBox
-                        SelectedItem="{Binding SelectedCategory}"
-                        ItemsSource="{Binding Categories}">
-                    </ComboBox>
+                    <Button Command="{Binding NavigateToSearch}"
+                            CommandParameter="SearchView"
+                            Width="auto"
+                            Height="auto"
+                            Content="About Me"
+                            Grid.Column="3"
+                            BorderThickness="0">
+                    </Button>
+
+                    <Button Command="{}"
+                            CommandParameter="SearchView"
+                            Width="auto"
+                            Height="auto"
+                            Content="How It Works"
+                            Grid.Column="4"
+                            BorderThickness="0">
+                    </Button>
+
+                    <Button Command="{}"
+                            CommandParameter="SearchView"
+                            Width="auto"
+                            Height="auto"
+                            Content="Contact Me"
+                            Grid.Column="5"
+                            BorderThickness="0">
+                    </Button>
                 </StackPanel>
-
-                <Button Command="{Binding NavigateToSearch}"
-                        CommandParameter="SearchView"
-                        Width="auto"
-                        Height="auto"
-                        Content="About Me"
-                        Grid.Column="3"
-                        BorderThickness="0">
-                </Button>
-
-                <Button Command="{}"
-                        CommandParameter="SearchView"
-                        Width="auto"
-                        Height="auto"
-                        Content="How It Works"
-                        Grid.Column="4"
-                        BorderThickness="0">
-                </Button>
-
-                <Button Command="{}"
-                        CommandParameter="SearchView"
-                        Width="auto"
-                        Height="auto"
-                        Content="Contact Me"
-                        Grid.Column="5"
-                        BorderThickness="0">
-                </Button>
             </Grid>
         </Border>
 

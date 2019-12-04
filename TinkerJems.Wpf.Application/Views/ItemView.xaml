@@ -8,6 +8,79 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="Thin"/>
+            <Setter Property="FontSize" Value=" 25"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Padding" Value="5 0 0 0"/>
+        </Style>
+        <Style x:Key="PlaceOrder" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#123c69" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="25" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <Grid>
+                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15 0 15 0"/>
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#4989cc"/>
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#123c69" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="Tag" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <Grid>
+                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15 0 15 0"/>
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="LightGray"/>
+                                <Setter Property="Foreground" Value="Black" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="LightGray" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition  Height="auto" />
@@ -34,84 +107,71 @@
                 <ColumnDefinition  Width="auto"/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0"
-                        Grid.RowSpan="4"
-                        Width="110px"
-                        Background="Gray"
-                        Margin="15px"
-                        Height="492px"
-                        HorizontalAlignment="Left">
-
-            </StackPanel>
             <Image Source="{Binding SelectedItem.ImageUrl}"
                    Grid.Column="1"
                    Grid.RowSpan="4"
                    Width="auto"
                    Height="500px"
-                   Margin="0"
+                   Margin="20 0 0 0"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Stretch" />
 
-            <!--Description-->
-            <TextBlock Grid.Row="0"
-                       Grid.Column="2"
-                       Text="Description:"
-                       FontSize="32"
-                       Margin="15 0 0 0"
-                       />
-            <TextBlock Grid.Row="0"
-                       Grid.Column="2"
-                       Text="{Binding SelectedItem.LongDescription}"
-                       Margin="50 40 0 0"
-                       FontSize="20px"/>
+            <StackPanel Grid.Column="2"
+                        Margin="10 40 0 0">
+                <TextBlock Text="Description:"
+                           FontSize="32"
+                           Margin="15 0 0 0"
+                           FontWeight="Medium"/>
+                <TextBlock Text="{Binding SelectedItem.LongDescription}"
+                           Margin="30 0 0 0"
+                           FontSize="20px"
+                           Width="500"
+                           TextWrapping="Wrap"/>
 
-            <!--Price-->
-            <TextBlock Text="{Binding SelectedItem.Price, StringFormat=${0}}"
-                       FontSize="32px"
-                       Grid.Row="1"
-                       Grid.Column="2"
-                       Margin="15 20 0 0"/>
+                <!--Price-->
+                <TextBlock Text="{Binding SelectedItem.Price, StringFormat=${0}}"
+                           FontSize="32px"
+                           Margin="15 60 0 0"/>
 
-            <!--RelatedTags-->
-            <StackPanel Orientation="Horizontal"
-                        Grid.Row="2"
-                        Grid.Column="2"
-                        Margin="15 20 0 0"
-                        Height="50">
-                <TextBlock Text="Related:"
-                           FontSize="32px"/>
-                <Border BorderThickness="2px"
-                        BorderBrush="black"
-                        Margin="5"
-                        Padding="5">
-                    <TextBlock Text="{Binding SelectedItem.Category}"
-                               FontSize="20"/>
-                </Border>
-                <Border BorderThickness="2px"
-                        BorderBrush="black"
-                        Margin="5"
-                        Padding="5">
-                    <TextBlock Text="{Binding SelectedItem.Material}"
-                               FontSize="20" />
-                </Border>
+                <!--RelatedTags-->
+                <StackPanel Orientation="Horizontal"
+                            Margin="15 60 0 0"
+                            Height="50">
+                    <TextBlock Text="Related:"
+                               FontSize="32px"
+                               FontWeight="Medium"/>
+                    <Border BorderThickness="1px"
+                            BorderBrush="LightGray"
+                            Margin="5">
+                        <Button Margin="5"
+                                Style="{StaticResource Tag}"
+                                Content="{Binding SelectedItem.Category}"
+                                Command="{Binding NavigateToFilter}"/>
+
+                    </Border>
+                    <Border BorderThickness="1px"
+                            BorderBrush="LightGray"
+                            Margin="5">
+                        <Button Margin="5"
+                                Style="{StaticResource Tag}"
+                                Content="{Binding SelectedItem.Material}"/>
+
+                    </Border>
+                </StackPanel>
             </StackPanel>
+            <!--Description-->
 
             <!--submitOrderButton-->
             <Button Content="Place Custom Order"
-                    Background="LightBlue"
-                    HorizontalAlignment="Center"
+                    HorizontalAlignment="Left"
                     Grid.Row="3"
                     Grid.Column="2"
                     Width="300"
                     Height="70px"
                     VerticalAlignment="Bottom"
-                    Margin="13"
-                    Command="{Binding NavigateToCheckout}"/>
-
-
-
-
+                    Margin="15 0 0 0"
+                    Command="{Binding NavigateToCheckout}"
+                    Style="{StaticResource PlaceOrder}"/>
         </Grid>
-
     </Grid>
 </UserControl>

@@ -36,6 +36,17 @@ namespace TinkerJems.Wpf.Application.ViewModels
                 }
             ));
 
+        private DelegateCommand navigateToFilter;
+        public DelegateCommand NavigateToFilter => navigateToFilter ?? (navigateToFilter = new DelegateCommand(
+                () =>
+                {
+                    var navigationParams = new NavigationParameters();
+                    navigationParams.Add("Category", SelectedItemCategory);
+                    HistoryStack.ViewStack.Push(new History { PageName = Title, Item = SelectedItem, Category = SelectedItemCategory });
+                    _regionManager.RequestNavigate(Constants.NavigationRegion, nameof(FilterView), navigationParams);
+                }
+            ));
+
         private string title;
 
         public string Title
@@ -51,9 +62,30 @@ namespace TinkerJems.Wpf.Application.ViewModels
             set { SetProperty(ref selectedItem,value); }
         }
 
+        private string selectedItemCategory;
+
+        public string SelectedItemCategory
+        {
+            get { return selectedItemCategory; }
+            set { SetProperty(ref selectedItemCategory, value); }
+        }
+
+        private string selectedItemMaterial;
+
+        public string SelectedItemMaterial
+        {
+            get { return selectedItemMaterial; }
+            set { SetProperty(ref selectedItemMaterial, value); }
+        }
+
+
+
+
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
             SelectedItem = navigationContext.Parameters.GetValue<JewelryItem>("Item");
+            SelectedItemCategory = SelectedItem.Category + "s";
+            SelectedItemMaterial = SelectedItem.Material;
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)

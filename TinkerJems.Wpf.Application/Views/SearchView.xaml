@@ -33,10 +33,11 @@
                                Padding="10 0 0 0 "
                                Background="white"
                                Width="250"
-                               Height="50" />
+                               Height="50"
+                               FontWeight="Thin"/>
                     <TextBlock Text="{Binding Price}"
                                FontSize="27"
-                               FontWeight="Bold"
+                               FontWeight="Medium"
                                TextAlignment="Right"
                                Background="white"
                                Padding="0 0 10 0"
@@ -79,7 +80,7 @@
             <!--RING CARDS-->
             <Grid Grid.Row="1"
                   Background="#faf1ed"
-                  Margin="0 50 0 0">
+                  Margin="15 50 15 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="300" />
                     <ColumnDefinition Width="*" />
@@ -106,7 +107,7 @@
         <!--Necklace Cards-->
         <Grid Grid.Row="2"              
               Background="#e7f0fd"
-              Margin="0 40 0 0">
+              Margin="15 50 15 0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="300"/>
                 <ColumnDefinition Width="*"/>
@@ -114,7 +115,7 @@
 
                 <StackPanel HorizontalAlignment="Center"
                             VerticalAlignment="Center">
-                    <Image Source="https://icon-library.net/images/ring-icon-png/ring-icon-png-25.jpg"
+                    <Image Source="https://cdn3.iconfinder.com/data/icons/hawaii-symbols-5/66/20-512.png"
                            Grid.Row="2"
                            Height="100" />
                     <TextBlock Text="Necklaces"
@@ -136,7 +137,7 @@
             <!--Earring Cards-->
             <Grid Grid.Row="3"
                   Background="#eaced7"
-                  Margin="0 40 0 0">
+                  Margin="15 50 15 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="300" />
                     <ColumnDefinition Width="*" />
@@ -144,10 +145,10 @@
 
                 <StackPanel HorizontalAlignment="Center"
                             VerticalAlignment="Center">
-                    <Image Source="https://icon-library.net/images/ring-icon-png/ring-icon-png-25.jpg"
+                    <Image Source="https://cdn0.iconfinder.com/data/icons/accessories-5/94/15-512.png"
                            Grid.Row="2"
                            Height="100" />
-                    <TextBlock Text="Rings"
+                    <TextBlock Text="Earrings"
                                Style="{StaticResource categoryHeader}"
                                Grid.Column="2" />
                 </StackPanel>
@@ -164,7 +165,7 @@
             <!--Bracelets Cards-->
             <Grid Grid.Row="4"
                   Background="#e4f0de"
-                  Margin="0 40 0 0">
+                  Margin="15 50 15 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="300" />
                     <ColumnDefinition Width="*" />
@@ -172,12 +173,12 @@
 
                 <StackPanel HorizontalAlignment="Center"
                             VerticalAlignment="Center">
-                    <Image Source="https://icon-library.net/images/ring-icon-png/ring-icon-png-25.jpg"
+                    <Image Source="https://icon-library.net/images/bracelet-icon/bracelet-icon-15.jpg"
                            Grid.Row="2"
                            Height="100" />
-                    <TextBlock Text="Rings"
+                    <TextBlock Text="Bracelets"
                                Style="{StaticResource categoryHeader}"
-                               Grid.Column="2" />
+                               Grid.Column="2"/>
                 </StackPanel>
                 <ListView ItemsSource="{Binding RandomBracelets}"
                           Grid.Column="1"
