@@ -40,6 +40,59 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="ComboBoxTest" TargetType="{x:Type ComboBox}">
+            <Setter Property="FontWeight" Value="Thin"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Text" Value="Categories"/>
+            <Setter Property="IsEditable" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <ToggleButton Grid.Column="2" Focusable="false" IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}" >
+                                <ToggleButton.Template>
+                                    <ControlTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="5*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Border x:Name="Border"  Grid.ColumnSpan="2" Background="#edd8ce" />
+                                            <Border Grid.Column="0" Margin="1"  Background="#edd8ce"  BorderBrush="Black" BorderThickness="0,0,1,0" />
+                                            <Path x:Name="Arrow" Grid.Column="1"  Fill="Gray" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z"/>
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#debeaf"/>
+                                                <Setter Property="Foreground" Value="White" />
+                                            </Trigger>
+                                            <Trigger Property="ToggleButton.IsMouseOver" Value="true">
+                                                <Setter TargetName="Border" Property="Background" Value="#debeaf" />
+                                            </Trigger>
+                                            <Trigger Property="ToggleButton.IsChecked" Value="true">
+                                                <Setter TargetName="Border" Property="Background" Value="#debeaf" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </ToggleButton.Template>
+                            </ToggleButton>
+                            <ContentPresenter Name="ContentSite" IsHitTestVisible="False"  Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Margin="3"  />
+                            <TextBox x:Name="PART_EditableTextBox" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                            <Popup Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True"  Focusable="False" PopupAnimation="Slide">
+                                <Grid  Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <Border x:Name="DropDownBorder" Background="#debeaf" />
+                                    <ScrollViewer SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True" />
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+            </Style.Triggers>
+        </Style>
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -57,7 +110,7 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
-                </Grid.ColumnDefinitions>                
+                </Grid.ColumnDefinitions>
 
                 <Button Command="{Binding NavigateBack}"
                         Width="auto"
@@ -71,7 +124,7 @@
                 </Button>
                 <StackPanel Grid.Column="1"
                             Orientation="Horizontal"
-                            Margin="410 0 0 0">                    
+                            Margin="410 0 0 0">
                     <Button Command="{Binding NavigateToSearch}"
                             CommandParameter="SearchView"
                             Width="auto"
@@ -80,11 +133,14 @@
                             Grid.Column="1"
                             BorderThickness="0">
                     </Button>
-                    <StackPanel Margin="10"
+                    <StackPanel Margin="0"
                                 Grid.Column="2">
                         <ComboBox
                             SelectedItem="{Binding SelectedCategory}"
-                            ItemsSource="{Binding Categories}">
+                            ItemsSource="{Binding Categories}"
+                            Height="30"
+                            Style="{StaticResource ComboBoxTest}"
+                            Width="125">
                         </ComboBox>
                     </StackPanel>
 
