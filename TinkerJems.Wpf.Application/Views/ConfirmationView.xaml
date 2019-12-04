@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="TinkerJems.Wpf.Application.Views.ConfirmationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:TinkerJems.Wpf.Application.Views"
+             mc:Ignorable="d"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style x:Key="Continue" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#ac3b61" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <Grid>
+                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15 0 15 0"/>
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#d67696"/>
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#d67696" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Image
+            Source="Images\confirmationIcon.png"
+            Grid.Row="0"
+            Margin="0 150 0 20"
+            VerticalAlignment="Bottom"
+            Grid.Column="1"
+            Height="250"/>
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="1"
+            FontSize="40"
+            FontWeight="Thin"
+            Margin="0 0 0 50"
+            HorizontalAlignment="Center"
+            Text="Thank you for your purchase!"/>
+        <Button
+            Content="Continue Shopping"
+            Command="{Binding ContinueShopping}"
+            Grid.Column="1"
+            Grid.Row="2"
+            FontSize="25"
+            FontWeight="Thin"
+            Height="100"
+            Width="500"
+            Style="{StaticResource Continue}"
+            />
+    </Grid>
+</UserControl>

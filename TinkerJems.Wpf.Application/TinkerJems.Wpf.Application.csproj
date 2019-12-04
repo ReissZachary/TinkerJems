@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Views\Images\confirmationIcon.png" />
     <None Remove="Views\Images\ringIcon.png" />
     <None Remove="Views\Images\splashscreen.jpg" />
     <None Remove="Views\Images\tinkerJemsLogo.ico" />
@@ -31,6 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Views\Images\confirmationIcon.png" />
     <Resource Include="Views\Images\ringIcon.png" />
     <Resource Include="Views\Images\splashscreen.jpg" />
     <Resource Include="Views\Images\tinkerJemsLogo.ico" />
