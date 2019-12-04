@@ -7,33 +7,50 @@
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450"
+             d:DesignWidth="800">
     <UserControl.Resources>
         <Style TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="#edd8ce" />
-            <Setter Property="Foreground" Value="#123c69" />
-            <Setter Property="FontSize" Value="20" />
-            <Setter Property="FontWeight" Value="Thin" />
-            <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Background"
+                    Value="#edd8ce" />
+            <Setter Property="Foreground"
+                    Value="#123c69" />
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="FontWeight"
+                    Value="Thin" />
+            <Setter Property="SnapsToDevicePixels"
+                    Value="True" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border Background="{TemplateBinding Background}">
                             <Grid>
-                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15 0 15 0"/>
+                                <ContentPresenter x:Name="MyContentPresenter"
+                                                  Content="{TemplateBinding Content}"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  Margin="15 0 15 0" />
                             </Grid>
                         </Border>
 
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#debeaf"/>
-                                <Setter Property="Foreground" Value="White" />
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#debeaf" />
+                                <Setter Property="Foreground"
+                                        Value="White" />
                             </Trigger>
 
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" Value="#debeaf" />
-                                <Setter Property="Foreground" Value="White" />
+                            <Trigger Property="IsPressed"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#debeaf" />
+                                <Setter Property="Foreground"
+                                        Value="White" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -43,21 +60,21 @@
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <!--navbar-->
-        <Border Grid.Row="0" >
+        <Border Grid.Row="0">
             <Grid Background="#edd8ce">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                </Grid.ColumnDefinitions>                
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
 
                 <Button Command="{Binding NavigateBack}"
                         Width="auto"
@@ -71,7 +88,7 @@
                 </Button>
                 <StackPanel Grid.Column="1"
                             Orientation="Horizontal"
-                            Margin="410 0 0 0">                    
+                            Margin="410 0 0 0">
                     <Button Command="{Binding NavigateToSearch}"
                             CommandParameter="SearchView"
                             Width="auto"
@@ -82,9 +99,9 @@
                     </Button>
                     <StackPanel Margin="10"
                                 Grid.Column="2">
-                        <ComboBox
-                            SelectedItem="{Binding SelectedCategory}"
-                            ItemsSource="{Binding Categories}">
+                        <ComboBox MinWidth="100"                                  
+                                  SelectedItem="{Binding SelectedCategory, FallbackValue='Categories', TargetNullValue='Select a category'}"
+                                  ItemsSource="{Binding Categories}">
                         </ComboBox>
                     </StackPanel>
 
