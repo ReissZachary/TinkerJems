@@ -20,21 +20,41 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" style="background:#edc7b7 !important; font-size:20px">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Tinker Jems Jewelry</a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index" style="font-size:25px">Tinker Gems Jewelry</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                        aria-expanded="false" aria-label="Toggle navigation" >
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
-                        @*<li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Items">Items</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Jewelry
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-page="./Items">All Jewelry</a>
+                                <a class="dropdown-item" asp-page="./SelectedCategory" asp-route-category="Ring">Rings</a>
+                                <a class="dropdown-item" asp-page="./SelectedCategory" asp-route-category="Necklace">Necklaces</a>
+                                <a class="dropdown-item" asp-page="./SelectedCategory" asp-route-category="Earring">Earrings</a>
+                                <a class="dropdown-item" asp-page="./SelectedCategory" asp-route-category="Bracelet">Bracelets and Anklets</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" asp-page="./Blog" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Blog
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Blog">Blog</a>
+                            <a class="nav-link" href="#aboutMe">About Me</a>
+                        </li>
+                        @*<li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Items">Items</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Blog">Blog</a>
                         </li>*@
                     </ul>
                 </div>
