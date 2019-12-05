@@ -9,7 +9,7 @@
         Icon="Images/tinkerJemsLogo.ico"
         prism:ViewModelLocator.AutoWireViewModel="True"
         mc:Ignorable="d"
-        Title="Tinker Jems" Height="1000" Width="1400">
+        Title="Tinker Jems" Height="1000" Width="1450">
     <Window.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Background" Value="#373737" />

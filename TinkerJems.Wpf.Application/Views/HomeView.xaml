@@ -160,8 +160,8 @@
                         </ComboBox>
                     </StackPanel>
 
-                    <Button Command="{Binding NavigateToSearch}"
-                            CommandParameter="SearchView"
+                    <Button Command="{Binding NavigateToAboutMe}"
+                            CommandParameter="AboutMeView"
                             Width="auto"
                             Height="auto"
                             Content="About Me"

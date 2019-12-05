@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="Views\Images\confirmationIcon.png" />
+    <None Remove="Views\Images\PersonalPic.jpg" />
     <None Remove="Views\Images\ringIcon.png" />
     <None Remove="Views\Images\splashscreen.jpg" />
     <None Remove="Views\Images\tinkerJemsLogo.ico" />
@@ -29,10 +30,12 @@
 
   <ItemGroup>
     <Folder Include="Shared\Images\" />
+    <Folder Include="Shared\NonJewelry\" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Views\Images\confirmationIcon.png" />
+    <Resource Include="Views\Images\PersonalPic.jpg" />
     <Resource Include="Views\Images\ringIcon.png" />
     <Resource Include="Views\Images\splashscreen.jpg" />
     <Resource Include="Views\Images\tinkerJemsLogo.ico" />

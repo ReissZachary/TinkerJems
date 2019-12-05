@@ -31,6 +31,7 @@ namespace TinkerJems.Wpf.Application
             containerRegistry.RegisterForNavigation<ItemView>();
             containerRegistry.RegisterForNavigation<FilterView>();
             containerRegistry.RegisterForNavigation<CheckoutView>();
+            containerRegistry.RegisterForNavigation<AboutMeView>();
         }
 
         protected override void ConfigureServiceLocator()

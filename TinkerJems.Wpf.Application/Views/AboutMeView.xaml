@@ -1,0 +1,126 @@
+﻿<UserControl x:Class="TinkerJems.Wpf.Application.Views.AboutMeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:local="clr-namespace:TinkerJems.Wpf.Application.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <ScrollViewer>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <!--picture-->
+            <Image Source="Images/PersonalPic.jpg"
+                   Grid.Column="0"
+                   Grid.Row="0"
+                   Margin="50 50 0 0"
+                   Width="700"
+                   Height="500"
+                   HorizontalAlignment="Left" />
+
+            <!--social-->
+            <Border BorderBrush="#123c69"
+                    BorderThickness="1px"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Margin="0 50 0 0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                <StackPanel Margin="50">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Follow me on my Personal Accounts:"
+                                   Foreground="#123c69"
+                                   FontSize="20"
+                                   FontWeight="Medium"
+                                   Grid.ColumnSpan="2"
+                                   Grid.Row="0" />
+
+                        <Image Source="http://clipart-library.com/images_k/instagram-png-transparent/instagram-png-transparent-1.png"
+                               Width="75"
+                               Grid.Row="1"
+                               Grid.Column="0" />
+                        <TextBlock Text="@nettie.graham"
+                                   FontSize="20"
+                                   FontWeight="Thin"
+                                   Grid.Row="1"
+                                   Grid.Column="1"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left" />
+                        <Image Source="https://cdn4.iconfinder.com/data/icons/social-media-icons-the-circle-set/48/facebook_circle-512.png"
+                               Width="60"
+                               Grid.Row="2"
+                               Grid.Column="0" />
+                        <TextBlock Text="@nettie.graham"
+                                   FontSize="20"
+                                   FontWeight="Thin"
+                                   Grid.Row="2"
+                                   Grid.Column="2"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left" />
+
+                        <TextBlock Text="Follow Tinker Gems:"
+                                   Foreground="#123c69"
+                                   FontSize="20"
+                                   FontWeight="Medium"
+                                   Grid.ColumnSpan="2"
+                                   Grid.Row="3"
+                                   HorizontalAlignment="Center"
+                                   Margin="0 40 0 0" />
+                        <Image Source="http://clipart-library.com/images_k/instagram-png-transparent/instagram-png-transparent-1.png"
+                               Width="75"
+                               Grid.Row="4"
+                               Grid.Column="0" />
+                        <TextBlock Text="@tinker.gems"
+                                   FontSize="20"
+                                   FontWeight="Thin"
+                                   Grid.Row="4"
+                                   Grid.Column="1"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left" />
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <!--text-->
+            <StackPanel Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        Margin="50 50 0 10"
+                        Background="#edd8ce">
+                <TextBlock Text="About Me"
+                           FontSize="30"
+                           FontWeight="Medium"
+                           Foreground="#123c69"
+                           Margin="10"/>
+                <TextBlock Text=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lectus nisl, consectetur et lorem consequat, iaculis pulvinar arcu. Vestibulum sed diam porttitor, faucibus odio a, vestibulum turpis. Maecenas in ornare est. Cras rhoncus purus sed placerat lobortis. Ut id tellus justo. Interdum et malesuada fames ac ante ipsum primis in faucibus. In molestie, mauris a faucibus auctor, erat mi pulvinar nisi, a euismod quam ex at tellus. Nam auctor quam eu mattis hendrerit. Praesent aliquam sodales metus vitae convallis. Phasellus fermentum ante dolor, in varius lorem condimentum id. Fusce viverra odio sit amet velit vestibulum aliquam. Cras gravida, sem eu gravida lacinia, enim erat consequat dui, quis lobortis mi orci nec erat. Praesent maximus velit et tempor sollicitudin. In quis ligula tellus. Aliquam varius, nunc sit amet cursus tincidunt, enim arcu efficitur turpis, at auctor dui leo pharetra elit. Nulla egestas lobortis nisi et sagittis. Duis ac congue quam, nec porta ligula. Curabitur vel enim semper libero varius malesuada. Donec euismod sed mi non lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et consectetur sapien. Pellentesque volutpat lectus non congue aliquam. Pellentesque sit amet risus nec sapien ornare luctus. Nulla facilisi. Aenean gravida tincidunt lectus, sed iaculis arcu laoreet eget. Donec bibendum mauris magna, tristique commodo ex iaculis eget. Vestibulum blandit arcu placerat diam ultricies, a sagittis dolor feugiat. Nullam eget odio sed ex ultrices placerat. Nunc felis ex, vulputate et turpis a, molestie aliquam mauris. 
+                                "
+                           TextWrapping="Wrap"
+                           Margin="10 0 0 0"
+                           FontSize="17"/>                
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</UserControl>
