@@ -88,10 +88,17 @@ namespace TinkerJems.Wpf.Application.ViewModels
         public DelegateCommand NavigateToAboutMe => navigateToAboutMe ?? (navigateToAboutMe = new DelegateCommand(
                 () =>
                 {
-                    //var navigationParams = new NavigationParameters();
-                    //navigationParams.Add("Category", SelectedCategory);
                     HistoryStack.ViewStack.Push(new History { PageName = Title });
                     _regionManager.RequestNavigate(Constants.NavigationRegion, nameof(AboutMeView));
+                }
+            ));
+
+        private DelegateCommand navigateToHowItWorks;
+        public DelegateCommand NavigateToHowItWorks => navigateToHowItWorks ?? (navigateToHowItWorks = new DelegateCommand(
+                () =>
+                {
+                    HistoryStack.ViewStack.Push(new History { PageName = Title });
+                    _regionManager.RequestNavigate(Constants.NavigationRegion, nameof(HowItWorksView));
                 }
             ));
 

@@ -169,8 +169,8 @@
                             BorderThickness="0">
                     </Button>
 
-                    <Button Command="{}"
-                            CommandParameter="SearchView"
+                    <Button Command="{Binding NavigateToHowItWorks}"
+                            CommandParameter="HowItWorksView"
                             Width="auto"
                             Height="auto"
                             Content="How It Works"

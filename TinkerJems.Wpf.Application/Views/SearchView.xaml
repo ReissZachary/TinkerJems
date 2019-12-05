@@ -79,7 +79,7 @@
 
             <!--RING CARDS-->
             <Grid Grid.Row="1"
-                  Background="#faf1ed"
+                  Background="#e7f0fd"
                   Margin="15 50 15 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="300" />
@@ -105,9 +105,9 @@
             </Grid>
 
         <!--Necklace Cards-->
-        <Grid Grid.Row="2"              
-              Background="#e7f0fd"
-              Margin="15 50 15 0">
+        <Grid Grid.Row="2"
+                  Background="#faf1ed"
+                  Margin="15 50 15 0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="300"/>
                 <ColumnDefinition Width="*"/>
