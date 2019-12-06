@@ -142,7 +142,7 @@
                 </Button>
                 <StackPanel Grid.Column="1"
                             Orientation="Horizontal"
-                            Margin="410 0 0 0">
+                            Margin="440 0 0 0">
                     <Button Command="{Binding NavigateToSearch}"
                             CommandParameter="SearchView"
                             Width="auto"
@@ -176,16 +176,7 @@
                             Content="How It Works"
                             Grid.Column="4"
                             BorderThickness="0">
-                    </Button>
-
-                    <Button Command="{}"
-                            CommandParameter="SearchView"
-                            Width="auto"
-                            Height="auto"
-                            Content="Contact Me"
-                            Grid.Column="5"
-                            BorderThickness="0">
-                    </Button>
+                    </Button>                    
                 </StackPanel>
             </Grid>
         </Border>

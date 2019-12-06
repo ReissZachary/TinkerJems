@@ -12,7 +12,6 @@ namespace TinkerJems.Wpf.Application.ViewModels
     {
         public AboutMeViewModel()
         {
-
         }
 
         private DelegateCommand personalInstagram;
@@ -44,5 +43,15 @@ namespace TinkerJems.Wpf.Application.ViewModels
             UseShellExecute = true,
             Arguments = "https://www.instagram.com/tinker.gems/"
         };
+
+        private DelegateCommand email;
+        public DelegateCommand Email => email ?? (email = new DelegateCommand(
+                () =>
+                {
+                    var email = "tinkergemsjewelry@gmail.com";
+                    string mailto = $"mailto:{email}?Subject={"Subject of message"}&Body={" "}";
+                    Process.Start(new ProcessStartInfo(mailto) { UseShellExecute = true });
+                }
+            ));       
     }
 }
