@@ -22,17 +22,17 @@ namespace TinkerJems.Web2
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                .UsePort();
+                .UsePort(args);
     }
 
     public static class WebHostBuilderExtenstions
     {
-        public static IWebHostBuilder UsePort(this IWebHostBuilder builder)
+        public static IWebHostBuilder UsePort(this IWebHostBuilder builder, string[] args)
         {
             var port = Environment.GetEnvironmentVariable("PORT");
             if (string.IsNullOrEmpty(port))
                 return builder;
-            return builder.UseUrls($"http//+:{port}");
+            return builder.UseUrls(args[0]);
         }
     }
 
