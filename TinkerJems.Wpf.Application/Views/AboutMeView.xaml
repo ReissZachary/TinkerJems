@@ -6,10 +6,10 @@
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True"
              xmlns:local="clr-namespace:TinkerJems.Wpf.Application.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
     <ScrollViewer>
-
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
@@ -70,8 +70,7 @@
                                    Grid.Column="1"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Left">
-                            <Hyperlink NavigateUri="https://www.instagram.com/nettie.graham/"
-                                       Command="{Binding PersonalInstagram}">@nettie.graham</Hyperlink>
+                            <Hyperlink Command="{Binding PersonalInstagram}">@nettie.graham</Hyperlink>
                                        
                         </TextBlock>
                         <Image Source="http://clipart-library.com/images_k/instagram-png-transparent/instagram-png-transparent-1.png"
@@ -84,7 +83,9 @@
                                    Grid.Column="1"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Left">
-                            <Hyperlink NavigateUri="https://www.instagram.com/tinker.gems/">@tinker.gems</Hyperlink>
+                            <Hyperlink Command="{Binding TinkerInstagram}">
+                                <TextBlock Text="@tinker.gems" />
+                            </Hyperlink>
                         </TextBlock>
                     </Grid>
                 </StackPanel>

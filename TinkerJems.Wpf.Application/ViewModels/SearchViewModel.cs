@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using TinkerJems.Core.Models;
 using TinkerJems.Wpf.Application.Events;
 using TinkerJems.Wpf.Application.Services;
@@ -45,6 +46,32 @@ namespace TinkerJems.Wpf.Application.ViewModels
         {
             get { return title; }
             set { title = value; }
+        }       
+
+        private Task loadViewTask;
+
+        public Task LoadViewTask
+        {
+            get { return loadViewTask; }
+            set { SetProperty(ref loadViewTask, value); }
+        }
+
+        private Visibility viewVisibility;
+
+        public Visibility ViewVisibility
+        {
+            get { return viewVisibility; }
+            set { SetProperty(ref viewVisibility, value); }
+        }
+
+        private Visibility loadingViewVisibility;
+        public Visibility LoadingViewVisibility
+        {
+            get { return loadingViewVisibility; }
+            set
+            {
+                SetProperty(ref loadingViewVisibility, value);
+            }
         }
 
 

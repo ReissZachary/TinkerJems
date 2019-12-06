@@ -19,8 +19,30 @@ namespace TinkerJems.Wpf.Application.ViewModels
         public DelegateCommand PersonalInstagram => personalInstagram ?? (personalInstagram = new DelegateCommand(
                 () =>
                 {
-                    Process.Start("Chrome.exe", "https://www.instagram.com/nettie.graham/");
+                    Process.Start(personalProcessInfo);
                 }
             ));
+
+        public ProcessStartInfo personalProcessInfo = new ProcessStartInfo
+        {
+            FileName = "Chrome.exe",
+            UseShellExecute = true,
+            Arguments = "https://www.instagram.com/nettie.graham/"
+        };
+
+        private DelegateCommand tinkerInstagram;
+        public DelegateCommand TinkerInstagram => tinkerInstagram ?? (tinkerInstagram = new DelegateCommand(
+                () =>
+                {
+                    Process.Start(tinkerProcessInfo);
+                }
+            ));
+
+        public ProcessStartInfo tinkerProcessInfo = new ProcessStartInfo
+        {
+            FileName = "Chrome.exe",
+            UseShellExecute = true,
+            Arguments = "https://www.instagram.com/tinker.gems/"
+        };
     }
 }
