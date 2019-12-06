@@ -14,23 +14,17 @@ namespace TinkerJems.Wpf.Application.ViewModels
     public class HomeViewModel : BindableBase, INavigationAware
     {
         private readonly IRegionManager _regionManager;
-        public DelegateCommand<string> NavigateToSearch { get; }
 
         public HomeViewModel(IRegionManager regionManager)
         {
             _regionManager = regionManager;
             Title = "HomeView";
-            NavigateToSearch = new DelegateCommand<string>((uri) =>
-            {
-                HistoryStack.ViewStack.Push(new History {PageName = Title });
-                _regionManager.RequestNavigate("NavigationRegion", uri);
-            });
             SelectedCategory = Categories.First();
         }
 
         private void populateHome()
         {
-            NavigateToSearch.Execute("SearchView");
+            NavigateToSearch.Execute();
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
@@ -47,27 +41,48 @@ namespace TinkerJems.Wpf.Application.ViewModels
         {
         }
 
+        private DelegateCommand navigateToSearch;
+        public DelegateCommand NavigateToSearch => navigateToSearch ?? (navigateToSearch = new DelegateCommand(
+                () =>
+                {
+                    _regionManager.RequestNavigate(Constants.NavigationRegion, nameof(SearchView));
+                }));
+
         private DelegateCommand navigateBack;
         public DelegateCommand NavigateBack => navigateBack ?? (navigateBack = new DelegateCommand(
                 () =>
                 {
-                    var view = HistoryStack.ViewStack.Pop();
-                    if(view.PageName == "ItemView")
+                    try
                     {
+                        var view = HistoryStack.ViewStack.Pop();
+                        if (view.PageName == "ItemView")
+                        {
 
-                        var navigationParams = new NavigationParameters();
-                        navigationParams.Add("Item", view.Item);
-                        _regionManager.RequestNavigate(Constants.NavigationRegion, view.PageName, navigationParams);
+                            var navigationParams = new NavigationParameters();
+                            navigationParams.Add("Item", view.Item);
+                            _regionManager.RequestNavigate(Constants.NavigationRegion, view.PageName, navigationParams);
+                        }
+                        else if (view.PageName == "FilterView")
+                        {
+                            var navigationParams = new NavigationParameters();
+                            navigationParams.Add("Category", view.Category);
+                            _regionManager.RequestNavigate(Constants.NavigationRegion, view.PageName, navigationParams);
+                        }
+                        else
+                        {
+                            if (view == null || view.PageName == nameof(HomeView))
+                            {
+                                NavigateToSearch.Execute();
+                            }
+                            else
+                            {
+                                _regionManager.RequestNavigate(Constants.NavigationRegion, view.PageName);
+                            }
+                        }
                     }
-                    else if (view.PageName == "FilterView")
+                    catch
                     {
-                        var navigationParams = new NavigationParameters();
-                        navigationParams.Add("Category", view.Category);
-                        _regionManager.RequestNavigate(Constants.NavigationRegion, view.PageName, navigationParams);
-                    }
-                    else
-                    {
-                        _regionManager.RequestNavigate(Constants.NavigationRegion, view.PageName);
+                        NavigateToSearch.Execute();
                     }
                 }
             ));
