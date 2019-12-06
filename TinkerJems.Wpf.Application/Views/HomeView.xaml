@@ -156,8 +156,7 @@
                         <ComboBox
                             ItemsSource="{Binding Categories}"
                             Height="auto"
-                            Style="{StaticResource ComboBoxTest}">
-                        </ComboBox>
+                            Style="{StaticResource ComboBoxTest}" />
                     </StackPanel>
 
                     <Button Command="{Binding NavigateToAboutMe}"

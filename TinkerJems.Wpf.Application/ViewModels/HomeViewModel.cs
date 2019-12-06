@@ -3,6 +3,7 @@ using Prism.Mvvm;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -129,13 +130,16 @@ namespace TinkerJems.Wpf.Application.ViewModels
             get { return selectedCategory; }
             set
             {
-                SetProperty(ref selectedCategory,value);
-                NavigateToFilter.Execute();
-
+                SetProperty(ref selectedCategory, value);
+                if (SelectedCategory != "Jewelry")
+                {
+                    NavigateToFilter.Execute();
+                    SelectedCategory = "Jewelry";
+                }
             }
         }
 
-        public IEnumerable<string> Categories { get; } = new[] { "Jewelry", "Rings", "Necklaces", "Earrings", "Bracelets" };
+        public IEnumerable<string> Categories { get; } = new[] {"Jewelry", "Rings", "Necklaces", "Earrings", "Bracelets" };
 
     }
 }
