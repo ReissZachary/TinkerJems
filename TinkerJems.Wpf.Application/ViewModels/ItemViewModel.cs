@@ -47,6 +47,18 @@ namespace TinkerJems.Wpf.Application.ViewModels
                 }
             ));
 
+        private DelegateCommand navigateToMaterial;
+        public DelegateCommand NavigateToMaterial => navigateToMaterial ?? (navigateToMaterial = new DelegateCommand(
+                () =>
+                {
+                    var navigationParams = new NavigationParameters();
+                    navigationParams.Add("Category", SelectedItemCategory);
+                    navigationParams.Add("Material", SelectedItemMaterial);
+                    HistoryStack.ViewStack.Push(new History { PageName = Title, Item = SelectedItem, Category = SelectedItemCategory });
+                    _regionManager.RequestNavigate(Constants.NavigationRegion, nameof(FilterView), navigationParams);
+                }
+            ));
+
         private string title;
 
         public string Title

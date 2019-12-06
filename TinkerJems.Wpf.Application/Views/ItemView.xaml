@@ -154,7 +154,8 @@
                             Margin="5">
                         <Button Margin="5"
                                 Style="{StaticResource Tag}"
-                                Content="{Binding SelectedItem.Material}"/>
+                                Content="{Binding SelectedItem.Material}"
+                                Command="{Binding NavigateToMaterial}"/>
 
                     </Border>
                 </StackPanel>

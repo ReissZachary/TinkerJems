@@ -49,6 +49,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
         {
             SelectedCategory = navigationContext.Parameters.GetValue<string>("Category");
             AllJewelryItems = _jewelryService.GetJewelryByCategory(SelectedCategory);
+            SelectedMaterial = navigationContext.Parameters.GetValue<string>("Material");
             foreach (var j in AllJewelryItems)
             {
                 j.ImageUrl = $"https://localhost:5001/images/{j.ImageUrl}";
@@ -62,8 +63,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
                 }
             }
 
-            FilteredJewelryItems = AllJewelryItems;
-
+            applyFilters(AllJewelryItems);
         }
 
         //Jewelry items to be modified
@@ -136,7 +136,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
         public string SelectedTag
         {
             get { return selectedTag; }
-            set 
+            set
             {
                 SetProperty(ref selectedTag, value);
                 applyFilters(AllJewelryItems);
@@ -183,13 +183,6 @@ namespace TinkerJems.Wpf.Application.ViewModels
                 SetProperty(ref selectedMaterial, value);
                 applyFilters(AllJewelryItems);
             }
-        }
-
-        private void FilterMaterial(string value)
-        {
-            //For now, it will be the only filter
-            FilteredJewelryItems = AllJewelryItems;
-            FilteredJewelryItems = FilteredJewelryItems.Where(j => j.Material == value);
         }
 
         private IEnumerable<JewelryItem> sortItems(IEnumerable<JewelryItem> originalList)
