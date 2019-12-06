@@ -34,7 +34,8 @@
                                Background="white"
                                Width="250"
                                Height="50"
-                               FontWeight="Thin"/>
+                               FontWeight="Thin"
+                               Foreground="#123c69"/>
                     <TextBlock Text="{Binding Price}"
                                FontSize="27"
                                FontWeight="Medium"
@@ -42,7 +43,8 @@
                                Background="white"
                                Padding="0 0 10 0"
                                Width="250"
-                               Height="50" />
+                               Height="50"
+                               Foreground="#123c69"/>
                 </StackPanel>
             </Border>
         </DataTemplate>
@@ -55,12 +57,67 @@
             <Setter Property="HorizontalAlignment"
                     Value="Center" />
             <Setter Property="FontWeight"
-                    Value="Thin" />
+                    Value="Thin"/>
+        </Style>
+        <Style x:Key="underlineText"
+               TargetType="TextBlock">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver"
+                         Value="True">
+                    <Setter Property="TextBlock.TextDecorations"
+                            Value="Underline" />
+                </Trigger>
+            </Style.Triggers>
         </Style>
         <ItemsPanelTemplate x:Key="categoryItemPanel">
             <StackPanel Background="Transparent"
                         Orientation="Horizontal" />
         </ItemsPanelTemplate>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background"
+                    Value="#123c69" />
+            <Setter Property="Foreground"
+                    Value="Black" />
+            <Setter Property="FontSize"
+                    Value="15" />
+            <Setter Property="SnapsToDevicePixels"
+                    Value="True" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <Grid>
+                                <ContentPresenter x:Name="MyContentPresenter"
+                                                  Content="{TemplateBinding Content}"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  Margin="15 0 15 0" />
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#4989cc" />
+                                <Setter Property="Foreground"
+                                        Value="Black" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#4989cc" />
+                                <Setter Property="Foreground"
+                                        Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </UserControl.Resources>
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid ScrollViewer.CanContentScroll="True">
@@ -91,9 +148,16 @@
                     <Image Source="https://icon-library.net/images/ring-icon-png/ring-icon-png-25.jpg"
                            Grid.Row="2"
                            Height="100" />
-                    <TextBlock Text="Rings"
-                               Style="{StaticResource categoryHeader}"
-                               Grid.Column="2" />
+                    <Button Grid.Column="2"
+                            Background="#e7f0fd">
+                        <TextBlock Text="Rings"
+                                   Style="{StaticResource underlineText}"
+                                   FontSize="40"
+                                   FontWeight="Thin">
+                            
+                        </TextBlock>
+
+                    </Button>
                 </StackPanel>
                 <ListView ItemsSource="{Binding RandomRings}"
                           Grid.Column="1"
@@ -118,9 +182,15 @@
                     <Image Source="https://cdn3.iconfinder.com/data/icons/hawaii-symbols-5/66/20-512.png"
                            Grid.Row="2"
                            Height="100" />
-                    <TextBlock Text="Necklaces"
-                               Style="{StaticResource categoryHeader}"
-                               Grid.Column="2"/>
+                    <Button Grid.Column="2"
+                            Background="#faf1ed">
+                        <TextBlock Text="Necklaces"
+                                   Style="{StaticResource underlineText}"
+                                   FontSize="40"
+                                   FontWeight="Thin">
+
+                        </TextBlock>
+                    </Button>
                 </StackPanel>
                 <ListView ItemsSource="{Binding RandomNecklaces}"
                           Grid.Column="1"
@@ -148,9 +218,15 @@
                     <Image Source="https://cdn0.iconfinder.com/data/icons/accessories-5/94/15-512.png"
                            Grid.Row="2"
                            Height="100" />
-                    <TextBlock Text="Earrings"
-                               Style="{StaticResource categoryHeader}"
-                               Grid.Column="2" />
+                    <Button Grid.Column="2"
+                            Background="#eaced7">
+                        <TextBlock Text="Earrings"
+                                   Style="{StaticResource underlineText}"
+                                   FontSize="40"
+                                   FontWeight="Thin">
+
+                        </TextBlock>
+                    </Button>
                 </StackPanel>
                 <ListView ItemsSource="{Binding RandomEarrings}"
                           SelectedItem="{Binding SelectedJewelryItem}"
@@ -176,9 +252,15 @@
                     <Image Source="https://icon-library.net/images/bracelet-icon/bracelet-icon-15.jpg"
                            Grid.Row="2"
                            Height="100" />
-                    <TextBlock Text="Bracelets"
-                               Style="{StaticResource categoryHeader}"
-                               Grid.Column="2"/>
+                    <Button Grid.Column="2"
+                            Background="#e4f0de">
+                        <TextBlock Text="Earrings"
+                                   Style="{StaticResource underlineText}"
+                                   FontSize="40"
+                                   FontWeight="Thin">
+
+                        </TextBlock>
+                    </Button>
                 </StackPanel>
                 <ListView ItemsSource="{Binding RandomBracelets}"
                           Grid.Column="1"
