@@ -55,29 +55,29 @@ namespace TinkerJems.Wpf.Application.ViewModels
                     try
                     {
                         var view = HistoryStack.ViewStack.Pop();
-                        if (view.PageName == "ItemView")
+                        if (view.PageName == nameof(ItemView))
                         {
-
                             var navigationParams = new NavigationParameters();
                             navigationParams.Add("Item", view.Item);
                             _regionManager.RequestNavigate(Constants.NavigationRegion, view.PageName, navigationParams);
                         }
-                        else if (view.PageName == "FilterView")
+                        else if (view.PageName == nameof(FilterView))
                         {
                             var navigationParams = new NavigationParameters();
                             navigationParams.Add("Category", view.Category);
                             _regionManager.RequestNavigate(Constants.NavigationRegion, view.PageName, navigationParams);
                         }
+                        else if(view.PageName == nameof(SearchView) || view.PageName == nameof(CheckoutView))
+                        {
+                            NavigateToSearch.Execute();
+                        }
+                        else if (view.PageName == nameof(HowItWorksView) || view.PageName == nameof(AboutMeView))
+                        {
+                            NavigateToSearch.Execute();
+                        }
                         else
                         {
-                            if (view == null || view.PageName == nameof(HomeView))
-                            {
-                                NavigateToSearch.Execute();
-                            }
-                            else
-                            {
-                                _regionManager.RequestNavigate(Constants.NavigationRegion, view.PageName);
-                            }
+                            NavigateToSearch.Execute();
                         }
                     }
                     catch
@@ -94,7 +94,6 @@ namespace TinkerJems.Wpf.Application.ViewModels
                 {
                     var navigationParams = new NavigationParameters();
                     navigationParams.Add("Category", SelectedCategory);
-                    HistoryStack.ViewStack.Push(new History { PageName = Title });
                     _regionManager.RequestNavigate(Constants.NavigationRegion, nameof(FilterView), navigationParams);
                 }
             ));
@@ -103,7 +102,6 @@ namespace TinkerJems.Wpf.Application.ViewModels
         public DelegateCommand NavigateToAboutMe => navigateToAboutMe ?? (navigateToAboutMe = new DelegateCommand(
                 () =>
                 {
-                    HistoryStack.ViewStack.Push(new History { PageName = Title });
                     _regionManager.RequestNavigate(Constants.NavigationRegion, nameof(AboutMeView));
                 }
             ));
@@ -112,7 +110,6 @@ namespace TinkerJems.Wpf.Application.ViewModels
         public DelegateCommand NavigateToHowItWorks => navigateToHowItWorks ?? (navigateToHowItWorks = new DelegateCommand(
                 () =>
                 {
-                    HistoryStack.ViewStack.Push(new History { PageName = Title });
                     _regionManager.RequestNavigate(Constants.NavigationRegion, nameof(HowItWorksView));
                 }
             ));

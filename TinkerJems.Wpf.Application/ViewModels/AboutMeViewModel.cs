@@ -5,10 +5,13 @@ using System.Diagnostics;
 using System.Windows.Navigation;
 using Prism.Mvvm;
 using Prism.Commands;
+using Prism.Regions;
+using TinkerJems.Wpf.Application.Shared;
+using TinkerJems.Wpf.Application.Views;
 
 namespace TinkerJems.Wpf.Application.ViewModels
 {
-    public class AboutMeViewModel : BindableBase
+    public class AboutMeViewModel : BindableBase, INavigationAware
     {
         public AboutMeViewModel()
         {
@@ -44,5 +47,19 @@ namespace TinkerJems.Wpf.Application.ViewModels
             UseShellExecute = true,
             Arguments = "https://www.instagram.com/tinker.gems/"
         };
+
+        public void OnNavigatedTo(NavigationContext navigationContext)
+        {
+        }
+
+        public bool IsNavigationTarget(NavigationContext navigationContext)
+        {
+            return true;
+        }
+
+        public void OnNavigatedFrom(NavigationContext navigationContext)
+        {
+            HistoryStack.ViewStack.Push(new History { PageName = nameof(AboutMeView) });
+        }
     }
 }
