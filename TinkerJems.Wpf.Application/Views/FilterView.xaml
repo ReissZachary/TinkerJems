@@ -93,37 +93,14 @@
                 Grid.RowSpan="3"
                 BorderThickness="1px"
                 BorderBrush="Black">
-            <StackPanel Background="#e7f0fd"
+                <StackPanel Background="#e7f0fd"
                         Width="250"
                         HorizontalAlignment="Left">
-                <TextBlock Text="Filters"
-                           FontSize="30"
-                           TextDecorations="Underline"
-                           HorizontalAlignment="Center"/>
-                <TextBlock Text="Materials"
-                           FontSize="24"
-                           Margin="15"/>
-                <ListBox ItemsSource="{Binding Materials}"
-                          SelectionMode="Multiple"
-                          Margin="10"
-                          BorderBrush="Transparent"
-                          Background="Transparent">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <ListBoxItem IsSelected="{Binding IsSelected, Mode=TwoWay}">
-                                <CheckBox Content="{Binding}"
-                                          IsChecked="{Binding IsSelected, Mode=TwoWay}"/>
-                            </ListBoxItem>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-
-
-                <TextBlock Text="Materials"
+                    <TextBlock Text="Materials"
                         FontSize="24"
                         Margin="15"/>
                     <ComboBox SelectedItem="{Binding SelectedMaterial}"
-                          ItemsSource="{Binding FilterByMaterial}"
+                          ItemsSource="{Binding DropDownMaterials}"
                           Width="125px"
                           Margin="5"
                           HorizontalAlignment="Left"

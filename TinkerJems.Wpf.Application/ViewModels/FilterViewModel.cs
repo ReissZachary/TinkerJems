@@ -72,8 +72,8 @@ namespace TinkerJems.Wpf.Application.ViewModels
         public IEnumerable<JewelryItem> FilteredJewelryItems
         {
             get { return filteredJewelryItems; }
-            set { SetProperty(ref filteredJewelryItems , value); }
-        }
+            set { SetProperty(ref filteredJewelryItems , value); }}
+
 
 
         //All the elements in the selected category
@@ -83,6 +83,34 @@ namespace TinkerJems.Wpf.Application.ViewModels
         {
             get { return allJewelryItems; }
             set { SetProperty(ref allJewelryItems, value); }
+        }
+
+        private void applyFilters(IEnumerable<JewelryItem> originalList)
+        {
+            var temp = originalList;
+            temp = FilterByTag(temp);
+            temp = FilterByMaterial(temp);
+            temp = sortItems(temp);
+
+            FilteredJewelryItems = temp;
+
+        }
+
+        private IEnumerable<JewelryItem> FilterByMaterial(IEnumerable<JewelryItem> temp)
+        {
+            if (SelectedMaterial == null)
+                return temp;
+            return temp.Where(t => t.Material == SelectedMaterial);
+        }
+
+        private IEnumerable<JewelryItem> FilterByTag(IEnumerable<JewelryItem> temp)
+        {
+            if (SelectedTag == null)
+                return temp;
+            else
+            {
+                return temp;
+            }
         }
 
         private JewelryItem selectedJewelryItem;
@@ -103,6 +131,17 @@ namespace TinkerJems.Wpf.Application.ViewModels
             set { SetProperty( ref tags, value); }
         }
 
+        private string selectedTag;
+
+        public string SelectedTag
+        {
+            get { return selectedTag; }
+            set 
+            {
+                SetProperty(ref selectedTag, value);
+                applyFilters(AllJewelryItems);
+            }
+        }
 
         private List<string> materials = Constants.Materials;
 
@@ -121,14 +160,6 @@ namespace TinkerJems.Wpf.Application.ViewModels
             set { SetProperty(ref selectedCategory, value); }
         }
 
-        private bool isSelected;
-
-        public bool IsSelected
-        {
-            get { return isSelected; }
-            set { SetProperty(ref isSelected, value); }
-        }
-
         private string selectedSort;
 
         public string SelectedSort
@@ -137,7 +168,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
             set
             {
                 SetProperty(ref selectedSort, value);
-                SortItems(value);
+                applyFilters(AllJewelryItems);
             }
         }
 
@@ -150,7 +181,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
             set
             {
                 SetProperty(ref selectedMaterial, value);
-                FilterMaterial(value);
+                applyFilters(AllJewelryItems);
             }
         }
 
@@ -161,30 +192,30 @@ namespace TinkerJems.Wpf.Application.ViewModels
             FilteredJewelryItems = FilteredJewelryItems.Where(j => j.Material == value);
         }
 
-        private void SortItems(string sort)
+        private IEnumerable<JewelryItem> sortItems(IEnumerable<JewelryItem> originalList)
         {
-            FilteredJewelryItems = AllJewelryItems;
+            var sort = SelectedSort;
 
             if(sort == "Price (Low-High)")
             {
-                FilteredJewelryItems = FilteredJewelryItems.OrderBy(j => j.Price);
+                return FilteredJewelryItems = originalList.OrderBy(j => j.Price);
             }
             else if(sort == "Price (High-Low)")
             {
-                FilteredJewelryItems = FilteredJewelryItems.OrderByDescending(j => j.Price);
+                return FilteredJewelryItems = originalList.OrderByDescending(j => j.Price);
             }
             else if(sort == "Name (A-Z)")
             {
-                FilteredJewelryItems = FilteredJewelryItems.OrderBy(j => j.Name);
+                return FilteredJewelryItems = originalList.OrderBy(j => j.Name);
             }
             else
             {
-                FilteredJewelryItems = FilteredJewelryItems.OrderByDescending(j => j.Name);
+                return FilteredJewelryItems = originalList.OrderByDescending(j => j.Name);
             }
         }
 
         public IEnumerable<string> SortBy { get; } = new[] { "Price (Low-High)", "Price (High-Low)", "Name (A-Z)", "Name (Z-A)"};
-        public IEnumerable<string> FilterByMaterial { get; } = Constants.Materials;
+        public IEnumerable<string> DropDownMaterials { get; } = Constants.Materials;
 
     }
 }
