@@ -22,7 +22,7 @@ namespace TinkerJems.Web2
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                .UsePort(args);
+                .UseUrls(args[0]);
     }
 
     public static class WebHostBuilderExtenstions
