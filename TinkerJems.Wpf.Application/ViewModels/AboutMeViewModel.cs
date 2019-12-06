@@ -15,7 +15,6 @@ namespace TinkerJems.Wpf.Application.ViewModels
     {
         public AboutMeViewModel()
         {
-
         }
 
         private DelegateCommand personalInstagram;
@@ -61,5 +60,15 @@ namespace TinkerJems.Wpf.Application.ViewModels
         {
             HistoryStack.ViewStack.Push(new History { PageName = nameof(AboutMeView) });
         }
+
+        private DelegateCommand email;
+        public DelegateCommand Email => email ?? (email = new DelegateCommand(
+                () =>
+                {
+                    var email = "tinkergemsjewelry@gmail.com";
+                    string mailto = $"mailto:{email}?Subject={"Subject of message"}&Body={" "}";
+                    Process.Start(new ProcessStartInfo(mailto) { UseShellExecute = true });
+                }
+            ));       
     }
 }
