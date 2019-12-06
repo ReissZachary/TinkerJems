@@ -28,7 +28,8 @@
 
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#f7e5dc"/>
+                                <Setter Property="Background"
+                                        Value="#e8e8e8"/>
                                 <Setter Property="Foreground" Value="White" />
                             </Trigger>
 
@@ -62,55 +63,48 @@
                    HorizontalAlignment="Center"
                    Foreground="#ac3b61"/>
 
-        <!--SORT BY HEADER-->
-        <Border Grid.Row="1"
-                Grid.Column="1"
-                BorderBrush="Black"
-                BorderThickness="1px">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0"
-                           Text="Sort by: "
-                           FontSize="24"
-                           Margin="8 0 0 0"
-                           VerticalAlignment="Center"/>
-                <ComboBox SelectedItem="{Binding SelectedSort}"
-                          ItemsSource="{Binding SortBy}"
-                          Width="125px"
-                          Margin="5"
-                          HorizontalAlignment="Left"
-                          Grid.Column="1">
-                </ComboBox>
-            </Grid>
-        </Border>
-
-        <!--FILTERS-->
-        <Border Grid.Row="1"
-                Grid.Column="0"
-                Grid.RowSpan="3"
-                BorderThickness="1px"
-                BorderBrush="Black">
-                <StackPanel Background="#e7f0fd"
-                        Width="250"
-                        HorizontalAlignment="Left">
-                    <TextBlock Text="Materials"
-                        FontSize="24"
-                        Margin="15"/>
-                    <ComboBox SelectedItem="{Binding SelectedMaterial}"
-                          ItemsSource="{Binding DropDownMaterials}"
-                          Width="125px"
-                          Margin="5"
-                          HorizontalAlignment="Left"
-                          Grid.Column="1">
+        <!--SORT BY/Filter-->
+            <Border Grid.Row="1"
+                    Grid.Column="1"
+                    BorderBrush="Black"
+                    BorderThickness="1px">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0"
+                               Text="Sort by: "
+                               FontSize="24"
+                               Margin="8 0 0 0"
+                               VerticalAlignment="Center" />
+                    <ComboBox SelectedItem="{Binding SelectedSort}"
+                              ItemsSource="{Binding SortBy}"
+                              Width="125px"
+                              Margin="5"
+                              HorizontalAlignment="Left"
+                              Grid.Column="1"
+                              FontSize="20">
                     </ComboBox>
-                </StackPanel>
-        </Border>
+                    <TextBlock Text="Materials"
+                               FontSize="24"
+                               Margin="20 0 0 0"
+                               Grid.Column="2"
+                               VerticalAlignment="Center"  />
+                    <ComboBox SelectedItem="{Binding SelectedMaterial}"
+                              ItemsSource="{Binding DropDownMaterials}"
+                              Width="125px"
+                              Margin="5"
+                              HorizontalAlignment="Left"
+                              FontSize="20"
+                              Grid.Column="3">
+                    </ComboBox>
+                </Grid>
+            </Border>
 
-        <!--ITEM LIST-->
-
+         <!--ITEM LIST-->
         <ItemsControl Grid.Column="1"
                       Grid.Row="2"
                       ItemsSource="{Binding FilteredJewelryItems}"
