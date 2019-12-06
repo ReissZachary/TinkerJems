@@ -290,7 +290,8 @@
                           HorizontalAlignment="Left" />
                 <TextBlock Text="Personal Requests" />
                 <TextBox Text="{Binding OrderDetails}"
-                         Height="300px" />
+                         MinHeight="100px"
+                         TextWrapping="Wrap"/>
                 <TextBlock Text="{Binding SubmitError}"
                            Foreground="Red" />
                 <Button Command="{Binding SubmitOrder}"
