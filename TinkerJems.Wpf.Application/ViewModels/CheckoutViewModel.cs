@@ -243,13 +243,16 @@ namespace TinkerJems.Wpf.Application.ViewModels
 
             message.Body = new TextPart(MimeKit.Text.TextFormat.Html)
             {
-                Text = "Dear " + CustomerEmail + "<br/><br/>" +
-                        "<strong>Here is a summary of your order:</strong><br/><br/>" +
-                        "Item: " + OrderedItem.Name + "<br/>" +
-                        "Total price: " + "$" + (OrderedItem.Price * Quantity) + "<br/>" +
-                        "Quantity: " + Quantity.ToString() + "<br/>" +
-                        "Size: " + SelectedSize + "<br/>" +
-                        "Details: " + OrderDetails + "<br/><br/><br/>"
+                Text = "<h1>Dear " + CustomerEmail + "</ h1 >" +
+                        "<br/>" +
+                        "<h2><strong>Here is a summary of your recent order from Tinker Gems:</strong></h2>" +
+                        "<h3>Item: \t" + OrderedItem.Name + "</ h3 >" +
+                        "<h3>Total price: \t" + "$" + (OrderedItem.Price * Quantity) + "</h3>" +
+                        "<h3>Quantity: \t" + Quantity.ToString() + "</h3>" +
+                        "<h3>Size: \t" + SelectedSize + "</h3>" +
+                        "<h3>Details: \t" + OrderDetails + "</h3>" +
+                        "<br/><br/>" +
+                        "<h1>Thank you for choosing Tinker Gems!</h1>"
 
             };
 
@@ -257,7 +260,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
             {
                 // For demo-purposes, accept all SSL certificates (in case the server supports STARTTLS)
                 client.ServerCertificateValidationCallback = (s, c, h, e) => true;
-
+                
                 client.Connect("smtp.gmail.com", 587, false);
 
                 // Note: only needed if the SMTP server requires authentication
@@ -285,16 +288,15 @@ namespace TinkerJems.Wpf.Application.ViewModels
             message.To.Add(new MailboxAddress("Valued Customer", "testemail.zachary.reiss@gmail.com"));
             message.Subject = "Incoming Jewelry Order";
 
-            message.Body = new TextPart("plain")
+            message.Body = new TextPart(MimeKit.Text.TextFormat.Html)
             {
-                Text = "Nettie, Here is a new order for you to process!" + "\n\n" +
-                        "Item: " + OrderedItem.Name + "\n" +
-                        "Total price: " + "$" + (OrderedItem.Price * Quantity) + "\n" +
-                        "Quantity: " + Quantity.ToString() + "\n" +
-                        "Size: " + SelectedSize + "\n" +
-                        "Details: " + OrderDetails + "\n\n\n" +
-
-                        "Contact Email: " + CustomerEmail + "\n\n"
+                Text = "<h1>Nettie, Here is a new order for you to process!</h1>" + "<br/>" +
+                        "<h3>Item: " + OrderedItem.Name + "</h3>" +
+                        "<h3>Total price: " + "$" + (OrderedItem.Price * Quantity) + "</h3>" +
+                        "<h3>Quantity: " + Quantity.ToString() + "</h3>" +
+                        "<h3>Size: " + SelectedSize + "</h3>" +
+                        "<h3>Details: " + OrderDetails + "</h3>" + "</br><br/>" +
+                        "<h3>Contact Email: " + CustomerEmail + "</h3>"
 
             };
 

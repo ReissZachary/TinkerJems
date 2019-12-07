@@ -42,7 +42,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
         //        () =>
         //        {
         //            var navigationParams = new NavigationParameters();
-        //            navigationParams.Add("Category", SelectedJewelryItem);
+        //            navigationParams.Add("Category", SelectedCategory);
         //            HistoryStack.ViewStack.Push(new History { PageName = Title });
         //            _regionManager.RequestNavigate(Constants.NavigationRegion, nameof(FilterView), navigationParams);
         //        }
