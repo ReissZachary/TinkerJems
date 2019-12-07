@@ -149,7 +149,9 @@
                            Grid.Row="2"
                            Height="100" />
                     <Button Grid.Column="2"
-                            Background="#e7f0fd">
+                            Background="#e7f0fd"
+                            Command="{Binding NavigateToFilter}"
+                            CommandParameter="Rings">
                         <TextBlock Text="Rings"
                                    Style="{StaticResource underlineText}"
                                    FontSize="40"
@@ -254,11 +256,10 @@
                            Height="100" />
                     <Button Grid.Column="2"
                             Background="#e4f0de">
-                        <TextBlock Text="Earrings"
+                        <TextBlock Text="Bracelets"
                                    Style="{StaticResource underlineText}"
                                    FontSize="40"
                                    FontWeight="Thin">
-
                         </TextBlock>
                     </Button>
                 </StackPanel>

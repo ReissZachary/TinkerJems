@@ -37,6 +37,17 @@ namespace TinkerJems.Wpf.Application.ViewModels
                 }
             ));
 
+        //private DelegateCommand navigateToFilter;
+        //public DelegateCommand NavigateToFilter => navigateToFilter ?? (navigateToFilter = new DelegateCommand(
+        //        () =>
+        //        {
+        //            var navigationParams = new NavigationParameters();
+        //            navigationParams.Add("Category", SelectedJewelryItem);
+        //            HistoryStack.ViewStack.Push(new History { PageName = Title });
+        //            _regionManager.RequestNavigate(Constants.NavigationRegion, nameof(FilterView), navigationParams);
+        //        }
+        //    ));
+
         private readonly IRegionManager _regionManager;
         private readonly JewelryService _jewelryService;
 
@@ -94,6 +105,15 @@ namespace TinkerJems.Wpf.Application.ViewModels
                 NavigateToItem.Execute();
             }
         }
+
+        private string selectedCategory;
+
+        public string SelectedCategory
+        {
+            get { return selectedCategory; }
+            set {SetProperty(ref selectedCategory, value); }
+        }
+
 
 
         private IEnumerable<JewelryItem> randomRings;
