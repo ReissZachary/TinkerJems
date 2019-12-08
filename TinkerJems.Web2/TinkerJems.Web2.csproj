@@ -7,6 +7,10 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\Images\PersonalPic.jpg" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
@@ -68,6 +72,11 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\BlogPosts\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Resource Include="wwwroot\Images\PersonalPic.jpg" />
   </ItemGroup>
 
 </Project>
