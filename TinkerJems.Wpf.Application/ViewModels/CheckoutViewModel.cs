@@ -223,15 +223,11 @@ namespace TinkerJems.Wpf.Application.ViewModels
         public DelegateCommand SubmitOrder => submitOrder ?? (submitOrder = new DelegateCommand(
                 () =>
                 {
-                    if (hasNoErrors())
-                    {
-                        SendEmailToJeweler();
-                        SendConfirmationEmail();
-                        HistoryStack.ViewStack.Push(new History { PageName = nameof(SearchView)});
-                        ResetCheckout();
-                        _regionManager.RequestNavigate(Constants.NavigationRegion, nameof(ConfirmationView));
-
-                    }
+                    SendEmailToJeweler();
+                    SendConfirmationEmail();
+                    HistoryStack.ViewStack.Push(new History { PageName = nameof(SearchView)});
+                    ResetCheckout();
+                    _regionManager.RequestNavigate(Constants.NavigationRegion, nameof(ConfirmationView));
                 }
             ));
 
@@ -240,19 +236,22 @@ namespace TinkerJems.Wpf.Application.ViewModels
         public DelegateCommand ShowWaitingText => showWaitingText ?? (showWaitingText = new DelegateCommand(
                 () =>
                 {
-                    Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Loaded, (Action)(() =>
+                    if (hasNoErrors())
                     {
-                        ButtonVisibility = Visibility.Collapsed;
-                    }));
-                    Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Loaded, (Action)(() =>
-                    {
-                        WaitingVisibility = Visibility.Visible;
-                    }));
+                        Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Loaded, (Action)(() =>
+                        {
+                            ButtonVisibility = Visibility.Collapsed;
+                        }));
+                        Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Loaded, (Action)(() =>
+                        {
+                            WaitingVisibility = Visibility.Visible;
+                        }));
 
-                    Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Background, (Action)(() =>
-                    {
-                        SubmitOrder.Execute();
-                    }));
+                        Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Background, (Action)(() =>
+                        {
+                            SubmitOrder.Execute();
+                        }));
+                    }
 
                 }
             ));
@@ -266,7 +265,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
         }
 
 
-        private Visibility buttonVisibility;
+        private Visibility buttonVisibility = Visibility.Visible;
 
         public Visibility ButtonVisibility
         {
@@ -357,6 +356,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
+            ButtonVisibility = Visibility.Visible;
             OrderedItem = navigationContext.Parameters.GetValue<JewelryItem>("OrderedItem");
         }
 
@@ -367,6 +367,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
 
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
+            WaitingVisibility = Visibility.Collapsed;
         }
     }
 
