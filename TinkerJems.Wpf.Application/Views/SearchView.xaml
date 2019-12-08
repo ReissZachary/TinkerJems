@@ -18,6 +18,8 @@
                     Value="Transparent" />
             <Setter Property="Background"
                     Value="Transparent" />
+            <Setter Property="ScrollViewer.CanContentScroll"
+                    Value="False" />
         </Style>
         <DataTemplate x:Key="cardTemplate">
             <Border>

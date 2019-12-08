@@ -37,9 +37,8 @@ namespace TinkerJems.Wpf.Application.ViewModels
 
         private void initializeErrors()
         {
-            QuantityError = "*";
+            QuantityError = "* Required";
             CustomerEmailError = "* Required";
-            SizeError = "*";
         }
 
         private bool hasNoErrors()

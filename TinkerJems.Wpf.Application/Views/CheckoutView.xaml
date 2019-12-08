@@ -256,12 +256,6 @@
                                            FontSize="20"
                                            Margin="0 0 0 20"></TextBlock>
                             </StackPanel>
-                            <!--<BulletDecorator>
-                                <BulletDecorator.Bullet>
-                                    <Ellipse Height="10" Width="10" Fill="#123c69"/>
-                                </BulletDecorator.Bullet>
-                                <TextBlock Text=" Press F1 for Help" FontWeight="Medium" FontSize="20"></TextBlock>
-                            </BulletDecorator>-->
                         </StackPanel>
                     </ToolTip>
                 </Button.ToolTip>
@@ -269,42 +263,82 @@
             <StackPanel Grid.Row="2"
                         Margin="20 0 0 0"
                         Grid.ColumnSpan="2">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition MinWidth="750px"/>
+                        <ColumnDefinition MinWidth="500px" />
+                        <ColumnDefinition MinWidth="500px" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Email"
+                               FontSize="25"
+                               Grid.Row="0"/>
+                    <TextBox Text="{Binding CustomerEmail, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                             Grid.Row="1"/>
+                    <TextBlock Text="{Binding CustomerEmailError}"
+                               Visibility="{Binding CustomerEmailErrorVisibility}"
+                               Foreground="Red"
+                               Grid.Row="0"
+                               Grid.Column="0"
+                               Margin="70 0 0 0" />
+                    <TextBlock Text="Quantity"
+                               Grid.Row="2"
+                               Margin="0 20 0 0"/>
+                    <TextBox Text="{Binding Quantity, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                             Grid.Row="3" />
+                    <TextBlock Text="{Binding QuantityError}"
+                               Visibility="{Binding QuantityErrorVisibility}"
+                               Foreground="Red"
+                               Grid.Row="2"
+                               Grid.Column="0"
+                               Margin="100 20 0 0"/>
+                    <TextBlock Text="Size"
+                               Grid.Row="4"
+                               Margin="0 20 0 0" />
+                    <ComboBox ItemsSource="{Binding SizeList}"
+                              SelectedValue="{Binding SelectedSize}"
+                              FontSize="20"
+                              FontWeight="Medium"
+                              MinWidth="100"
+                              HorizontalAlignment="Left"
+                              Grid.Row="5" />
+                    <TextBlock Text="Personal Requests"
+                               Grid.Row="6"
+                               Margin="0 20 0 0" />
+                    <TextBox Text="{Binding OrderDetails}"
+                             MinHeight="100px"
+                             TextWrapping="Wrap"
+                             Grid.Row="7" />
+                    <TextBlock Text="{Binding SubmitError}"
+                               Foreground="Red"
+                               Grid.Row="9"
+                               Grid.Column="1"/>
+                    <Button Command="{Binding ShowWaitingText}"
+                            Content="Submit Order"
+                            Height="75"
+                            Width="1000"
+                            Visibility="{Binding ButtonVisibility}"
+                            FontSize="30"
+                            FontWeight="Thin"
+                            Style="{StaticResource Submit}"
+                            Grid.Row="9"
+                            Margin="0 30 0 0"/>
+                    <TextBlock Text="Processing Order ..."
+                               Visibility="{Binding WaitingVisibility}"
+                               Grid.Row="8" />
 
-                <TextBlock Text="Email"
-                           FontSize="25" />
-                <TextBox Text="{Binding CustomerEmail, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
-                <TextBlock Text="{Binding CustomerEmailError}"
-                           Visibility="{Binding CustomerEmailErrorVisibility}"
-                           Foreground="Red" />
-                <TextBlock Text="Quantity" />
-                <TextBox Text="{Binding Quantity, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
-                <TextBlock Text="{Binding QuantityError}"
-                           Visibility="{Binding QuantityErrorVisibility}"
-                           Foreground="Red" />
-                <TextBlock Text="Size" />
-                <ComboBox ItemsSource="{Binding SizeList}"
-                          SelectedValue="{Binding SelectedSize}"
-                          FontSize="20"
-                          FontWeight="Medium"
-                          MinWidth="100"
-                          HorizontalAlignment="Left" />
-                <TextBlock Text="Personal Requests" />
-                <TextBox Text="{Binding OrderDetails}"
-                         MinHeight="100px"
-                         TextWrapping="Wrap"/>
-                <TextBlock Text="{Binding SubmitError}"
-                           Foreground="Red" />
-                <Button Command="{Binding ShowWaitingText}"
-                        Content="Submit Order"
-                        Height="75"
-                        Width="1000"
-                        Visibility="{Binding ButtonVisibility}"
-                        FontSize="30"
-                        FontWeight="Thin"
-                        Style="{StaticResource Submit}" />
-                <TextBlock Text="Processing Order ..."
-                           Visibility="{Binding WaitingVisibility}"
-                           />
+                </Grid>
+
             </StackPanel>
         </Grid>
     </ScrollViewer>
