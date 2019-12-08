@@ -107,8 +107,7 @@
          <!--ITEM LIST-->
         <ItemsControl Grid.Column="1"
                       Grid.Row="2"
-                      ItemsSource="{Binding FilteredJewelryItems}"
-                      >
+                      ItemsSource="{Binding FilteredJewelryItems}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Columns="3" />
@@ -117,8 +116,7 @@
             <ItemsControl.ItemTemplate>
                     <DataTemplate>
                     <Button Command="{Binding DataContext.NavigateToItem, RelativeSource={RelativeSource AncestorType={x:Type local:FilterView}}}"
-                            CommandParameter="{Binding}"
-                            >
+                            CommandParameter="{Binding}">
                         <StackPanel HorizontalAlignment="Left"
                                     Margin="50">
                             <Ellipse Width="250"
@@ -142,7 +140,6 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-
     </Grid>
    </ScrollViewer>
 </UserControl>

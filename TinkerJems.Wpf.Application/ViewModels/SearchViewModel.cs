@@ -26,12 +26,13 @@ namespace TinkerJems.Wpf.Application.ViewModels
             _ = populateJewelry();
         }
 
-        private DelegateCommand navigateToItem;
-        public DelegateCommand NavigateToItem => navigateToItem ?? (navigateToItem = new DelegateCommand(
-                ()=>
+        private DelegateCommand<JewelryItem> navigateToItem;
+        public DelegateCommand<JewelryItem> NavigateToItem => navigateToItem ?? (navigateToItem = new DelegateCommand<JewelryItem>(
+                (item)=>
                 {
+                    SelectedJewelryItem = item;
                     var navigationParams = new NavigationParameters();
-                    navigationParams.Add("Item", SelectedJewelryItem);
+                    navigationParams.Add("Item", item);
                     HistoryStack.ViewStack.Push(new History { PageName = Title });
                     _regionManager.RequestNavigate(Constants.NavigationRegion, nameof(ItemView), navigationParams);
                 }
@@ -102,7 +103,6 @@ namespace TinkerJems.Wpf.Application.ViewModels
             set
             {
                 SetProperty(ref selectedJewelryItem, value);
-                NavigateToItem.Execute();
             }
         }
 

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:TinkerJems.Wpf.Application.Views"
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d"
@@ -21,35 +22,6 @@
             <Setter Property="ScrollViewer.CanContentScroll"
                     Value="False" />
         </Style>
-        <DataTemplate x:Key="cardTemplate">
-            <Border>
-                <StackPanel Orientation="Vertical"
-                            Width="auto">
-                    <Image Source="{Binding ImageUrl}"
-                           Height="250"
-                           Width="250"
-                           Stretch="UniformToFill" />
-                    <TextBlock Text="{Binding Name}"
-                               FontSize="24"
-                               TextAlignment="Left"
-                               Padding="10 0 0 0 "
-                               Background="white"
-                               Width="250"
-                               Height="50"
-                               FontWeight="Thin"
-                               Foreground="#123c69"/>
-                    <TextBlock Text="{Binding Price}"
-                               FontSize="27"
-                               FontWeight="Medium"
-                               TextAlignment="Right"
-                               Background="white"
-                               Padding="0 0 10 0"
-                               Width="250"
-                               Height="50"
-                               Foreground="#123c69"/>
-                </StackPanel>
-            </Border>
-        </DataTemplate>
         <Style x:Key="categoryHeader"
                TargetType="TextBlock">
             <Setter Property="FontSize"
@@ -70,12 +42,8 @@
                             Value="Underline" />
                 </Trigger>
             </Style.Triggers>
-        </Style>
-        <ItemsPanelTemplate x:Key="categoryItemPanel">
-            <StackPanel Background="Transparent"
-                        Orientation="Horizontal" />
-        </ItemsPanelTemplate>
-        <Style TargetType="{x:Type Button}">
+        </Style>  
+        <Style x:Key="cardTitle" TargetType="{x:Type Button}">
             <Setter Property="Background"
                     Value="#123c69" />
             <Setter Property="Foreground"
@@ -120,6 +88,85 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="itemCard" TargetType="{x:Type Button}">
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="Foreground"
+                    Value="Black" />
+            <Setter Property="Opacity"
+                    Value=".9" />
+            <Setter Property="FontSize"
+                    Value="15" />
+            <Setter Property="SnapsToDevicePixels"
+                    Value="True" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <Grid>
+                                <ContentPresenter x:Name="MyContentPresenter"
+                                                  Content="{TemplateBinding Content}"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  Margin="0 0 0 0" />
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Opacity"
+                                        Value="1" />
+                                <Setter Property="Foreground"
+                                        Value="Black" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#4989cc" />
+                                <Setter Property="Foreground"
+                                        Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <DataTemplate x:Key="cardTemplate">
+            <Button Command="{Binding DataContext.NavigateToItem, RelativeSource={RelativeSource AncestorType={x:Type local:SearchView}}}"
+                    Style="{StaticResource itemCard}"
+                    CommandParameter="{Binding}"
+                    Margin="0 20 0 20">
+                <StackPanel Orientation="Vertical"
+                            Width="auto">
+                    <Image Source="{Binding ImageUrl}"
+                           Height="250"
+                           Width="250"
+                           Stretch="UniformToFill" />
+                    <TextBlock Text="{Binding Name}"
+                               FontSize="24"
+                               TextAlignment="Left"
+                               Padding="10 0 0 0 "
+                               Background="white"
+                               Width="250"
+                               Height="50"
+                               FontWeight="Thin"
+                               Foreground="#123c69" />
+                    <TextBlock Text="{Binding Price}"
+                               FontSize="27"
+                               FontWeight="Medium"
+                               TextAlignment="Right"
+                               Background="white"
+                               Padding="0 0 10 0"
+                               Width="250"
+                               Height="50"
+                               Foreground="#123c69" />
+                </StackPanel>
+            </Button>
+        </DataTemplate>
     </UserControl.Resources>
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid ScrollViewer.CanContentScroll="True">
@@ -153,23 +200,25 @@
                     <Button Grid.Column="2"
                             Background="#e7f0fd"
                             Command="{Binding NavigateToFilter}"
-                            CommandParameter="Rings">
+                            CommandParameter="Rings"
+                            Style="{StaticResource cardTitle}">
                         <TextBlock Text="Rings"
                                    Style="{StaticResource underlineText}"
                                    FontSize="40"
                                    FontWeight="Thin">
-
                         </TextBlock>
 
                     </Button>
                 </StackPanel>
-                <ListView ItemsSource="{Binding RandomRings}"
-                          Grid.Column="1"
-                          Style="{StaticResource itemListView}"
-                          SelectedItem="{Binding SelectedJewelryItem}"
-                          ItemsPanel="{StaticResource categoryItemPanel}"
-                          ItemTemplate="{StaticResource cardTemplate}">
-                </ListView>
+                <ItemsControl Grid.Column="1"
+                              ItemsSource="{Binding RandomRings}"
+                              ItemTemplate="{StaticResource cardTemplate}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="4" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
             </Grid>
 
         <!--Necklace Cards-->
@@ -180,7 +229,6 @@
                 <ColumnDefinition Width="300"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
                 <StackPanel HorizontalAlignment="Center"
                             VerticalAlignment="Center">
                     <Image Source="https://cdn3.iconfinder.com/data/icons/hawaii-symbols-5/66/20-512.png"
@@ -198,13 +246,15 @@
                         </TextBlock>
                     </Button>
                 </StackPanel>
-                <ListView ItemsSource="{Binding RandomNecklaces}"
-                          Grid.Column="1"
-                          Style="{StaticResource itemListView}"
-                          ItemTemplate="{StaticResource cardTemplate}"
-                          ItemsPanel="{StaticResource categoryItemPanel}"
-                          SelectedItem="{Binding SelectedJewelryItem}">
-                </ListView>
+                <ItemsControl Grid.Column="1"
+                              ItemsSource="{Binding RandomNecklaces}"
+                              ItemTemplate="{StaticResource cardTemplate}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="4" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
             </Grid>
             <!--END-->
 
@@ -236,13 +286,15 @@
                         </TextBlock>
                     </Button>
                 </StackPanel>
-                <ListView ItemsSource="{Binding RandomEarrings}"
-                          SelectedItem="{Binding SelectedJewelryItem}"
-                          Grid.Column="1"
-                          ItemTemplate="{StaticResource cardTemplate}"
-                          ItemsPanel="{StaticResource categoryItemPanel}"
-                          Style="{StaticResource itemListView}">
-                </ListView>
+                <ItemsControl Grid.Column="1"
+                              ItemsSource="{Binding RandomEarrings}"
+                              ItemTemplate="{StaticResource cardTemplate}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="4" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
             </Grid>
             <!--End-->
 
@@ -271,13 +323,15 @@
                         </TextBlock>
                     </Button>
                 </StackPanel>
-                <ListView ItemsSource="{Binding RandomBracelets}"
-                          Grid.Column="1"
-                          Style="{StaticResource itemListView}"
-                          ItemTemplate="{StaticResource cardTemplate}"
-                          ItemsPanel="{StaticResource categoryItemPanel}"
-                          SelectedItem="{Binding SelectedJewelryItem}">
-                </ListView>
+                <ItemsControl Grid.Column="1"
+                              ItemsSource="{Binding RandomBracelets}"
+                              ItemTemplate="{StaticResource cardTemplate}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="4" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
             </Grid>
             <!--End-->
         </Grid>
