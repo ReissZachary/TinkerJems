@@ -118,7 +118,7 @@
                             <Trigger Property="IsMouseOver"
                                      Value="True">
                                 <Setter Property="Opacity"
-                                        Value="0.75" />
+                                        Value="0.5" />
                                 <Setter Property="Foreground"
                                         Value="Black" />
                             </Trigger>
