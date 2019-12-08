@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TinkerJems.Wpf.Application"
         xmlns:views="clr-namespace:TinkerJems.Wpf.Application.Views"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:prism="http://prismlibrary.com/"
         Icon="Images/tinkerJemsLogo.ico"
         prism:ViewModelLocator.AutoWireViewModel="True"
@@ -57,7 +58,7 @@
             <ImageBrush Stretch="Fill" ImageSource="Images/splashscreen.jpg"  AlignmentY="Top" AlignmentX="Center" Opacity="0.20"/>
         </Grid.Background>
         <TextBlock
-            Text="TINKER JEMS"
+            Text="TINKER GEMS"
             Grid.Row="1"
             Visibility="{Binding SplashScreenHomeVisibility}"
             HorizontalAlignment="Center"
@@ -65,11 +66,11 @@
             FontWeight="Thin"
                    />
         <Image
-            Source="http://simpleicon.com/wp-content/uploads/diamond.png"
+            gif:ImageBehavior.AnimatedSource="Images\diamond.png"
             Grid.Row="2"
             Visibility="{Binding SplashScreenHomeVisibility}"
             Height="100"/>
-        <Button Command="{Binding NavigateToHome}"
+        <Button Command="{Binding ShowWaitingText}"
             Visibility="{Binding SplashScreenHomeVisibility}"
             CommandParameter="HomeView"
             Width="Auto"
@@ -77,6 +78,13 @@
             Grid.Row="3"
             BorderThickness="1">
         </Button>
+        <TextBlock
+            Visibility="{Binding WaitingVisibility}"
+            Text="Loading Jewelry Items..."
+            Grid.Row="3"
+            HorizontalAlignment="Center"
+            FontSize="25"
+            />
         <ContentControl Grid.Row="0"
                         Grid.RowSpan="5"
                         prism:RegionManager.RegionName="ContentRegion" />
