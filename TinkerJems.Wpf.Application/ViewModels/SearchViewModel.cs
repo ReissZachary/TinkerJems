@@ -37,16 +37,16 @@ namespace TinkerJems.Wpf.Application.ViewModels
                 }
             ));
 
-        //private DelegateCommand navigateToFilter;
-        //public DelegateCommand NavigateToFilter => navigateToFilter ?? (navigateToFilter = new DelegateCommand(
-        //        () =>
-        //        {
-        //            var navigationParams = new NavigationParameters();
-        //            navigationParams.Add("Category", SelectedCategory);
-        //            HistoryStack.ViewStack.Push(new History { PageName = Title });
-        //            _regionManager.RequestNavigate(Constants.NavigationRegion, nameof(FilterView), navigationParams);
-        //        }
-        //    ));
+        private DelegateCommand<string> navigateToFilter;
+        public DelegateCommand<string> NavigateToFilter => navigateToFilter ?? (navigateToFilter = new DelegateCommand<string>(
+                (category) =>
+                {
+                    var navigationParams = new NavigationParameters();
+                    navigationParams.Add("Category", category);
+                    HistoryStack.ViewStack.Push(new History { PageName = Title });
+                    _regionManager.RequestNavigate(Constants.NavigationRegion, nameof(FilterView), navigationParams);
+                }
+            ));
 
         private readonly IRegionManager _regionManager;
         private readonly JewelryService _jewelryService;
@@ -57,7 +57,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
         {
             get { return title; }
             set { title = value; }
-        }       
+        }
 
         private Task loadViewTask;
 

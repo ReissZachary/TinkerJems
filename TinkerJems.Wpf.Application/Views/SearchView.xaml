@@ -156,7 +156,7 @@
                                    Style="{StaticResource underlineText}"
                                    FontSize="40"
                                    FontWeight="Thin">
-                            
+
                         </TextBlock>
 
                     </Button>
@@ -185,7 +185,9 @@
                            Grid.Row="2"
                            Height="100" />
                     <Button Grid.Column="2"
-                            Background="#faf1ed">
+                            Background="#faf1ed"
+                            Command="{Binding NavigateToFilter}"
+                            CommandParameter="Necklaces">
                         <TextBlock Text="Necklaces"
                                    Style="{StaticResource underlineText}"
                                    FontSize="40"
@@ -221,7 +223,9 @@
                            Grid.Row="2"
                            Height="100" />
                     <Button Grid.Column="2"
-                            Background="#eaced7">
+                            Background="#eaced7"
+                            Command="{Binding NavigateToFilter}"
+                            CommandParameter="Earrings">
                         <TextBlock Text="Earrings"
                                    Style="{StaticResource underlineText}"
                                    FontSize="40"
@@ -255,7 +259,9 @@
                            Grid.Row="2"
                            Height="100" />
                     <Button Grid.Column="2"
-                            Background="#e4f0de">
+                            Background="#e4f0de"
+                            Command="{Binding NavigateToFilter}"
+                            CommandParameter="Bracelets">
                         <TextBlock Text="Bracelets"
                                    Style="{StaticResource underlineText}"
                                    FontSize="40"
