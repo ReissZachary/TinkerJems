@@ -11,6 +11,47 @@
              d:DesignWidth="800">
 
     <UserControl.Resources>
+        <Style x:Key="placeHolder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="MinHeight" Value="100"/>
+            <Setter Property="Height"
+                    Value="30" />
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="FontWeight"
+                    Value="Medium" />
+            <Setter Property="Padding"
+                    Value="5 0 0 0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid>
+                            <TextBox Text="{Binding Path=Text,
+                                                RelativeSource={RelativeSource TemplatedParent},
+                                                Mode=TwoWay,
+                                                UpdateSourceTrigger=PropertyChanged}"
+                                 x:Name="textSource"
+                                 Background="Transparent"
+                                 Panel.ZIndex="2"
+                                 MinHeight="100"/>
+                            <TextBox Text="{TemplateBinding Tag}" Background="White" Panel.ZIndex="1">
+                                <TextBox.Style>
+                                    <Style TargetType="{x:Type TextBox}">
+                                        <Setter Property="Foreground" Value="Transparent"/>
+
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Path=Text, Source={x:Reference textSource}}" Value="">
+                                                <Setter Property="Foreground" Value="#c2c2c2"/>
+                                                <Setter Property="FontStyle" Value="Italic"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style TargetType="TextBlock">
             <Setter Property="FontWeight"
                     Value="Thin" />
@@ -318,7 +359,8 @@
                                Grid.Row="6"
                                Margin="0 20 0 0" />
                     <TextBox Text="{Binding OrderDetails}"
-                             MinHeight="100px"
+                             Tag=" i.e: I would like my family's names stamped on the back of the ring..."
+                             Style="{StaticResource placeHolder}"
                              TextWrapping="Wrap"
                              Grid.Row="7" />
                     <TextBlock Text="{Binding SubmitError}"
