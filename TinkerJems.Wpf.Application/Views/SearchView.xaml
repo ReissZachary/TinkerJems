@@ -42,7 +42,7 @@
                             Value="Underline" />
                 </Trigger>
             </Style.Triggers>
-        </Style>  
+        </Style>
         <Style x:Key="cardTitle" TargetType="{x:Type Button}">
             <Setter Property="Background"
                     Value="#123c69" />
@@ -94,7 +94,7 @@
             <Setter Property="Foreground"
                     Value="Black" />
             <Setter Property="Opacity"
-                    Value=".9" />
+                    Value="1" />
             <Setter Property="FontSize"
                     Value="15" />
             <Setter Property="SnapsToDevicePixels"
@@ -118,7 +118,7 @@
                             <Trigger Property="IsMouseOver"
                                      Value="True">
                                 <Setter Property="Opacity"
-                                        Value="1" />
+                                        Value="0.75" />
                                 <Setter Property="Foreground"
                                         Value="Black" />
                             </Trigger>
