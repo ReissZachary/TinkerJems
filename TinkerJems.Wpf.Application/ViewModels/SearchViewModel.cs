@@ -150,12 +150,17 @@ namespace TinkerJems.Wpf.Application.ViewModels
         private async Task populateJewelry()
         {
             JewelryItems = await _jewelryService.GetJewelryItemsAsync();
-            foreach (var j in JewelryItems)
-                j.ImageUrl = $"https://localhost:5001/images/{j.ImageUrl}";
-            populateRandomJewelryItems(JewelryItems);
+            LoadImages(JewelryItems);
+            PopulateRandomJewelryItems(JewelryItems);
         }
 
-        private void populateRandomJewelryItems(IEnumerable<JewelryItem> jewelryItems)
+        public void LoadImages(IEnumerable<JewelryItem> jewelryItems)
+        {
+            foreach (var j in jewelryItems)
+                j.ImageUrl = $"https://localhost:5001/images/{j.ImageUrl}";
+        }
+
+        public void PopulateRandomJewelryItems(IEnumerable<JewelryItem> jewelryItems)
         {
             populateRandomRings(jewelryItems);
             populateRandomNecklaces(jewelryItems);
