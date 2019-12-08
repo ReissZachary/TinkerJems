@@ -46,7 +46,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
             if (CustomerEmail == null || Quantity == 0 || SelectedSize == null ||
                 CustomerEmailError != null || QuantityError != null || SizeError != null)
             {
-                SubmitError = "Please complete the form correctly to procede";
+                SubmitError = "**Please complete the form correctly to procede**";
                 return false;
             }
 

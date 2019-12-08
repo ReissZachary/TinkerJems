@@ -273,6 +273,8 @@
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -321,8 +323,9 @@
                              Grid.Row="7" />
                     <TextBlock Text="{Binding SubmitError}"
                                Foreground="Red"
-                               Grid.Row="9"
-                               Grid.Column="1"/>
+                               Grid.Row="10"
+                               HorizontalAlignment="Center"
+                               Margin="0 10 0 0"/>
                     <Button Command="{Binding ShowWaitingText}"
                             Content="Submit Order"
                             Height="75"
@@ -335,7 +338,7 @@
                             Margin="0 30 0 0"/>
                     <TextBlock Text="Processing Order ..."
                                Visibility="{Binding WaitingVisibility}"
-                               Grid.Row="8" />
+                               Grid.Row="8"/>
 
                 </Grid>
 
