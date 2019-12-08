@@ -26,6 +26,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
             {
                 _regionManager.RequestNavigate("ContentRegion", uri);
                 SplashScreenHomeVisibility = Visibility.Collapsed;
+                WaitingVisibility = Visibility.Collapsed;
             });
         }
 

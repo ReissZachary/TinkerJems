@@ -294,13 +294,17 @@
                          TextWrapping="Wrap"/>
                 <TextBlock Text="{Binding SubmitError}"
                            Foreground="Red" />
-                <Button Command="{Binding SubmitOrder}"
+                <Button Command="{Binding ShowWaitingText}"
                         Content="Submit Order"
                         Height="75"
                         Width="1000"
+                        Visibility="{Binding ButtonVisibility}"
                         FontSize="30"
                         FontWeight="Thin"
                         Style="{StaticResource Submit}" />
+                <TextBlock Text="Processing Order ..."
+                           Visibility="{Binding WaitingVisibility}"
+                           />
             </StackPanel>
         </Grid>
     </ScrollViewer>

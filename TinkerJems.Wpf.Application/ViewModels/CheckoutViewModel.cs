@@ -15,6 +15,7 @@ using System.Windows;
 using TinkerJems.Wpf.Application.Shared;
 using TinkerJems.Wpf.Application.Views;
 using System.Linq;
+using System.Windows.Threading;
 
 namespace TinkerJems.Wpf.Application.ViewModels
 {
@@ -234,6 +235,45 @@ namespace TinkerJems.Wpf.Application.ViewModels
                 }
             ));
 
+
+        private DelegateCommand showWaitingText;
+        public DelegateCommand ShowWaitingText => showWaitingText ?? (showWaitingText = new DelegateCommand(
+                () =>
+                {
+                    Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Loaded, (Action)(() =>
+                    {
+                        ButtonVisibility = Visibility.Collapsed;
+                    }));
+                    Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Loaded, (Action)(() =>
+                    {
+                        WaitingVisibility = Visibility.Visible;
+                    }));
+
+                    Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Background, (Action)(() =>
+                    {
+                        SubmitOrder.Execute();
+                    }));
+
+                }
+            ));
+
+        private Visibility waitingVisibility = Visibility.Collapsed;
+
+        public Visibility WaitingVisibility
+        {
+            get { return waitingVisibility; }
+            set { SetProperty(ref waitingVisibility, value); }
+        }
+
+
+        private Visibility buttonVisibility;
+
+        public Visibility ButtonVisibility
+        {
+            get { return buttonVisibility; }
+            set { SetProperty(ref buttonVisibility, value); }
+        }
+
         private void SendConfirmationEmail()
         {
             var message = new MimeMessage();
@@ -260,7 +300,7 @@ namespace TinkerJems.Wpf.Application.ViewModels
             {
                 // For demo-purposes, accept all SSL certificates (in case the server supports STARTTLS)
                 client.ServerCertificateValidationCallback = (s, c, h, e) => true;
-                
+
                 client.Connect("smtp.gmail.com", 587, false);
 
                 // Note: only needed if the SMTP server requires authentication
