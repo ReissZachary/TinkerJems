@@ -11,168 +11,297 @@
 
     <UserControl.Resources>
         <Style TargetType="TextBlock">
-            <Setter Property="FontWeight" Value="Thin"/>
-            <Setter Property="FontSize" Value=" 25"/>
+            <Setter Property="FontWeight"
+                    Value="Thin" />
+            <Setter Property="FontSize"
+                    Value=" 25" />
         </Style>
         <Style TargetType="TextBox">
-            <Setter Property="Height" Value="30"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="FontWeight" Value="Medium"/>
-            <Setter Property="Padding" Value="5 0 0 0"/>
+            <Setter Property="Height"
+                    Value="30" />
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="FontWeight"
+                    Value="Medium" />
+            <Setter Property="Padding"
+                    Value="5 0 0 0" />
         </Style>
-        <Style x:Key="PlaceOrder" TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="#123c69" />
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="FontSize" Value="25" />
-            <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Style x:Key="PlaceOrder"
+               TargetType="{x:Type Button}">
+            <Setter Property="Background"
+                    Value="#123c69" />
+            <Setter Property="Foreground"
+                    Value="White" />
+            <Setter Property="FontSize"
+                    Value="25" />
+            <Setter Property="SnapsToDevicePixels"
+                    Value="True" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border Background="{TemplateBinding Background}">
                             <Grid>
-                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15 0 15 0"/>
+                                <ContentPresenter x:Name="MyContentPresenter"
+                                                  Content="{TemplateBinding Content}"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  Margin="15 0 15 0" />
                             </Grid>
                         </Border>
 
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#4989cc"/>
-                                <Setter Property="Foreground" Value="White" />
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#4989cc" />
+                                <Setter Property="Foreground"
+                                        Value="White" />
                             </Trigger>
 
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" Value="#123c69" />
-                                <Setter Property="Foreground" Value="White" />
+                            <Trigger Property="IsPressed"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#123c69" />
+                                <Setter Property="Foreground"
+                                        Value="White" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style x:Key="Tag" TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="Foreground" Value="Black" />
-            <Setter Property="FontSize" Value="20" />
-            <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Style x:Key="Tag"
+               TargetType="{x:Type Button}">
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="Foreground"
+                    Value="Black" />
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="SnapsToDevicePixels"
+                    Value="True" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border Background="{TemplateBinding Background}">
                             <Grid>
-                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15 0 15 0"/>
+                                <ContentPresenter x:Name="MyContentPresenter"
+                                                  Content="{TemplateBinding Content}"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  Margin="15 0 15 0" />
                             </Grid>
                         </Border>
 
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="LightGray"/>
-                                <Setter Property="Foreground" Value="Black" />
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="LightGray" />
+                                <Setter Property="Foreground"
+                                        Value="Black" />
                             </Trigger>
 
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" Value="LightGray" />
-                                <Setter Property="Foreground" Value="White" />
+                            <Trigger Property="IsPressed"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="LightGray" />
+                                <Setter Property="Foreground"
+                                        Value="White" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+        </Style>
+        <Style x:Key="BulletItems"
+               TargetType="TextBlock">
+            <Setter Property="Margin"
+                    Value="20 10 0 0" />
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="FontWeight"
+                    Value="Thin" />
+            <Setter Property="TextWrapping"
+                    Value="Wrap" />
+        </Style>
+        <Style TargetType="Ellipse">
+            <Setter Property="Height"
+                    Value="10" />
+            <Setter Property="Width"
+                    Value="10" />
+            <Setter Property="Fill"
+                    Value="#123c69" />
+            <Setter Property="Margin"
+                    Value="10 10 0 0" />
         </Style>
     </UserControl.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition  Height="auto" />
-            <RowDefinition  Height="auto" />
-            <RowDefinition  Height="auto" />
-        </Grid.RowDefinitions>
-        <TextBlock Text="{Binding SelectedItem.Name}"
-                   HorizontalAlignment="Center"
-                   FontSize="60"
-                   FontWeight="DemiBold"
-                   Foreground="#123c69"
-                   Grid.Row="0"/>
-
-        <Grid Grid.Row="1">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid ScrollViewer.CanContentScroll="True">
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition  Height="auto"/>
-                <RowDefinition  />
-                <RowDefinition  />
+                <RowDefinition  Height="auto" />
+                <RowDefinition  Height="auto" />
+                <RowDefinition  Height="auto" />
+                <RowDefinition  Height="*" />
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition  Width="auto"/>
-            </Grid.ColumnDefinitions>
+            <TextBlock Text="{Binding SelectedItem.Name}"
+                       HorizontalAlignment="Center"
+                       FontSize="60"
+                       FontWeight="DemiBold"
+                       Foreground="#123c69"
+                       Grid.Row="0"/>
 
-            <Image Source="{Binding SelectedItem.ImageUrl}"
-                   Grid.Column="1"
-                   Grid.RowSpan="4"
-                   Width="auto"
-                   Height="500px"
-                   Margin="20 0 0 0"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Stretch" />
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition  Height="auto"/>
+                    <RowDefinition  />
+                    <RowDefinition  />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition  Width="auto"/>
+                </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="2"
-                        Margin="10 40 0 0">
-                <TextBlock Text="Description:"
-                           FontSize="32"
-                           Margin="15 0 0 0"
-                           FontWeight="Medium"/>
-                <TextBlock Text="{Binding SelectedItem.LongDescription}"
-                           Margin="30 0 0 0"
-                           FontSize="20px"
-                           Width="500"
-                           TextWrapping="Wrap"/>
+                <Image Source="{Binding SelectedItem.ImageUrl}"
+                       Grid.Column="1"
+                       Grid.RowSpan="4"
+                       Width="auto"
+                       Height="500px"
+                       Margin="20 0 0 0"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Stretch" />
 
-                <!--Price-->
-                <TextBlock Text="{Binding SelectedItem.Price, StringFormat=${0}}"
-                           FontSize="32px"
-                           Margin="15 60 0 0"/>
+                <StackPanel Grid.Column="2"
+                            Margin="10 40 0 0">
+                    <TextBlock Text="Description:"
+                               FontSize="32"
+                               Margin="15 0 0 0"
+                               FontWeight="Medium"
+                               Foreground="#123c69"/>
+                    <TextBlock Text="{Binding SelectedItem.LongDescription}"
+                               Margin="30 0 0 0"
+                               FontSize="20px"
+                               Width="500"
+                               TextWrapping="Wrap"/>
 
-                <!--RelatedTags-->
-                <StackPanel Orientation="Horizontal"
-                            Margin="15 60 0 0"
-                            Height="50">
-                    <TextBlock Text="Related:"
-                               FontSize="32px"
-                               FontWeight="Medium"/>
-                    <Border BorderThickness="1px"
-                            BorderBrush="LightGray"
-                            Margin="5">
-                        <Button Margin="5"
-                                Style="{StaticResource Tag}"
-                                Content="{Binding SelectedItem.Category}"
-                                Command="{Binding NavigateToFilter}"/>
+                    <!--Price-->
+                    <TextBlock Text="{Binding SelectedItem.Price, StringFormat=${0}}"
+                               FontSize="40px"
+                               Margin="15 60 0 0"
+                               Foreground="#123c69" />
 
-                    </Border>
-                    <Border BorderThickness="1px"
-                            BorderBrush="LightGray"
-                            Margin="5">
-                        <Button Margin="5"
-                                Style="{StaticResource Tag}"
-                                Content="{Binding SelectedItem.Material}"
-                                Command="{Binding NavigateToMaterial}"/>
+                    <!--RelatedTags-->
+                    <StackPanel Orientation="Horizontal"
+                                Margin="15 60 0 0"
+                                Height="50">
+                        <TextBlock Text="Related:"
+                                   FontSize="32px"
+                                   FontWeight="Medium"
+                                   Foreground="#123c69" />
+                        <Border BorderThickness="1px"
+                                BorderBrush="LightGray"
+                                Margin="5">
+                            <Button Margin="5"
+                                    Style="{StaticResource Tag}"
+                                    Content="{Binding SelectedItem.Category}"
+                                    Command="{Binding NavigateToFilter}"
+                                    Foreground="#123c69" />
 
-                    </Border>
+                        </Border>
+                        <Border BorderThickness="1px"
+                                BorderBrush="LightGray"
+                                Margin="5">
+                            <Button Margin="5"
+                                    Style="{StaticResource Tag}"
+                                    Content="{Binding SelectedItem.Material}"
+                                    Command="{Binding NavigateToMaterial}"
+                                    Foreground="#123c69" />
+
+                        </Border>
+                    </StackPanel>
                 </StackPanel>
-            </StackPanel>
-            <!--Description-->
+                <!--Description-->
 
-            <!--submitOrderButton-->
-            <Button Content="Place Custom Order"
-                    HorizontalAlignment="Left"
-                    Grid.Row="3"
-                    Grid.Column="2"
-                    Width="300"
-                    Height="70px"
-                    VerticalAlignment="Bottom"
-                    Margin="15 0 0 0"
-                    Command="{Binding NavigateToCheckout}"
-                    Style="{StaticResource PlaceOrder}"/>
+                <!--submitOrderButton-->
+                <Button Content="Place Custom Order"
+                        HorizontalAlignment="Left"
+                        Grid.Row="3"
+                        Grid.Column="2"
+                        Width="300"
+                        Height="70px"
+                        VerticalAlignment="Bottom"
+                        Margin="15 0 0 0"
+                        Command="{Binding NavigateToCheckout}"
+                        Style="{StaticResource PlaceOrder}"/>
+            </Grid>
+        
+            <Border Grid.Row="3"
+                    BorderBrush="#123c69"
+                    BorderThickness="1px"
+                    Margin="20 50 20 20">
+                <StackPanel Background="#faf1ed"
+                            Margin="0 0 0 0">
+                    <TextBlock Text="How it works"
+                               FontSize="30"
+                               Grid.Row="2"
+                               Foreground="#ac3b61"
+                               FontWeight="Medium"
+                               Margin="20 0 0 0"
+                               HorizontalAlignment="Center"/>
+                    <Border BorderBrush="LightGray"
+                            BorderThickness=".5px"
+                            Margin="50 5 50 0">
+                    </Border>
+                    <BulletDecorator>
+                        <BulletDecorator.Bullet>
+                            <Ellipse />
+                        </BulletDecorator.Bullet>
+                        <TextBlock Text="Is this the item you want? Just click 'Place Custom Order' to get the checkout process started"
+                                   Style="{StaticResource BulletItems}" />
+                    </BulletDecorator>
+                    <BulletDecorator>
+                        <BulletDecorator.Bullet>
+                            <Ellipse />
+                        </BulletDecorator.Bullet>
+                        <TextBlock Text="Once you get to the checkout page, you will be prompted for information regarding your product. i.e. size, quantity, etc."
+                                   Style="{StaticResource BulletItems}" />
+                    </BulletDecorator>
+                    <BulletDecorator>
+                        <BulletDecorator.Bullet>
+                            <Ellipse />
+                        </BulletDecorator.Bullet>
+                        <TextBlock Text="At Tinker Gems we strive to provide a smooth, personal experience for our users. The only personal information you will share with us is your email"
+                                   Style="{StaticResource BulletItems}" />
+                    </BulletDecorator>
+                    <BulletDecorator>
+                        <BulletDecorator.Bullet>
+                            <Ellipse />
+                        </BulletDecorator.Bullet>
+                        <TextBlock Text="After the form on the checkout page is filled out, go ahead and sumbit your order! Don't forget any personal requests!"
+                                   Style="{StaticResource BulletItems}" />
+                    </BulletDecorator>
+                    <BulletDecorator>
+                        <BulletDecorator.Bullet>
+                            <Ellipse />
+                        </BulletDecorator.Bullet>
+                        <TextBlock Text="Once your order is submitted, our jeweler will be notified and you will receive an order conformation email"
+                                   Style="{StaticResource BulletItems}" />
+                    </BulletDecorator>
+                    <BulletDecorator>
+                        <BulletDecorator.Bullet>
+                            <Ellipse />
+                        </BulletDecorator.Bullet>
+                        <TextBlock Text="The jeweler will be in contact with you within 1 business day to discuss shipping details and payment methods"
+                                   Style="{StaticResource BulletItems}" />
+                    </BulletDecorator>                
+                </StackPanel>
+            </Border>
         </Grid>
-    </Grid>
+    </ScrollViewer>
 </UserControl>

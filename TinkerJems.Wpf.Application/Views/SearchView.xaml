@@ -215,7 +215,7 @@
                               ItemTemplate="{StaticResource cardTemplate}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <UniformGrid Columns="4" />
+                            <UniformGrid Columns="4"/>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
