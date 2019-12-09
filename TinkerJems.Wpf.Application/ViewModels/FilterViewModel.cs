@@ -89,18 +89,18 @@ namespace TinkerJems.Wpf.Application.ViewModels
         {
             var temp = originalList;
             temp = FilterByTag(temp);
-            temp = FilterByMaterial(temp);
-            temp = sortItems(temp);
+            temp = FilterByMaterial(SelectedMaterial, temp);
+            temp = sortItems(SelectedSort, temp);
 
             FilteredJewelryItems = temp;
 
         }
 
-        private IEnumerable<JewelryItem> FilterByMaterial(IEnumerable<JewelryItem> temp)
+        public IEnumerable<JewelryItem> FilterByMaterial(string material, IEnumerable<JewelryItem> temp)
         {
-            if (SelectedMaterial == null)
+            if (material == null)
                 return temp;
-            return temp.Where(t => t.Material == SelectedMaterial);
+            return temp.Where(t => t.Material == material);
         }
 
         private IEnumerable<JewelryItem> FilterByTag(IEnumerable<JewelryItem> temp)
@@ -185,9 +185,9 @@ namespace TinkerJems.Wpf.Application.ViewModels
             }
         }
 
-        private IEnumerable<JewelryItem> sortItems(IEnumerable<JewelryItem> originalList)
+        public IEnumerable<JewelryItem> sortItems(string sortBy, IEnumerable<JewelryItem> originalList)
         {
-            var sort = SelectedSort;
+            var sort = sortBy;
 
             if(sort == "Price (Low-High)")
             {
