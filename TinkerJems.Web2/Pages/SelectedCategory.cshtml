@@ -6,18 +6,19 @@
 
 <h1 style="text-align:center">@Model.Category</h1>
 
-@foreach (var item in Model.JewelryItems)
-{
-    <a asp-page="./Details" asp-route-id="@item.Id" style="text-decoration:none">
-        <div class="media" style="border:solid; margin:1em; background-color:#fffcff; display:inline-block;">
-            <img asp-route-id="@item.Id" class="mr-3" style=" border-radius:.5em; width:150px; height:150px; margin-bottom:1em; margin-left:.5em; margin-right:0em" src="/Images/@Html.DisplayFor(modelItem => item.ImageThumbnailUrl)" alt="Generic placeholder image">
-            <div class="media-body" style="display:inline-block; margin:.5em">
-                <a asp-page="./Details" asp-route-id="@item.Id" style="text-decoration:none; color:black"><h5 class="mt-0">@Html.DisplayFor(modelItem => item.Name)</h5></a>
-                <p asp-route-id="@item.Id">@item.Price.ToString("c")</p>
-                <p asp-route-id="@item.Id">
-                    @Html.DisplayFor(modelItem => item.Description)
-                </p>
-            </div>
+<div id="items" class="container" style="display:flex; flex-wrap:wrap">
+    @foreach (var item in Model.JewelryItems)
+    {
+        <div class="itemCard" style="margin:2em; display:inline-block;">
+            <a asp-page="./Details" asp-route-id="@item.Id" style="text-decoration:none">
+                <img asp-route-id="@item.Id" class="mr-3" style="width:250px; height:250px; margin-bottom:1em; margin-left:.5em; margin-right:0em" src="/Images/@Html.DisplayFor(modelItem => item.ImageThumbnailUrl)" alt="Generic placeholder image">
+            </a>
+            <a asp-page="./Details" asp-route-id="@item.Id" style="text-decoration:none; color:black; font-size:20px">
+                <p>@Html.DisplayFor(modelItem => item.Name)</p>
+            </a>
+            <a asp-page="./Details" asp-route-id="@item.Id" style="text-decoration:none; color:black; font-size:20px">
+                <p>@item.Price.ToString("c")</p>
+            </a>
         </div>
-    </a>
-}
+    }
+</div>

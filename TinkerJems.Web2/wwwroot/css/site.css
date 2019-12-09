@@ -56,7 +56,7 @@ body {
 }
 /* Styles for Items page*/
 .itemCard{
-    display:flex;
+    margin:2em;
     flex-wrap:wrap;
     text-align:center;
 }
