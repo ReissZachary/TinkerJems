@@ -279,19 +279,21 @@ namespace TinkerJems.Wpf.Application.ViewModels
             message.To.Add(new MailboxAddress("Valued Customer", CustomerEmail));
             message.Subject = "Your confirmation order from Tinker Gems!";
 
+            var text = "<h1>Dear " + CustomerEmail + "</ h1 >";
+            text +=
+                    @$"<br/>
+                    <h1><strong>Here is a summary of your recent order from Tinker Gems:</strong></h1>
+                    <table>
+                        <tr><td>Item:</td><td> {OrderedItem.Name}</td></tr>
+                        <tr><td>Total price:</td><td> {(OrderedItem.Price * Quantity):c}</td></tr>
+                        <tr><td>Quantity:</td><td> {Quantity}</td></tr>
+                        <tr><td>Size:</td><td> {SelectedSize}</td></tr>
+                        <tr><td>Details:</td><td> {OrderDetails}</td></tr>
+                    </table>
+                    <h2>Thank you for choosing Tinker Gems!</h2>";
             message.Body = new TextPart(MimeKit.Text.TextFormat.Html)
             {
-                Text = "<h1>Dear " + CustomerEmail + "</ h1 >" +
-                        "<br/>" +
-                        "<h2><strong>Here is a summary of your recent order from Tinker Gems:</strong></h2>" +
-                        "<h3>Item: \t" + OrderedItem.Name + "</ h3 >" +
-                        "<h3>Total price: \t" + "$" + (OrderedItem.Price * Quantity) + "</h3>" +
-                        "<h3>Quantity: \t" + Quantity.ToString() + "</h3>" +
-                        "<h3>Size: \t" + SelectedSize + "</h3>" +
-                        "<h3>Details: \t" + OrderDetails + "</h3>" +
-                        "<br/><br/>" +
-                        "<h1>Thank you for choosing Tinker Gems!</h1>"
-
+                Text = text
             };
 
             using (var client = new SmtpClient())
