@@ -25,6 +25,7 @@ namespace TinkerJems.Web2.Pages
         }
 
         public string[] Images { get; set; }
+
         [BindProperty]
         public string NewTags { get; set; }
         public IActionResult OnGet()

@@ -51,6 +51,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Templating" Version="3.0.0" />
     <PackageReference Include="Nancy" Version="2.0.0" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.0.1" />
     <PackageReference Include="RestSharp" Version="106.6.10" />
     <PackageReference Include="Twilio" Version="5.35.0" />
     <PackageReference Include="Twilio.AspNet.Common" Version="5.33.1" />
