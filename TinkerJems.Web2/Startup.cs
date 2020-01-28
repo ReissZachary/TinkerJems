@@ -94,9 +94,9 @@ namespace TinkerJems.Web2
             app.UseCookiePolicy();
 
             app.UseAuthentication();
-            app.UseAuthorization();
             SeedData.EnsureInitialized(userManager, roleManager);
             app.UseRouting();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
