@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinkerJems.Wpf.Application"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinkerJems.WPF.Application.Tests", "TinkerJems.WPF.Application.Tests\TinkerJems.WPF.Application.Tests.csproj", "{AC25C04C-EFDF-4A0D-A6B2-C2BA3DC253D8}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{B455F368-FF90-415F-B247-0B8F008E9EDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{AC25C04C-EFDF-4A0D-A6B2-C2BA3DC253D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC25C04C-EFDF-4A0D-A6B2-C2BA3DC253D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC25C04C-EFDF-4A0D-A6B2-C2BA3DC253D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B455F368-FF90-415F-B247-0B8F008E9EDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B455F368-FF90-415F-B247-0B8F008E9EDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B455F368-FF90-415F-B247-0B8F008E9EDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B455F368-FF90-415F-B247-0B8F008E9EDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

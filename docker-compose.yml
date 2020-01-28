@@ -1,0 +1,35 @@
+version: '3.4'
+
+services:
+  tinkerjems.web2:
+    image: ${DOCKER_REGISTRY-}tinkerjemsweb2
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    build:
+      context: .
+      dockerfile: TinkerJems.Web2/Dockerfile
+    networks: 
+      TinkerNet:
+        aliases:
+          - tinkerweb
+    depends_on:
+      - pg
+   
+  pg:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: myPassword1
+    volumes:
+      - "./TinkerJems.Web2/dbdefinition.sql:/docker-entrypoint-initdb.d/init.sql"
+      - dbData:/var/lib/postgresql/data
+    networks: 
+      TinkerNet:
+        aliases:
+          - pg
+
+networks: 
+  TinkerNet:
+    driver: bridge
+
+volumes:
+  dbData:

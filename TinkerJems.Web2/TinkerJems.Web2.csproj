@@ -5,6 +5,7 @@
     <UserSecretsId>aspnet-TinkerJems.Web2-1050C651-EB6C-4DA5-BE98-63D5E197B3F7</UserSecretsId>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
