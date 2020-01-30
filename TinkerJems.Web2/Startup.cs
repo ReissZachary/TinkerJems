@@ -42,8 +42,7 @@ namespace TinkerJems.Web2
             });
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
-                options.UseNpgsql(Configuration["PostgresConnectionString"])
+                options.UseNpgsql(getConnectionString())
                 );
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddDefaultTokenProviders()
@@ -118,6 +117,25 @@ namespace TinkerJems.Web2
                     context.Database.Migrate();
                 }
             }
+        }
+
+        private string getConnectionString()
+        {
+            if (Configuration["PostgresConnectionString"] == null)
+            {
+                var connectionUrl = Configuration["DATABASE_URL"];
+                var uri = new Uri(connectionUrl);
+                var host = uri.Host;
+                var port = uri.Port;
+                var database = uri.Segments.Last();
+                var parts = uri.AbsoluteUri.Split(':', '/', '@');
+                var user = parts[3];
+                var password = parts[4];
+
+                return $"host={host}; port={port}; database={database}; username={user}; password={password}; SSL Mode=Prefer; Trust Server Certificate=true";
+            }
+            else
+                return Configuration["PostgresConnectionString"];
         }
     }
 }
