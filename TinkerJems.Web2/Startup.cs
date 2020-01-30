@@ -84,8 +84,10 @@ namespace TinkerJems.Web2
                 app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
-            }
-
+            }            
+            
+            UpdateDatabase(app);
+            
             app.UseGraphQL<TinkerJemsSchema>();
             app.UseGraphQLPlayground(new GraphQLPlaygroundOptions());
 
@@ -104,6 +106,18 @@ namespace TinkerJems.Web2
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+        private static void UpdateDatabase(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices
+                .GetRequiredService<IServiceScopeFactory>()
+                .CreateScope())
+            {
+                using (var context = serviceScope.ServiceProvider.GetService<ApplicationDbContext>())
+                {
+                    context.Database.Migrate();
+                }
+            }
         }
     }
 }

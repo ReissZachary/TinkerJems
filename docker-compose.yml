@@ -5,6 +5,7 @@ services:
     image: ${DOCKER_REGISTRY-}tinkerjemsweb2
     environment:
       ASPNETCORE_ENVIRONMENT: Development
+      PostgresConnectionString: host=pg;Database=postgres;Username=postgres;Password=myPassword1
     build:
       context: .
       dockerfile: TinkerJems.Web2/Dockerfile
@@ -19,7 +20,7 @@ services:
    
   pg:
     image: postgres
-    environment:
+    environment:      
       POSTGRES_PASSWORD: myPassword1
     volumes:
       - "./TinkerJems.Web2/dbdefinition.sql:/docker-entrypoint-initdb.d/init.sql"
