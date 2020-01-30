@@ -23,7 +23,7 @@ services:
       POSTGRES_PASSWORD: myPassword1
     volumes:
       - "./TinkerJems.Web2/dbdefinition.sql:/docker-entrypoint-initdb.d/init.sql"
-      #- dbData:/var/lib/postgresql/data
+      - dbData:/var/lib/postgresql/data
     networks: 
       TinkerNet:
         aliases:
@@ -33,8 +33,9 @@ networks:
   TinkerNet:
     driver: bridge
 
-#volumes:
- # dbData:
+volumes:
+  dbData:
+    external: true
 
 
 
